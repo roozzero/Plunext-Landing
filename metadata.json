@@ -1,6 +1,6 @@
 {
-  "name": "Lumina Glassmorphism Navigation",
-  "description": "Modern premium glassmorphism navigation bar with fluid active sliding transitions, hover micro-interactions, responsive mobile menu, and dark-themed UI.",
+  "name": "Plunex - Interactive Network Studio",
+  "description": "Futuristic dark-themed studio website built around an interactive orbital node network navigation system with dynamic particle connections and cinematic modal experiences.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

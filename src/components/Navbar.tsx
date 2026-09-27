@@ -1,9 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { ChevronDown, Menu, X, Sparkles, Orbit, Send, Terminal } from 'lucide-react';
+import { sound } from '../utils/sound';
 
 interface NavbarProps {
   activeTab?: string;
-  onSelectTab?: (tab: string) => void;
+  onSelectTab: (tab: string) => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -12,11 +14,20 @@ export const Navbar: React.FC<NavbarProps> = ({
 }) => {
   const [currentActive, setCurrentActive] = useState(activeTab);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
+  // Sync external activeTab prop
+  useEffect(() => {
+    setCurrentActive(activeTab);
+  }, [activeTab]);
+
   const handleSelect = (name: string) => {
+    sound.playHover();
     setCurrentActive(name);
-    if (onSelectTab) onSelectTab(name);
+    onSelectTab(name);
+    setIsDropdownOpen(false);
+    setMobileMenuOpen(false);
   };
 
   // Close dropdown on outside click
@@ -30,17 +41,27 @@ export const Navbar: React.FC<NavbarProps> = ({
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  const navLinks = [
+    { id: 'Home', label: 'Home' },
+    { id: 'About', label: 'About' },
+    { id: 'Services', label: 'Services' },
+    { id: 'Projects', label: 'Projects' },
+    { id: 'Team', label: 'Team' },
+    { id: 'Blog', label: 'Blog' },
+    { id: 'Contact', label: 'Contact' },
+  ];
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 pt-5 px-4 sm:px-10">
+    <header className="fixed top-0 left-0 right-0 z-50 pt-4 sm:pt-5 px-3 sm:px-8 pointer-events-auto">
       <div className="max-w-6xl mx-auto">
-        {/* Smoked Frosted Glass Navigation Bar with Rounder Corners */}
+        {/* Smoked Frosted Glass Navigation Bar */}
         <nav
           aria-label="Main Navigation"
-          className="relative flex items-center justify-between px-7 py-3.5 rounded-2xl sm:rounded-full shadow-[0_14px_40px_rgba(0,0,0,0.45)]"
+          className="relative flex items-center justify-between px-5 sm:px-7 py-3 rounded-2xl sm:rounded-full shadow-[0_14px_40px_rgba(0,0,0,0.55)] border border-white/10"
           style={{
-            backgroundColor: 'rgba(42, 38, 42, 0.55)',
-            backdropFilter: 'blur(22px) saturate(140%)',
-            WebkitBackdropFilter: 'blur(22px) saturate(140%)',
+            backgroundColor: 'rgba(32, 34, 46, 0.65)',
+            backdropFilter: 'blur(24px) saturate(140%)',
+            WebkitBackdropFilter: 'blur(24px) saturate(140%)',
           }}
         >
           {/* ZONE 1: Brand Wordmark (Left) */}
@@ -48,54 +69,52 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               type="button"
               onClick={() => handleSelect('Home')}
-              className="text-white font-semibold text-[15px] sm:text-base tracking-normal focus:outline-none cursor-pointer"
+              className="flex items-center gap-2 group text-white font-semibold text-[15px] sm:text-base tracking-wider focus:outline-none cursor-pointer"
             >
-              Brand
+              <span className="w-2 h-2 rounded-full bg-sky-400 group-hover:scale-125 transition-transform shadow-[0_0_10px_#38bdf8]" />
+              <span className="tracking-tight uppercase font-sans">PLUNEX</span>
             </button>
           </div>
 
-          {/* ZONE 2: Centered Navigation Links (Center) */}
-          <div className="flex items-center justify-center flex-1 px-4">
-            <div className="flex items-center gap-5 sm:gap-7 text-[13px] sm:text-[14px]">
-              {/* Home (Active/Link) */}
-              <button
-                type="button"
-                onClick={() => handleSelect('Home')}
-                className={`transition-colors duration-150 focus:outline-none cursor-pointer ${
-                  currentActive === 'Home'
-                    ? 'text-white font-medium'
-                    : 'text-white/75 hover:text-white'
-                }`}
-              >
-                Home
-              </button>
+          {/* ZONE 2: Centered Navigation Links (Desktop) */}
+          <div className="hidden lg:flex items-center justify-center flex-1 px-4">
+            <div className="flex items-center gap-5 sm:gap-6 text-[13px] sm:text-[14px]">
+              {navLinks.map((item) => {
+                const isActive = currentActive === item.id;
+                return (
+                  <button
+                    key={item.id}
+                    type="button"
+                    onClick={() => handleSelect(item.id)}
+                    className={`relative py-1 transition-colors duration-200 focus:outline-none cursor-pointer ${
+                      isActive ? 'text-white font-semibold' : 'text-slate-300 hover:text-white'
+                    }`}
+                  >
+                    <span>{item.label}</span>
+                    {isActive && (
+                      <motion.div
+                        layoutId="activeNavIndicator"
+                        className="absolute -bottom-1 left-0 right-0 h-[2px] bg-gradient-to-r from-sky-400 to-indigo-400 rounded-full shadow-[0_0_8px_#38bdf8]"
+                        transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                      />
+                    )}
+                  </button>
+                );
+              })}
 
-              {/* Link */}
-              <button
-                type="button"
-                onClick={() => handleSelect('Link')}
-                className={`transition-colors duration-150 focus:outline-none cursor-pointer ${
-                  currentActive === 'Link'
-                    ? 'text-white font-medium'
-                    : 'text-white/75 hover:text-white'
-                }`}
-              >
-                Link
-              </button>
-
-              {/* Dropdown with Caret: "Dropdown ▾" */}
+              {/* Dropdown for More Sections */}
               <div className="relative" ref={dropdownRef}>
                 <button
                   type="button"
                   onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                  className="flex items-center gap-1.5 text-white/75 hover:text-white transition-colors duration-150 focus:outline-none cursor-pointer"
+                  className="flex items-center gap-1 text-slate-300 hover:text-white transition-colors duration-150 focus:outline-none cursor-pointer py-1"
                   aria-expanded={isDropdownOpen}
                 >
-                  <span>Dropdown</span>
-                  <span className="text-[10px] text-white/70 leading-none -mt-0.5">▼</span>
+                  <span>Explore</span>
+                  <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${isDropdownOpen ? 'rotate-180 text-sky-400' : 'text-slate-400'}`} />
                 </button>
 
-                {/* Frosted Glass Dropdown Menu with Rounder Corners */}
+                {/* Frosted Glass Dropdown Menu */}
                 <AnimatePresence>
                   {isDropdownOpen && (
                     <motion.div
@@ -103,66 +122,109 @@ export const Navbar: React.FC<NavbarProps> = ({
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 6, scale: 0.96 }}
                       transition={{ duration: 0.15, ease: 'easeOut' }}
-                      className="absolute left-1/2 -translate-x-1/2 mt-3.5 w-48 rounded-2xl py-2 shadow-[0_18px_40px_rgba(0,0,0,0.55)] z-50 overflow-hidden"
+                      className="absolute left-1/2 -translate-x-1/2 mt-3.5 w-52 rounded-2xl py-2 shadow-[0_18px_50px_rgba(0,0,0,0.7)] z-50 overflow-hidden border border-white/10"
                       style={{
-                        backgroundColor: 'rgba(38, 35, 38, 0.85)',
-                        backdropFilter: 'blur(26px) saturate(140%)',
-                        WebkitBackdropFilter: 'blur(26px) saturate(140%)',
+                        backgroundColor: 'rgba(24, 26, 36, 0.94)',
+                        backdropFilter: 'blur(28px) saturate(140%)',
+                        WebkitBackdropFilter: 'blur(28px) saturate(140%)',
                       }}
                     >
                       <button
                         type="button"
-                        onClick={() => {
-                          handleSelect('Action');
-                          setIsDropdownOpen(false);
-                        }}
-                        className="w-full text-left px-4 py-2 text-[13px] text-white/85 hover:text-white hover:bg-white/[0.08] transition-colors cursor-pointer"
+                        onClick={() => handleSelect('Portfolio')}
+                        className="w-full text-left px-4 py-2.5 text-[13px] text-slate-200 hover:text-white hover:bg-white/[0.08] transition-colors cursor-pointer flex items-center justify-between"
                       >
-                        Action
+                        <span>Creative Lab & Sandbox</span>
+                        <span className="text-[10px] font-mono text-pink-400">R&D</span>
                       </button>
+
                       <button
                         type="button"
-                        onClick={() => {
-                          handleSelect('Another action');
-                          setIsDropdownOpen(false);
-                        }}
-                        className="w-full text-left px-4 py-2 text-[13px] text-white/85 hover:text-white hover:bg-white/[0.08] transition-colors cursor-pointer"
+                        onClick={() => handleSelect('Careers')}
+                        className="w-full text-left px-4 py-2.5 text-[13px] text-slate-200 hover:text-white hover:bg-white/[0.08] transition-colors cursor-pointer flex items-center justify-between"
                       >
-                        Another action
+                        <span>Open Missions</span>
+                        <span className="text-[10px] font-mono text-orange-400">3 ROLES</span>
                       </button>
+
                       <div className="my-1.5 h-[1px] bg-white/[0.08]" />
+
                       <button
                         type="button"
-                        onClick={() => {
-                          handleSelect('Something else');
-                          setIsDropdownOpen(false);
-                        }}
-                        className="w-full text-left px-4 py-2 text-[13px] text-white/85 hover:text-white hover:bg-white/[0.08] transition-colors cursor-pointer"
+                        onClick={() => handleSelect('Core')}
+                        className="w-full text-left px-4 py-2.5 text-[13px] text-sky-300 hover:text-white hover:bg-sky-500/15 transition-colors cursor-pointer flex items-center justify-between font-mono"
                       >
-                        Something else here
+                        <span>Central Hub Status</span>
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
                       </button>
                     </motion.div>
                   )}
                 </AnimatePresence>
               </div>
-
-              {/* Disabled item */}
-              <span
-                className="text-white/35 cursor-not-allowed select-none hidden xs:inline"
-                aria-disabled="true"
-              >
-                Disabled
-              </span>
             </div>
           </div>
 
-          {/* ZONE 3: "plunex" Text (Right) */}
-          <div className="flex items-center justify-end shrink-0 min-w-[70px]">
-            <span className="text-white/85 font-medium text-[13px] sm:text-[14px] tracking-normal">
-              plunex
-            </span>
+          {/* ZONE 3: Right Zone (Status + Uplink Quick Action) */}
+          <div className="flex items-center gap-3">
+            <button
+              type="button"
+              onClick={() => handleSelect('Contact')}
+              className="hidden sm:flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white text-xs font-mono transition-all cursor-pointer hover:border-teal-400/40"
+            >
+              <Send className="w-3 h-3 text-teal-400" />
+              <span>Initiate Uplink</span>
+            </button>
+
+            {/* Mobile Menu Toggle Button */}
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="lg:hidden p-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-white/10 transition-colors"
+              aria-label="Toggle mobile menu"
+            >
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
           </div>
         </nav>
+
+        {/* Mobile Navigation Drawer */}
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              className="lg:hidden mt-2 p-4 rounded-2xl border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.8)]"
+              style={{
+                backgroundColor: 'rgba(20, 22, 32, 0.95)',
+                backdropFilter: 'blur(28px)',
+                WebkitBackdropFilter: 'blur(28px)',
+              }}
+            >
+              <div className="grid grid-cols-2 gap-2 text-sm">
+                {[
+                  ...navLinks,
+                  { id: 'Portfolio', label: 'Creative Lab' },
+                  { id: 'Careers', label: 'Careers' },
+                  { id: 'Core', label: 'Central Core' },
+                ].map((item) => (
+                  <button
+                    key={item.id}
+                    type="button"
+                    onClick={() => handleSelect(item.id)}
+                    className={`p-2.5 rounded-xl text-left font-medium transition-colors cursor-pointer ${
+                      currentActive === item.id
+                        ? 'bg-sky-500/20 text-sky-300 border border-sky-400/30'
+                        : 'text-slate-300 hover:bg-white/5 hover:text-white'
+                    }`}
+                  >
+                    {item.label}
+                  </button>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </header>
   );
