@@ -1,0 +1,6 @@
+{
+  "name": "Lumina Glassmorphism Navigation",
+  "description": "Modern premium glassmorphism navigation bar with fluid active sliding transitions, hover micro-interactions, responsive mobile menu, and dark-themed UI.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
