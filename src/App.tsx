@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { ArrowRight, ArrowDown, Menu, X, Mail, CheckCircle2, ChevronRight } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { motion } from 'motion/react';
+import { ArrowRight, Menu, X, CheckCircle2 } from 'lucide-react';
 import heroBg from './assets/imgs/Hero.png';
 import logoImg from './assets/imgs/Logo.png';
 
@@ -9,6 +10,39 @@ export default function App() {
   const [contactModalOpen, setContactModalOpen] = useState(false);
   const [contactSubmitted, setContactSubmitted] = useState(false);
   const [portfolioModalOpen, setPortfolioModalOpen] = useState(false);
+
+  // Animated counter for the stat card ($0.0+ to $2.2+)
+  const [statNumber, setStatNumber] = useState<number>(0);
+  const [isCountingDone, setIsCountingDone] = useState<boolean>(false);
+
+  useEffect(() => {
+    // Start counter after the card slides down from the top (around 1.1s)
+    const startTimeout = setTimeout(() => {
+      const duration = 1400; // ms
+      const startTime = performance.now();
+      const targetVal = 2.2;
+
+      const animateCount = (now: number) => {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        // Smooth ease-out cubic
+        const ease = 1 - Math.pow(1 - progress, 3);
+        const current = parseFloat((targetVal * ease).toFixed(1));
+        setStatNumber(current);
+
+        if (progress < 1) {
+          requestAnimationFrame(animateCount);
+        } else {
+          setStatNumber(targetVal);
+          setIsCountingDone(true);
+        }
+      };
+
+      requestAnimationFrame(animateCount);
+    }, 1100);
+
+    return () => clearTimeout(startTimeout);
+  }, []);
 
   const navItems = [
     { id: 'Home', label: 'Home' },
@@ -28,25 +62,35 @@ export default function App() {
   return (
     <div className="relative w-full min-h-screen overflow-x-hidden font-['Plus_Jakarta_Sans',sans-serif] bg-[#071317] text-white select-none">
       {/* ======================================================== */}
-      {/* HERO BACKGROUND IMAGE EXACTLY FROM assets/imgs/Hero.png */}
+      {/* HERO BACKGROUND IMAGE - Initially fades in softly */}
       {/* ======================================================== */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.9, ease: 'easeOut' }}
+        className="absolute inset-0 z-0 overflow-hidden"
+      >
         <img
           src={heroBg}
           alt="Hero Background Architecture"
           className="w-full h-full object-cover object-center scale-[1.01]"
         />
-        {/* Subtle cinematic gradient vignette for maximum text contrast */}
+        {/* Subtle cinematic gradient vignette */}
         <div className="absolute inset-0 bg-gradient-to-t from-[#040e12]/85 via-transparent to-[#040e12]/50 pointer-events-none" />
         <div className="absolute inset-0 bg-gradient-to-r from-[#040e12]/60 via-transparent to-transparent pointer-events-none" />
-      </div>
+      </motion.div>
 
       {/* ======================================================== */}
-      {/* NAVIGATION BAR EXACTLY MATCHING ATTACHED SCREENSHOT */}
+      {/* NAVIGATION BAR WITH CHOREOGRAPHED ENTRANCES */}
       {/* ======================================================== */}
       <header className="relative z-30 w-full px-6 sm:px-10 md:px-14 lg:px-16 pt-6 sm:pt-8 pb-4 flex items-center justify-between">
-        {/* Left: Brand Logo from assets/imgs/Logo.png */}
-        <div className="flex items-center">
+        {/* 1. Left: Logo rotates in place & appears */}
+        <motion.div
+          initial={{ rotate: -220, scale: 0.25, opacity: 0 }}
+          animate={{ rotate: 0, scale: 1, opacity: 1 }}
+          transition={{ duration: 1.1, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+          className="flex items-center origin-center"
+        >
           <a
             href="#home"
             onClick={(e) => {
@@ -60,7 +104,6 @@ export default function App() {
               alt="Vort Logo"
               className="h-7 sm:h-8 md:h-9 w-auto object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]"
               onError={(e) => {
-                // Graceful fallback if image has rendering discrepancy
                 e.currentTarget.style.display = 'none';
                 const fallback = document.getElementById('logo-text-fallback');
                 if (fallback) fallback.style.display = 'flex';
@@ -73,20 +116,30 @@ export default function App() {
               <span className="text-xl sm:text-2xl font-bold tracking-tight text-white">Vort</span>
             </div>
           </a>
-        </div>
+        </motion.div>
 
-        {/* Center: Frosted White Pill Navigation (Exact match to screenshot) */}
-        <nav
+        {/* 2. Center: Navbar enters from Right to Left, then reveals menus */}
+        <motion.nav
           aria-label="Main Navigation"
-          className="hidden md:flex items-center bg-white/95 backdrop-blur-md p-1.5 rounded-full shadow-[0_8px_24px_rgba(0,0,0,0.28)] border border-white/40"
+          initial={{ x: 120, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.85, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
+          className="hidden md:flex items-center bg-white/95 backdrop-blur-md p-1.5 rounded-full shadow-[0_8px_24px_rgba(0,0,0,0.28)] border border-white/40 overflow-hidden"
         >
-          {navItems.map((item) => {
+          {navItems.map((item, index) => {
             const isActive = activeNav === item.id;
             return (
-              <button
+              <motion.button
                 key={item.id}
                 type="button"
                 onClick={() => handleNavClick(item.id)}
+                initial={{ x: 25, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{
+                  duration: 0.5,
+                  delay: 0.65 + index * 0.08,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
                 className={`text-[13px] lg:text-[14px] font-medium transition-all duration-200 cursor-pointer ${
                   isActive
                     ? 'bg-[#0d3b43] text-white px-5 py-1.5 rounded-full shadow-[0_2px_8px_rgba(13,59,67,0.4)]'
@@ -94,31 +147,54 @@ export default function App() {
                 }`}
               >
                 {item.label}
-              </button>
+              </motion.button>
             );
           })}
-        </nav>
+        </motion.nav>
 
-        {/* Right: Get In Touch Button (Translucent dark teal pill) */}
+        {/* 3. Right: Navbar button enters from the Left, arrow first, then text */}
         <div className="flex items-center gap-3">
-          <button
+          <motion.button
             type="button"
             onClick={() => setContactModalOpen(true)}
-            className="hidden sm:flex items-center gap-2 bg-[#0c333a]/80 hover:bg-[#0c333a] border border-[#1d5c67]/60 text-white text-[13px] sm:text-[14px] font-medium px-5 py-2.5 rounded-full backdrop-blur-md shadow-[0_4px_16px_rgba(0,0,0,0.25)] transition-all duration-200 group cursor-pointer"
+            initial={{ x: -70, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.75, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="hidden sm:flex items-center gap-2 bg-[#0c333a]/80 hover:bg-[#0c333a] border border-[#1d5c67]/60 text-white text-[13px] sm:text-[14px] font-medium px-5 py-2.5 rounded-full backdrop-blur-md shadow-[0_4px_16px_rgba(0,0,0,0.25)] transition-all duration-200 group cursor-pointer overflow-hidden"
           >
-            <span>Get In Touch</span>
-            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-          </button>
+            {/* Arrow appears first */}
+            <motion.span
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.4, delay: 0.85, ease: [0.34, 1.56, 0.64, 1] }}
+              className="order-2 group-hover:translate-x-0.5 transition-transform"
+            >
+              <ArrowRight className="w-3.5 h-3.5" />
+            </motion.span>
+
+            {/* Text appears second */}
+            <motion.span
+              initial={{ x: -16, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.5, delay: 1.05, ease: 'easeOut' }}
+              className="order-1"
+            >
+              Get In Touch
+            </motion.span>
+          </motion.button>
 
           {/* Mobile Menu Hamburger */}
-          <button
+          <motion.button
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.6 }}
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="md:hidden p-2 rounded-full bg-black/40 text-white border border-white/20 hover:bg-black/60 transition-colors"
             aria-label="Toggle navigation menu"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
+          </motion.button>
         </div>
       </header>
 
@@ -159,65 +235,111 @@ export default function App() {
       )}
 
       {/* ======================================================== */}
-      {/* HERO MAIN CONTENT SECTION (EXACT LAYOUT OF SCREENSHOT) */}
+      {/* HERO MAIN CONTENT SECTION */}
       {/* ======================================================== */}
-      <main className="relative z-20 min-h-[calc(100vh-140px)] flex flex-col justify-between px-6 sm:px-10 md:px-14 lg:px-16 pt-8 pb-10 sm:pb-12">
-        {/* Spacer top */}
-        <div className="hidden lg:block h-6" />
-
-        {/* Center / Lower Main Content Row */}
-        <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-end my-auto">
+      <main className="relative z-20 min-h-[calc(100vh-100px)] flex flex-col justify-end px-6 sm:px-10 md:px-14 lg:px-16 pt-4 pb-3 sm:pb-4">
+        {/* Main Content Grid positioned close to bottom */}
+        <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mt-auto mb-1">
           {/* Left Column: Heading + Paragraph + Action Buttons */}
-          <div className="lg:col-span-8 space-y-6 sm:space-y-7">
-            {/* Main Headline */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[66px] font-medium text-white tracking-tight leading-[1.08] max-w-3xl drop-shadow-[0_4px_24px_rgba(0,0,0,0.65)]">
+          <div className="lg:col-span-8 space-y-4 sm:space-y-5 mb-1">
+            {/* 4. Main Headline: Appears from bottom to top */}
+            <motion.h1
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.85, delay: 0.75, ease: [0.16, 1, 0.3, 1] }}
+              className="text-[53px] font-medium text-white tracking-tight leading-[1.08] max-w-3xl drop-shadow-[0_4px_24px_rgba(0,0,0,0.65)]"
+            >
               Building Long-Term Value<br />
               In Uncertain Markets
-            </h1>
+            </motion.h1>
 
-            {/* Subtitle / Paragraph */}
-            <p className="text-sm sm:text-base md:text-[17px] text-slate-200/90 font-normal leading-relaxed max-w-2xl drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)]">
+            {/* Subtitle / Paragraph: Appears from bottom to top */}
+            <motion.p
+              initial={{ y: 40, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.95, ease: [0.16, 1, 0.3, 1] }}
+              className="text-[15px] text-slate-200/90 font-normal leading-relaxed max-w-2xl drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)]"
+            >
               We invest with conviction, insight, and discipline — partnering with exceptional leaders to create lasting impact across evolving industries.
-            </p>
+            </motion.p>
 
-            {/* Two Action Buttons */}
-            <div className="flex flex-wrap items-center gap-4 pt-1 sm:pt-2">
-              {/* White Pill Button: Get In Touch -> */}
-              <button
+            {/* 5. Hero Buttons: Appear like the navbar button (from left, arrow first then text) */}
+            <div className="flex flex-wrap items-center gap-4 pt-1 text-[15px]">
+              {/* White Pill Button: Get In Touch */}
+              <motion.button
                 type="button"
                 onClick={() => setContactModalOpen(true)}
-                className="bg-white hover:bg-slate-100 text-slate-950 font-semibold px-6 sm:px-7 py-3 sm:py-3.5 rounded-full flex items-center gap-2 shadow-[0_8px_20px_rgba(0,0,0,0.35)] transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer text-sm sm:text-base group"
+                initial={{ x: -60, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ duration: 0.75, delay: 1.1, ease: [0.16, 1, 0.3, 1] }}
+                className="bg-white hover:bg-slate-100 text-slate-950 font-semibold px-6 sm:px-7 py-2.5 sm:py-3 rounded-full flex items-center gap-2 shadow-[0_8px_20px_rgba(0,0,0,0.35)] transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer text-[14px] group overflow-hidden"
               >
-                <span>Get In Touch</span>
-                <span className="group-hover:translate-x-0.5 transition-transform text-base">→</span>
-              </button>
+                {/* Text appears second */}
+                <motion.span
+                  initial={{ x: -14, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ duration: 0.45, delay: 1.45, ease: 'easeOut' }}
+                >
+                  Get In Touch
+                </motion.span>
+
+                {/* Arrow appears first */}
+                <motion.span
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.4, delay: 1.25, ease: [0.34, 1.56, 0.64, 1] }}
+                  className="text-base font-normal group-hover:translate-x-0.5 transition-transform"
+                >
+                  →
+                </motion.span>
+              </motion.button>
 
               {/* Dark Translucent Glass Pill: Our Portfolio */}
-              <button
+              <motion.button
                 type="button"
                 onClick={() => setPortfolioModalOpen(true)}
-                className="bg-[#0b242a]/60 hover:bg-[#0b242a]/85 border border-white/20 text-white font-medium px-6 sm:px-7 py-3 sm:py-3.5 rounded-full backdrop-blur-md transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer text-sm sm:text-base shadow-[0_4px_16px_rgba(0,0,0,0.2)]"
+                initial={{ x: -50, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ duration: 0.7, delay: 1.25, ease: [0.16, 1, 0.3, 1] }}
+                className="bg-[#0b242a]/60 hover:bg-[#0b242a]/85 border border-white/20 text-white font-medium px-6 sm:px-7 py-2.5 sm:py-3 rounded-full backdrop-blur-md transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer text-[14px] shadow-[0_4px_16px_rgba(0,0,0,0.2)]"
               >
-                <span>Our Portfolio</span>
-              </button>
+                <motion.span
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 1.4 }}
+                >
+                  Our Portfolio
+                </motion.span>
+              </motion.button>
             </div>
           </div>
 
-          {/* Right Column: Floating Stat Card ($2.2+) */}
+          {/* 6. Right Column: Stat Card appears from top to bottom, with increasing number counter */}
           <div className="lg:col-span-4 flex flex-col items-start lg:items-end justify-end">
-            <div className="bg-white/[0.06] hover:bg-white/[0.09] border border-white/15 backdrop-blur-xl rounded-2xl p-6 sm:p-7 shadow-[0_16px_40px_rgba(0,0,0,0.35)] min-w-[240px] sm:min-w-[270px] transition-all duration-300">
+            <motion.div
+              initial={{ y: -70, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.85, delay: 1.05, ease: [0.16, 1, 0.3, 1] }}
+              className="bg-white/[0.06] hover:bg-white/[0.09] border border-white/15 backdrop-blur-xl rounded-2xl p-6 sm:p-7 shadow-[0_16px_40px_rgba(0,0,0,0.35)] min-w-[240px] sm:min-w-[270px] transition-all duration-300"
+            >
+              {/* Animated Incrementing Counter */}
               <div className="text-3xl sm:text-4xl lg:text-[40px] font-semibold text-white tracking-tight leading-none drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
-                $2.2+
+                ${statNumber.toFixed(1)}{isCountingDone ? '+' : ''}
               </div>
               <p className="text-xs sm:text-sm text-slate-200/80 mt-2 font-normal leading-snug">
                 Invested across private markets
               </p>
-            </div>
+            </motion.div>
           </div>
         </div>
 
-        {/* Bottom Bar: Scroll to Explore */}
-        <div className="w-full flex justify-end pt-8 sm:pt-10">
+        {/* 7. Bottom Bar: Scroll to Explore */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 1.6 }}
+          className="w-full flex justify-end pt-2 sm:pt-3"
+        >
           <button
             type="button"
             onClick={() => setPortfolioModalOpen(true)}
@@ -226,14 +348,14 @@ export default function App() {
             <span>Scroll to Explore</span>
             <span className="text-sm group-hover:translate-y-0.5 transition-transform">↓</span>
           </button>
-        </div>
+        </motion.div>
       </main>
 
       {/* ======================================================== */}
       {/* GET IN TOUCH MODAL / DIALOG */}
       {/* ======================================================== */}
       {contactModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-md animate-fadeIn">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-md">
           <div className="relative w-full max-w-lg bg-[#0a1e24] border border-white/15 rounded-3xl p-6 sm:p-8 shadow-2xl text-slate-200">
             {/* Close Button */}
             <button
