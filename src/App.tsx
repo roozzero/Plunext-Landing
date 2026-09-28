@@ -3,6 +3,9 @@ import { motion } from 'motion/react';
 import { ArrowRight, Menu, X, CheckCircle2 } from 'lucide-react';
 import heroBg from './assets/imgs/Hero.png';
 import logoImg from './assets/imgs/Logo.png';
+import { InsightSection } from './components/InsightSection';
+import { StatsCounterSection } from './components/StatsCounterSection';
+import { ApproachSection } from './components/ApproachSection';
 
 export default function App() {
   const [activeNav, setActiveNav] = useState('Home');
@@ -51,18 +54,29 @@ export default function App() {
     { id: 'Portfolio', label: 'Portfolio' },
   ];
 
+  const scrollToInsight = () => {
+    const el = document.getElementById('insight-section');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const handleNavClick = (id: string) => {
     setActiveNav(id);
     setMobileMenuOpen(false);
     if (id === 'Portfolio') {
       setPortfolioModalOpen(true);
+    } else if (id === 'About Us' || id === 'Investment Criteria') {
+      scrollToInsight();
+    } else if (id === 'Home') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
   return (
     <div className="relative w-full min-h-screen overflow-x-hidden font-['Plus_Jakarta_Sans',sans-serif] bg-[#071317] text-white select-none">
       {/* ======================================================== */}
-      {/* HERO BACKGROUND IMAGE - Initially fades in softly */}
+      {/* HERO BACKGROUND IMAGE - EXACTLY FROM /assets/imgs/Hero.png WITHOUT ANY ZOOM */}
       {/* ======================================================== */}
       <motion.div
         initial={{ opacity: 0 }}
@@ -71,9 +85,9 @@ export default function App() {
         className="absolute inset-0 z-0 overflow-hidden"
       >
         <img
-          src={heroBg}
+          src="/assets/imgs/Hero.png"
           alt="Hero Background Architecture"
-          className="w-full h-full object-cover object-center scale-[1.01]"
+          className="w-full h-full object-cover object-center"
         />
         {/* Subtle cinematic gradient vignette */}
         <div className="absolute inset-0 bg-gradient-to-t from-[#040e12]/85 via-transparent to-[#040e12]/50 pointer-events-none" />
@@ -342,7 +356,7 @@ export default function App() {
         >
           <button
             type="button"
-            onClick={() => setPortfolioModalOpen(true)}
+            onClick={scrollToInsight}
             className="flex items-center gap-1.5 text-xs sm:text-sm text-slate-300/80 hover:text-white transition-colors cursor-pointer group select-none"
           >
             <span>Scroll to Explore</span>
@@ -350,6 +364,21 @@ export default function App() {
           </button>
         </motion.div>
       </main>
+
+      {/* ======================================================== */}
+      {/* INSIGHT & GROWTH SECTION - EXACTLY MATCHING SCREENSHOT */}
+      {/* ======================================================== */}
+      <InsightSection />
+
+      {/* ======================================================== */}
+      {/* STATS COUNTER SECTION - EXACTLY MATCHING ATTACHED IMAGE */}
+      {/* ======================================================== */}
+      <StatsCounterSection />
+
+      {/* ======================================================== */}
+      {/* APPROACH SECTION - EXACTLY MATCHING ATTACHED IMAGE */}
+      {/* ======================================================== */}
+      <ApproachSection />
 
       {/* ======================================================== */}
       {/* GET IN TOUCH MODAL / DIALOG */}
