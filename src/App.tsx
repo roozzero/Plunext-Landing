@@ -6,6 +6,15 @@ import logoImg from './assets/imgs/Logo.png';
 import { InsightSection } from './components/InsightSection';
 import { StatsCounterSection } from './components/StatsCounterSection';
 import { ApproachSection } from './components/ApproachSection';
+import { ClientLogosSection } from './components/ClientLogosSection';
+import { PortfolioCasesSection } from './components/PortfolioCasesSection';
+import { WhyPartnerSection } from './components/WhyPartnerSection';
+import { LeadershipSection } from './components/LeadershipSection';
+import { CtaBannerSection } from './components/CtaBannerSection';
+import { FeaturedInsightsSection } from './components/FeaturedInsightsSection';
+import { FaqSection } from './components/FaqSection';
+import { ConnectBannerSection } from './components/ConnectBannerSection';
+import { FooterSection } from './components/FooterSection';
 
 export default function App() {
   const [activeNav, setActiveNav] = useState('Home');
@@ -379,6 +388,54 @@ export default function App() {
       {/* APPROACH SECTION - EXACTLY MATCHING ATTACHED IMAGE */}
       {/* ======================================================== */}
       <ApproachSection />
+
+      {/* ======================================================== */}
+      {/* CLIENT LOGOS SECTION - EXACTLY MATCHING ATTACHED IMAGE */}
+      {/* ======================================================== */}
+      <ClientLogosSection />
+
+      {/* ======================================================== */}
+      {/* PORTFOLIO CASES SECTION - EXACTLY MATCHING ATTACHED IMAGE */}
+      {/* ======================================================== */}
+      <PortfolioCasesSection />
+
+      {/* ======================================================== */}
+      {/* WHY PARTNER WITH US SECTION - EXACTLY MATCHING ATTACHED IMAGE */}
+      {/* ======================================================== */}
+      <WhyPartnerSection onOpenContact={() => setContactModalOpen(true)} />
+
+      {/* ======================================================== */}
+      {/* OUR LEADERSHIP TEAM SECTION - EXACTLY MATCHING ATTACHED IMAGE */}
+      {/* ======================================================== */}
+      <LeadershipSection />
+
+      {/* ======================================================== */}
+      {/* CTA BANNER SECTION - EXACTLY MATCHING ATTACHED IMAGE */}
+      {/* ======================================================== */}
+      <CtaBannerSection onOpenContact={() => setContactModalOpen(true)} />
+
+      {/* ======================================================== */}
+      {/* FEATURED INSIGHTS SECTION - EXACTLY MATCHING ATTACHED IMAGE */}
+      {/* ======================================================== */}
+      <FeaturedInsightsSection />
+
+      {/* ======================================================== */}
+      {/* FAQ SECTION - EXACTLY MATCHING ATTACHED IMAGE */}
+      {/* ======================================================== */}
+      <FaqSection onAskQuestion={() => setContactModalOpen(true)} />
+
+      {/* ======================================================== */}
+      {/* CONNECT WITH US BANNER - EXACTLY MATCHING ATTACHED IMAGE */}
+      {/* ======================================================== */}
+      <ConnectBannerSection onOpenContact={() => setContactModalOpen(true)} />
+
+      {/* ======================================================== */}
+      {/* FOOTER SECTION - EXACTLY MATCHING ATTACHED IMAGE */}
+      {/* ======================================================== */}
+      <FooterSection
+        onOpenContact={() => setContactModalOpen(true)}
+        onNavigate={(id) => setActiveNav(id)}
+      />
 
       {/* ======================================================== */}
       {/* GET IN TOUCH MODAL / DIALOG */}
