@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { X, Clock, Calendar, ArrowRight } from 'lucide-react';
+import { X, Clock, Calendar } from 'lucide-react';
 import ipoImg from '../assets/imgs/insight_ipo.jpg';
 import skyscraperImg from '../assets/imgs/insight_skyscraper.jpg';
 import globeImg from '../assets/imgs/insight_globe.jpg';
@@ -22,51 +22,51 @@ export const FeaturedInsightsSection: React.FC = () => {
   const articles: InsightArticle[] = [
     {
       id: 'ipo-planning',
-      title: 'How can you navigate your IPO planning with confidence?',
+      title: 'چگونه برنامه عرضه عمومی (IPO) را با اطمینان کامل هدایت کنیم؟',
       excerpt:
-        'The EY Global IPO Trends covers news and insights on the global IPO market for Q3 2025 and an outlook for Q4 2025.',
-      readTime: '18 minute read',
-      date: '08 Oct 2025',
+        'تحلیل جامع روندهای جهانی عرضه اولیه سهام، گزارش‌ها و چشم‌انداز بازار سرمایه در سال ۲۰۲۵ و راهبردهای ورود به بورس را بررسی می‌کند.',
+      readTime: '۱۸ دقیقه مطالعه',
+      date: '۸ اکتبر ۲۰۲۵',
       image: ipoImg,
-      category: 'Capital Markets',
+      category: 'بازارهای سرمایه',
       fullContent:
-        'Going public is one of the most pivotal milestones in an enterprise’s lifecycle. Success requires preparing well in advance across financial reporting, governance architecture, equity storytelling, and investor relations. In today’s selective public market environment, discipline and transparent unit economics separate standout debuts from underperforming listings.',
+        'ورود به بازار عمومی یکی از سرنوشت‌سازترین نقاط عطف در چرخه حیات هر بنگاه اقتصادی است. موفقیت در این مسیر نیازمند آمادگی دقیق از سال‌ها قبل در گزارشگری مالی، استانداردهای حاکمیت شرکتی، ارتباط با سرمایه‌گذاران نهادی و تبیین شفاف اقتصاد واحد کسب‌وکار است. در بازارهای امروز، انضباط مالی و شفافیت تفاوت میان یک عرضه اولیه درخشان و یک ورود ناموفق را رقم می‌زند.',
     },
     {
       id: 'growth-blueprint',
-      title: 'Does today’s disruption provide the blueprint for tomorrow’s growth?',
+      title: 'آیا تحولات بنیادین امروز، نقشه راه رشد و سرآمدی فردا را ترسیم می‌کند؟',
       excerpt:
-        'EY-Parthenon CEO Survey September 2025 reveals how leaders build confidence, resilience, and growth strategies...',
-      readTime: '18 minute read',
-      date: '08 Oct 2025',
+        'پیمایش جامع مدیران ارشد اجرایی نشان می‌دهد چگونه رهبران سازمان‌ها، تاب‌آوری، بازآفرینی استراتژیک و مسیرهای نوین رشد را شکل می‌دهند...',
+      readTime: '۱۵ دقیقه مطالعه',
+      date: '۸ اکتبر ۲۰۲۵',
       image: skyscraperImg,
-      category: 'Strategy & Leadership',
+      category: 'استراتژی و رهبری',
       fullContent:
-        'Market volatility and technological shifts are forcing leadership teams to fundamentally rethink their operating models. Forward-looking chief executives are using macro uncertainty to accelerate portfolio rebalancing, double down on mission-critical IP, and execute opportunistic buy-and-build M&A.',
+        'نوسانات بازار و تحولات پرشتاب فناوری، تیم‌های مدیریتی را ناگزیر به بازنگری بنیادین در مدل‌های عملیاتی خود کرده است. مدیران عامل پیشرو از ابهامات کلان اقتصادی نه به عنوان مانع، بلکه به عنوان فرصتی طلایی برای متوازن‌سازی دارایی‌ها، سرمایه‌گذاری روی فناوری‌های اختصاصی و ادغام‌های هدفمند استفاده می‌کنند.',
     },
     {
       id: 'reimagining-risk',
-      title: 'How can reimagining risk prepare you for an unpredictable world?',
+      title: 'چگونه بازتعریف مفهوم ریسک، سازمان شما را برای دنیای غیرقابل‌پیش‌بینی آماده می‌سازد؟',
       excerpt:
-        'The 2025 EY Global Risk Transformation Study explores how Risk Strategists see disruption earlier, adapt faster...',
-      readTime: '18 minute read',
-      date: '08 Oct 2025',
+        'مطالعه تحول ریسک نشان می‌دهد که چگونه استراتژیست‌های هوشمند، اختلالات بازار را پیش از وقوع شناسایی و سریع‌تر از رقبا با آن هماهنگ می‌شوند...',
+      readTime: '۱۲ دقیقه مطالعه',
+      date: '۸ اکتبر ۲۰۲۵',
       image: globeImg,
-      category: 'Global Risk',
+      category: 'مدیریت ریسک جهانی',
       fullContent:
-        'Rather than viewing risk merely as a defense mechanism, leading organizations transform resilience into a competitive moat. By anticipating supply chain stress points and integrating geopolitical intelligence into boardroom decisions, agile firms capture market share while peers remain paralyzed.',
+        'به‌جای نگاه سنتی به ریسک به عنوان یک مکانیزم دفاعی، سازمان‌های پیشگام، تاب‌آوری را به مزیتی رقابتی و ماندگار تبدیل می‌کنند. با پیش‌بینی نقاط تنش در زنجیره تأمین و ادغام داده‌های تحلیلی در تصمیمات هیئت‌مدیره، بنگاه‌های چابک در زمانی که رقبا دچار تردید هستند سهم بازار خود را تثبیت کرده و ارتقا می‌بخشند.',
     },
   ];
 
   return (
-    <section className="relative w-full bg-white text-[#0a181c] py-16 sm:py-24 px-6 sm:px-10 md:px-14 lg:px-16 overflow-hidden">
-      {/* Decorative subtle faceted accents matching screenshot */}
-      <div className="absolute top-8 left-1/3 w-32 h-32 bg-slate-100/50 rotate-45 pointer-events-none" />
-      <div className="absolute bottom-6 right-8 w-44 h-44 bg-slate-100/40 rotate-12 pointer-events-none" />
+    <section id="blog-section" className="relative w-full bg-white text-[#0a181c] py-16 sm:py-24 px-6 sm:px-10 md:px-14 lg:px-16 overflow-hidden" dir="rtl">
+      {/* Decorative subtle faceted accents */}
+      <div className="absolute top-8 right-1/3 w-32 h-32 bg-slate-100/50 rotate-45 pointer-events-none" />
+      <div className="absolute bottom-6 left-8 w-44 h-44 bg-slate-100/40 rotate-12 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* ======================================================== */}
-        {/* HEADER: TITLE LEFT | "View All →" BUTTON RIGHT */}
+        {/* HEADER: TITLE RIGHT | "View All" BUTTON LEFT */}
         {/* ======================================================== */}
         <div className="flex items-center justify-between mb-10 sm:mb-14">
           <motion.h2
@@ -76,7 +76,7 @@ export const FeaturedInsightsSection: React.FC = () => {
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             className="text-3xl sm:text-4xl lg:text-[42px] font-medium tracking-tight text-[#0a1e23]"
           >
-            Featured Insights
+            تحلیل‌ها و بینش‌های برگزیده
           </motion.h2>
 
           {/* View All Button */}
@@ -87,8 +87,8 @@ export const FeaturedInsightsSection: React.FC = () => {
             viewport={{ once: true }}
             className="inline-flex items-center gap-2 bg-[#094751] hover:bg-[#07363e] text-white text-xs sm:text-[13px] font-medium px-5 py-2.5 rounded-full shadow-sm transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer group select-none"
           >
-            <span>View All</span>
-            <span className="group-hover:translate-x-0.5 transition-transform text-sm">→</span>
+            <span>مشاهده همه مقالات</span>
+            <span className="group-hover:-translate-x-0.5 transition-transform text-sm">←</span>
           </motion.button>
         </div>
 
@@ -104,7 +104,7 @@ export const FeaturedInsightsSection: React.FC = () => {
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.6, delay: idx * 0.12, ease: [0.16, 1, 0.3, 1] }}
               onClick={() => setSelectedArticle(article)}
-              className="group cursor-pointer flex flex-col justify-between"
+              className="group cursor-pointer flex flex-col justify-between text-right"
             >
               {/* Card Image */}
               <div className="relative w-full aspect-[16/10.5] rounded-[24px] sm:rounded-[28px] overflow-hidden bg-slate-100 shadow-[0_6px_25px_rgba(0,0,0,0.04)]">
@@ -117,7 +117,7 @@ export const FeaturedInsightsSection: React.FC = () => {
               </div>
 
               {/* Card Text Content */}
-              <div className="mt-5 flex flex-col flex-grow justify-between">
+              <div className="mt-5 flex flex-col flex-grow justify-between text-right">
                 <div>
                   <h3 className="text-lg sm:text-[21px] font-medium text-[#0b242a] tracking-tight leading-snug group-hover:text-[#094751] transition-colors">
                     {article.title}
@@ -127,7 +127,7 @@ export const FeaturedInsightsSection: React.FC = () => {
                   </p>
                 </div>
 
-                {/* Card Meta: Read Time • Date */}
+                {/* Card Meta */}
                 <div className="mt-4 pt-1 flex items-center gap-2 text-[11px] sm:text-xs text-slate-400 font-normal">
                   <span>{article.readTime}</span>
                   <span className="text-slate-300">•</span>
@@ -144,18 +144,18 @@ export const FeaturedInsightsSection: React.FC = () => {
       {/* ======================================================== */}
       <AnimatePresence>
         {selectedArticle && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/70 backdrop-blur-md">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/70 backdrop-blur-md" dir="rtl">
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="relative w-full max-w-2xl bg-white rounded-3xl p-6 sm:p-8 shadow-2xl overflow-hidden text-[#0a1e23] max-h-[90vh] overflow-y-auto"
+              className="relative w-full max-w-2xl bg-white rounded-3xl p-6 sm:p-8 shadow-2xl overflow-hidden text-[#0a1e23] max-h-[90vh] overflow-y-auto text-right"
             >
-              {/* Close Button */}
+              {/* Close Button top-left in RTL */}
               <button
                 type="button"
                 onClick={() => setSelectedArticle(null)}
-                className="absolute top-5 right-5 p-2 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 transition-colors cursor-pointer"
+                className="absolute top-5 left-5 p-2 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 transition-colors cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -177,11 +177,11 @@ export const FeaturedInsightsSection: React.FC = () => {
                 <span>{selectedArticle.date}</span>
               </div>
 
-              <h3 className="text-2xl sm:text-3xl font-medium tracking-tight mb-4 text-[#0a1e23]">
+              <h2 className="text-2xl sm:text-3xl font-bold text-[#08292e] leading-snug mb-4">
                 {selectedArticle.title}
-              </h3>
+              </h2>
 
-              <p className="text-slate-600 leading-relaxed text-sm sm:text-base font-normal">
+              <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal whitespace-pre-line">
                 {selectedArticle.fullContent}
               </p>
 
@@ -189,9 +189,9 @@ export const FeaturedInsightsSection: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setSelectedArticle(null)}
-                  className="bg-[#094751] text-white text-xs sm:text-sm font-medium px-5 py-2.5 rounded-full hover:bg-[#07363e] transition-colors"
+                  className="px-6 py-2.5 rounded-full bg-[#094751] text-white text-xs sm:text-sm font-medium hover:bg-[#07363e] transition-colors"
                 >
-                  Close Article
+                  بستن پنجره
                 </button>
               </div>
             </motion.div>

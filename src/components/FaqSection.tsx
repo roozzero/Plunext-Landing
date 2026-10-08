@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Plus, Minus, ArrowRight } from 'lucide-react';
+import { Plus, Minus } from 'lucide-react';
 
 interface FaqItem {
   id: string;
@@ -18,33 +18,33 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ onAskQuestion }) => {
   const faqs: FaqItem[] = [
     {
       id: 'faq-1',
-      question: 'What types of businesses do you help acquire or sell?',
+      question: 'چه نوع کسب‌وکارهایی را هدف سرمایه‌گذاری، خرید یا توسعه قرار می‌دهید؟',
       answer:
-        'We specialize in profitable, market-leading small to mid-market enterprises across industrial services, mission-critical manufacturing, B2B vertical software, and technology-enabled business services. Typically, these firms generate $3M to $30M in EBITDA with durable customer retention, strong cash flow, and defensible competitive advantages.',
+        'ما روی بنگاه‌های سودآور و پیشرو در بازار متوسط تخصصی تمرکز داریم؛ به‌ویژه در بخش خدمات صنعتی، تولید تجهیزات مهندسی حساس، نرم‌افزارهای تخصصی بازار (B2B Vertical Software) و خدمات فناوری‌محور کسب‌وکارها. به‌طور معمول این مجموعه‌ها دارای سود عملیاتی (EBITDA) بین ۳ تا ۳۰ میلیون دلار، وفاداری پایدار مشتریان، جریان نقدی قدرتمند و مزیت‌های رقابتی اثبات‌شده هستند.',
     },
     {
       id: 'faq-2',
-      question: 'How does the acquisition process work from start to finish?',
+      question: 'فرآیند مشارکت و سرمایه‌گذاری از ابتدا تا انتهای معامله چگونه است؟',
       answer:
-        'Our process begins with confidential introductory conversations to understand company history, founder legacy, and objectives. Following mutual interest, we provide an indicative valuation and non-binding Letter of Intent (LOI). We then conduct focused, non-disruptive confirmatory due diligence, execute legal agreements, and finalize closing—typically maintaining founder continuity or implementing agreed succession plans.',
+        'فرآیند با جلسات مقدماتی کاملاً محرمانه برای شناخت سوابق شرکت، میراث بنیان‌گذاران و اهداف آتی آغاز می‌شود. در صورت علاقه متقابل، ارزش‌گذاری شفاف و تفاهم‌نامه غیرالزام‌آور (LOI) تنظیم می‌گردد. سپس مرحله راستی‌آزمایی متمرکز و بدون ایجاد وقفه در عملیات روزمره شرکت انجام شده و قراردادهای نهایی امضا می‌شود.',
     },
     {
       id: 'faq-3',
-      question: 'What information do I need to get started?',
+      question: 'برای شروع گفتگوی اولیه و ارزیابی به چه اطلاعاتی نیاز است؟',
       answer:
-        'To initiate a high-level confidential review, we typically request three to five years of historical income statements and balance sheets, an overview of core products or service offerings, and an organizational summary. All shared information is protected under a strict mutual Non-Disclosure Agreement (NDA) prior to exchange.',
+        'جهت شروع ارزیابی محرمانه، معمولاً صورت‌های مالی ۳ تا ۵ سال گذشته، خلاصه خدمات یا محصولات اصلی و ساختار سازمانی کلی را بررسی می‌کنیم. تأکید می‌شود که پیش از انتقال هرگونه داده، تفاهم‌نامه جامع عدم افشای دوجانبه (NDA) امضا می‌گردد.',
     },
     {
       id: 'faq-4',
-      question: 'How long does a typical acquisition take?',
+      question: 'یک فرآیند واگذاری یا سرمایه‌گذاری معمولاً چقدر طول می‌کصل؟',
       answer:
-        'A standard transaction generally takes between 60 to 90 days from signed Letter of Intent (LOI) to final funding and close. Because we operate with committed private capital and streamlined internal decision-making, we eliminate unnecessary bureaucratic delays and third-party syndication hurdles.',
+        'یک فرآیند استاندارد معمولاً بین ۶۰ تا ۹۰ روز کاری از زمان توافق‌نامه اولیه (LOI) تا تخصیص سرمایه و نهایی‌سازی به طول می‌انجامد. سرمایه اختصاصی متعهد و ساختار تصمیم‌گیری چابک درون‌سازمانی، مانع از تأخیرهای بوروکراتیک و پیچیدگی‌های مرسوم می‌شود.',
     },
     {
       id: 'faq-5',
-      question: 'Do you operate internationally or focus on specific markets?',
+      question: 'آیا سرمایه‌گذاری‌های شما محدود به منطقه خاصی است یا بین‌المللی است؟',
       answer:
-        'While our primary investment focus centers on high-growth North American and European regional hubs, we regularly partner with businesses that possess international supply chains or global distribution channels. We evaluate strategic opportunities globally where cross-border synergies accelerate value creation.',
+        'هرچند تمرکز اصلی سرمایه‌گذاری ما بر قطب‌های اقتصادی فعال آمریکای شمالی و اروپا قرار دارد، اما به‌طور پیوسته با کسب‌وکارهایی که زنجیره تأمین بین‌المللی یا کانال‌های توزیع فرامرزی دارند شراکت می‌کنیم. ما هر فرصت راهبردی که هم‌افزایی ارزش‌آفرینی به همراه داشته باشد را با دقت بررسی می‌کنیم.',
     },
   ];
 
@@ -53,17 +53,15 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ onAskQuestion }) => {
   };
 
   return (
-    <section className="relative w-full bg-white text-[#0a181c] py-20 sm:py-28 px-6 sm:px-10 md:px-14 lg:px-16 overflow-hidden">
-      {/* Subtle corner geometric accent in bottom-left matching screenshot */}
-      <div className="absolute -bottom-16 -left-16 w-56 h-56 bg-slate-100/60 rotate-45 pointer-events-none" />
+    <section className="relative w-full bg-white text-[#0a181c] py-20 sm:py-28 px-6 sm:px-10 md:px-14 lg:px-16 overflow-hidden" dir="rtl">
+      {/* Subtle corner geometric accent */}
+      <div className="absolute -bottom-16 -right-16 w-56 h-56 bg-slate-100/60 rotate-45 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          {/* ======================================================== */}
-          {/* LEFT COLUMN: TITLE, INTRO, AND "ASK A QUESTION" CTA */}
-          {/* ======================================================== */}
-          <div className="lg:col-span-5 flex flex-col items-start lg:sticky lg:top-28">
-            {/* Category Subtitle with bullet */}
+          {/* Right Column in RTL: Header */}
+          <div className="lg:col-span-5 flex flex-col items-start lg:sticky lg:top-28 text-right">
+            {/* Category Subtitle */}
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -72,7 +70,7 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ onAskQuestion }) => {
               className="flex items-center gap-2 text-xs sm:text-[13px] text-slate-500 font-normal tracking-wide"
             >
               <span className="w-1.5 h-1.5 rounded-full bg-slate-700" />
-              <span>FAQ</span>
+              <span>پرسش‌های پرتکرار</span>
             </motion.div>
 
             {/* Main Title */}
@@ -81,10 +79,10 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ onAskQuestion }) => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-4 text-3xl sm:text-4xl lg:text-[46px] font-medium tracking-tight text-[#0a1e23] leading-[1.12]"
+              className="mt-4 text-3xl sm:text-4xl lg:text-[46px] font-medium tracking-tight text-[#0a1e23] leading-[1.2]"
             >
-              Frequently Asked<br />
-              Questions
+              پاسخ به سوالات<br />
+              متداول شما
             </motion.h2>
 
             {/* Subtitle description */}
@@ -93,9 +91,9 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ onAskQuestion }) => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-5 text-xs sm:text-sm text-slate-500 font-normal leading-relaxed max-w-sm"
+              className="mt-5 text-xs sm:text-sm text-slate-500 font-normal leading-relaxed max-w-sm text-right"
             >
-              Find quick answers to the most common questions about our services, and policies.
+              پاسخ‌های شفاف و سریع به پرسش‌های کلیدی پیرامون نحوه مشارکت، خدمات و سیاست‌های سرمایه‌گذاری مجموعه ورت.
             </motion.p>
 
             {/* Bottom prompt & CTA Button */}
@@ -104,10 +102,10 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ onAskQuestion }) => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.6, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-10 sm:mt-12 flex flex-col items-start"
+              className="mt-10 sm:mt-12 flex flex-col items-start text-right"
             >
               <span className="text-xs sm:text-[13px] text-slate-500 font-normal mb-3">
-                Can't find your question?
+                پاسخ سوال مدنظرتان را پیدا نکردید؟
               </span>
 
               <button
@@ -115,16 +113,14 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ onAskQuestion }) => {
                 onClick={onAskQuestion}
                 className="inline-flex items-center gap-2 bg-[#094751] hover:bg-[#07363e] text-white text-xs sm:text-[13px] font-medium px-6 py-2.5 rounded-full shadow-sm transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer group select-none"
               >
-                <span>Ask A Question</span>
-                <span className="group-hover:translate-x-0.5 transition-transform text-sm">→</span>
+                <span>طرح پرسش با کارشناسان</span>
+                <span className="group-hover:-translate-x-0.5 transition-transform text-sm">←</span>
               </button>
             </motion.div>
           </div>
 
-          {/* ======================================================== */}
-          {/* RIGHT COLUMN: EXPANDABLE ACCORDION LIST */}
-          {/* ======================================================== */}
-          <div className="lg:col-span-7 flex flex-col divide-y divide-slate-200/80 border-t border-b border-slate-200/80">
+          {/* Left Column in RTL: Expandable Accordion List */}
+          <div className="lg:col-span-7 flex flex-col divide-y divide-slate-200/80 border-t border-b border-slate-200/80 text-right">
             {faqs.map((faq, idx) => {
               const isOpen = openId === faq.id;
               return (
@@ -139,10 +135,10 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ onAskQuestion }) => {
                   <button
                     type="button"
                     onClick={() => toggleFaq(faq.id)}
-                    className="w-full flex items-center justify-between text-left cursor-pointer transition-colors"
+                    className="w-full flex items-center justify-between text-right cursor-pointer transition-colors"
                   >
                     <span
-                      className={`text-base sm:text-[17px] font-medium tracking-tight pr-6 transition-colors ${
+                      className={`text-base sm:text-[17px] font-medium tracking-tight pl-6 transition-colors ${
                         isOpen
                           ? 'text-[#094751]'
                           : 'text-[#0b242a] group-hover:text-[#094751]'
@@ -170,7 +166,7 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ onAskQuestion }) => {
                         transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                         className="overflow-hidden"
                       >
-                        <p className="pt-3 pb-2 text-xs sm:text-[13px] text-slate-500 font-normal leading-relaxed pr-8">
+                        <p className="pt-3 pb-2 text-xs sm:text-[13px] text-slate-500 font-normal leading-relaxed pl-8 text-right">
                           {faq.answer}
                         </p>
                       </motion.div>

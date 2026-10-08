@@ -1,189 +1,122 @@
 import React from 'react';
-import { motion } from 'motion/react';
+import { 
+  GraduationCap, 
+  Crown, 
+  Dumbbell, 
+  Scissors, 
+  Package, 
+  Sparkles, 
+  ShoppingBag, 
+  Award 
+} from 'lucide-react';
 
-interface LogoItem {
+interface CompanyBrand {
   id: string;
   name: string;
-  render: () => React.ReactNode;
+  category: string;
+  icon: React.ReactNode;
 }
 
 export const ClientLogosSection: React.FC = () => {
-  const logos: LogoItem[] = [
-    // 1. SABREPAK
+  const companies: CompanyBrand[] = [
     {
-      id: 'sabrepak',
-      name: 'Sabrepak',
-      render: () => (
-        <div className="flex items-center gap-2 text-slate-400 hover:text-slate-700 transition-colors group cursor-pointer select-none">
-          <span className="font-extrabold italic tracking-wider text-lg sm:text-xl font-sans text-slate-500 group-hover:text-slate-800 transition-colors">
-            SABREPAK
-          </span>
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.8"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="w-5 h-5 opacity-70 group-hover:opacity-100 transition-opacity"
-          >
-            <path d="M4 14c2-4 6-7 12-7l2 3-4 2 4 4-5 1-2 4-7-7z" />
-            <path d="M12 9l2-4" />
-          </svg>
-        </div>
-      ),
+      id: 'teachersho',
+      name: 'تیچرشو',
+      category: 'پلتفرم آموزش معلمان',
+      icon: <GraduationCap className="w-5 h-5 text-emerald-600" />,
     },
-
-    // 2. STEEL RIVER
     {
-      id: 'steel-river',
-      name: 'Steel River',
-      render: () => (
-        <div className="flex items-center gap-2 text-slate-400 hover:text-slate-700 transition-colors group cursor-pointer select-none">
-          {/* Gear / Cog Icon */}
-          <svg
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            className="w-6 h-6 text-slate-400 group-hover:text-slate-700 transition-colors"
-          >
-            <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
-            <path
-              fillRule="evenodd"
-              clipRule="evenodd"
-              d="M8.2 2.5a2 2 0 0 1 2.6-.9l.7.4a2 2 0 0 0 2 0l.7-.4a2 2 0 0 1 2.6.9l.4.7a2 2 0 0 0 1.5 1.5l.7.4a2 2 0 0 1 .9 2.6l-.4.7a2 2 0 0 0 0 2l.4.7a2 2 0 0 1-.9 2.6l-.7.4a2 2 0 0 0-1.5 1.5l-.4.7a2 2 0 0 1-2.6.9l-.7-.4a2 2 0 0 0-2 0l-.7.4a2 2 0 0 1-2.6-.9l-.4-.7a2 2 0 0 0-1.5-1.5l-.7-.4a2 2 0 0 1-.9-2.6l.4-.7a2 2 0 0 0 0-2l-.4-.7a2 2 0 0 1 .9-2.6l.7-.4a2 2 0 0 0 1.5-1.5l.4-.7Z"
-            />
-          </svg>
-          <div className="flex flex-col leading-[1.05] tracking-tight">
-            <span className="font-extrabold text-sm sm:text-base text-slate-500 group-hover:text-slate-800 transition-colors">
-              STEEL
-            </span>
-            <span className="font-extrabold text-sm sm:text-base text-slate-500 group-hover:text-slate-800 transition-colors">
-              RIVER
-            </span>
-          </div>
-        </div>
-      ),
+      id: 'digikolah',
+      name: 'دیجی کلاه',
+      category: 'مرجع مد و اکسسوری',
+      icon: <Crown className="w-5 h-5 text-amber-500" />,
     },
-
-    // 3. Union SOFTWARE
     {
-      id: 'union',
-      name: 'Union Software',
-      render: () => (
-        <div className="flex flex-col items-start leading-[1.05] text-slate-400 hover:text-slate-700 transition-colors group cursor-pointer select-none">
-          <span className="font-bold text-xl sm:text-2xl text-slate-500 group-hover:text-slate-800 tracking-tight transition-colors">
-            Union
-          </span>
-          <span className="font-mono text-[9px] tracking-[0.25em] uppercase text-slate-400 group-hover:text-slate-600 transition-colors font-semibold">
-            SOFTWARE
-          </span>
-        </div>
-      ),
+      id: 'fitclub',
+      name: 'فیت کلاب',
+      category: 'سلامت و تناسب اندام',
+      icon: <Dumbbell className="w-5 h-5 text-cyan-600" />,
     },
-
-    // 4. Pay4Leads (Teal accent matching screenshot)
     {
-      id: 'pay4leads',
-      name: 'Pay4Leads',
-      render: () => (
-        <div className="flex items-center text-slate-600 hover:text-[#0b4852] transition-colors group cursor-pointer select-none">
-          <span className="font-black text-xl sm:text-2xl tracking-tight text-[#165663] group-hover:text-[#083840] transition-colors">
-            Pay<span className="text-[#0e4854]">4</span>Leads
-          </span>
-        </div>
-      ),
+      id: 'charmdoozak',
+      name: 'چرمدوزک',
+      category: 'صنایع چرم دست‌دوز',
+      icon: <Scissors className="w-5 h-5 text-rose-500" />,
     },
-
-    // 5. NileQuest Capital
     {
-      id: 'nilequest',
-      name: 'NileQuest Capital',
-      render: () => (
-        <div className="flex items-center gap-2 text-slate-400 hover:text-slate-700 transition-colors group cursor-pointer select-none">
-          {/* River Waves Icon */}
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="w-5 h-5 text-slate-400 group-hover:text-slate-700 transition-colors"
-          >
-            <path d="M2 7c2-1.5 4-1.5 6 0s4 1.5 6 0 4-1.5 6 0" />
-            <path d="M2 12c2-1.5 4-1.5 6 0s4 1.5 6 0 4-1.5 6 0" />
-            <path d="M2 17c2-1.5 4-1.5 6 0s4 1.5 6 0 4-1.5 6 0" />
-          </svg>
-          <span className="font-medium text-base sm:text-lg text-slate-500 group-hover:text-slate-800 tracking-tight font-serif transition-colors">
-            NileQuest Capital
-          </span>
-        </div>
-      ),
+      id: 'wikipackage',
+      name: 'ویکی پکیج',
+      category: 'صنعت بسته‌بندی و لجستیک',
+      icon: <Package className="w-5 h-5 text-indigo-500" />,
     },
-
-    // 6. OAKMONT EDUCATION
     {
-      id: 'oakmont',
-      name: 'Oakmont Education',
-      render: () => (
-        <div className="flex items-center gap-2 text-slate-400 hover:text-slate-700 transition-colors group cursor-pointer select-none">
-          {/* Tree Icon */}
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.8"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="w-6 h-6 text-slate-400 group-hover:text-slate-700 transition-colors"
-          >
-            <path d="M12 22v-6" />
-            <path d="M12 16a6 6 0 0 1-6-6 4 4 0 0 1 2-3.4 5 5 0 0 1 8 0 4 4 0 0 1 2 3.4 6 6 0 0 1-6 6z" />
-            <path d="M9 13l3-2 3 2" />
-          </svg>
-          <div className="flex flex-col leading-[1.05] tracking-tight">
-            <span className="font-bold text-sm sm:text-base text-slate-500 group-hover:text-slate-800 transition-colors">
-              OAKMONT
-            </span>
-            <span className="font-mono text-[8px] tracking-[0.2em] uppercase text-slate-400 group-hover:text-slate-600 transition-colors">
-              EDUCATION
-            </span>
-          </div>
-        </div>
-      ),
+      id: 'chimede',
+      name: 'چی مده',
+      category: 'رسانه ترند و فشن',
+      icon: <Sparkles className="w-5 h-5 text-fuchsia-500" />,
+    },
+    {
+      id: 'sapinoshop',
+      name: 'ساپینو شاپ',
+      category: 'فروشگاه سبک زندگی مدرن',
+      icon: <ShoppingBag className="w-5 h-5 text-teal-600" />,
+    },
+    {
+      id: 'rooziro',
+      name: 'آکادمی روزیرو',
+      category: 'توسعه مهارت و سرمایه‌گذاری',
+      icon: <Award className="w-5 h-5 text-blue-600" />,
     },
   ];
 
+  const renderCompanyGroup = (groupIndex: number) => (
+    <div
+      key={groupIndex}
+      className="flex shrink-0 items-center gap-6 sm:gap-8 pr-6 sm:pr-8"
+      aria-hidden={groupIndex === 1}
+    >
+      {companies.map((company) => (
+        <div
+          key={`${company.id}-g${groupIndex}`}
+          dir="rtl"
+          className="flex items-center gap-3.5 px-5 py-3 rounded-2xl bg-[#f8faf9] hover:bg-white border border-slate-200/80 hover:border-emerald-500/40 shadow-[0_2px_10px_rgba(0,0,0,0.02)] hover:shadow-md transition-all duration-200 cursor-pointer group shrink-0"
+        >
+          {/* Logo Icon Badge */}
+          <div className="w-10 h-10 rounded-xl bg-white group-hover:bg-emerald-50 border border-slate-200/70 group-hover:border-emerald-200 flex items-center justify-center transition-colors shadow-sm shrink-0">
+            {company.icon}
+          </div>
+
+          {/* Company Info */}
+          <div className="flex flex-col text-right">
+            <span className="text-sm sm:text-base font-bold text-slate-800 group-hover:text-emerald-700 transition-colors leading-tight">
+              {company.name}
+            </span>
+            <span className="text-[10px] text-slate-400 group-hover:text-slate-500 transition-colors mt-0.5">
+              {company.category}
+            </span>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+
   return (
-    <section className="relative w-full bg-[#fafcfb] border-t border-b border-slate-100 py-12 sm:py-16 px-6 sm:px-10 md:px-14 lg:px-16 overflow-hidden">
-      {/* Left side dot grid pattern matching screenshot */}
-      <div className="absolute left-0 top-0 bottom-0 w-44 pointer-events-none opacity-40">
-        <svg width="100%" height="100%" fill="none">
-          <defs>
-            <pattern id="client-dot-grid" x="0" y="0" width="14" height="14" patternUnits="userSpaceOnUse">
-              <circle cx="2" cy="2" r="1.2" fill="#94a3b8" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#client-dot-grid)" />
-        </svg>
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#fafcfb]" />
+    <section className="relative w-full bg-white text-[#0a181c] py-10 sm:py-14 border-t border-[#f0f4f3] overflow-hidden" dir="rtl">
+      {/* Soft gradient masks on sides for elegant fade-in / fade-out */}
+      <div className="absolute top-0 right-0 bottom-0 w-24 sm:w-36 bg-gradient-to-l from-white via-white/80 to-transparent z-10 pointer-events-none" />
+      <div className="absolute top-0 left-0 bottom-0 w-24 sm:w-36 bg-gradient-to-r from-white via-white/80 to-transparent z-10 pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-6 mb-7 text-center">
+        <p className="text-xs sm:text-[13px] text-slate-400 font-medium tracking-wide">
+          مورد اعتماد برترین شرکت‌ها و پلتفرم‌های تخصصی پیشرو
+        </p>
       </div>
 
-      <div className="max-w-7xl mx-auto relative z-10">
-        {/* Horizontal Logo Strip */}
-        <div className="flex flex-wrap items-center justify-between gap-8 sm:gap-10 lg:gap-12">
-          {logos.map((logo, idx) => (
-            <motion.div
-              key={logo.id}
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-30px' }}
-              transition={{ duration: 0.5, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
-              className="flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300 transform hover:scale-105"
-            >
-              {logo.render()}
-            </motion.div>
-          ))}
+      {/* Infinite Seamless Continuous Motion Track */}
+      <div className="w-full overflow-hidden flex select-none py-2" dir="ltr">
+        <div className="animate-marquee-logos">
+          {renderCompanyGroup(0)}
+          {renderCompanyGroup(1)}
         </div>
       </div>
     </section>
