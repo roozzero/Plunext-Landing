@@ -49,7 +49,7 @@ export const ConnectBannerSection: React.FC<ConnectBannerSectionProps> = ({ onOp
               <button
                 type="button"
                 onClick={onOpenContact}
-                className="inline-flex items-center gap-2 bg-white hover:bg-slate-100 text-[#0e3b42] font-medium text-xs sm:text-[13px] px-6 py-2.5 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer select-none group"
+                className="inline-flex items-center gap-2 bg-white hover:bg-slate-100 text-[#0e3b42] font-medium text-xs sm:text-[13px] px-6 py-2.5 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer select-text group"
               >
                 <span>شروع گفتگوی اختصاصی</span>
                 <span className="group-hover:-translate-x-0.5 transition-transform text-sm">←</span>

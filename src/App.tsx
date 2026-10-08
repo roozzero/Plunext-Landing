@@ -25,6 +25,16 @@ export default function App() {
   const [orderModalOpen, setOrderModalOpen] = useState(false);
   const [orderSubmitted, setOrderSubmitted] = useState(false);
   const [portfolioModalOpen, setPortfolioModalOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleWindowScroll = () => {
+      setIsScrolled(window.scrollY > 25);
+    };
+    window.addEventListener('scroll', handleWindowScroll, { passive: true });
+    handleWindowScroll();
+    return () => window.removeEventListener('scroll', handleWindowScroll);
+  }, []);
 
   // Animated counter for the stat card
   const [statNumber, setStatNumber] = useState<number>(0);
@@ -107,44 +117,20 @@ export default function App() {
   return (
     <div
       dir="rtl"
-      className="relative w-full min-h-screen overflow-x-hidden font-['Vazir',sans-serif] bg-[#071317] text-white select-none text-right"
+      className="relative w-full min-h-screen overflow-x-clip font-['Vazir',sans-serif] bg-[#071317] text-white select-text text-right"
     >
       {/* ======================================================== */}
-      {/* HERO SECTION WITH UNZOOMED BACKGROUND IMAGE             */}
-      {/* EXACTLY FROM assets/imgs/Hero.png                         */}
+      {/* FLOATING NAVIGATION BAR WITH SCROLL ACCOMPANIMENT (RTL)  */}
+      {/* Placed at root level with highest z-index (z-[999]) so it*/}
+      {/* stays above all sections, charts, canvas, and cards       */}
       {/* ======================================================== */}
-      <section
-        id="home"
-        className="relative w-full min-h-screen flex flex-col justify-between overflow-hidden"
+      <header
+        className={`fixed top-0 inset-x-0 z-[999] transition-all duration-300 w-full px-6 sm:px-10 md:px-14 lg:px-16 flex items-center justify-between ${
+          isScrolled
+            ? 'py-3.5 bg-[#061418]/92 backdrop-blur-2xl border-b border-white/10 shadow-[0_12px_36px_rgba(0,0,0,0.55)]'
+            : 'pt-6 sm:pt-8 pb-4 bg-transparent'
+        }`}
       >
-        {/* ======================================================== */}
-        {/* HERO BACKGROUND IMAGE LAYER (z-0)                         */}
-        {/* ======================================================== */}
-        <div className="absolute inset-0 z-0 pointer-events-none">
-          <img
-            src={heroBg}
-            alt="نمای معماری ساختمان ورت"
-            className="absolute inset-0 w-full h-full object-cover object-center select-none"
-            onError={(e) => {
-              console.warn('Hero background image failed to load', e);
-            }}
-          />
-
-          {/* Semi-transparent overlays for dark cinematic look and high text readability (no opaque layer) */}
-          <div className="absolute inset-0 bg-[#071317]/30" />
-          <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-[#071317] via-[#071317]/60 to-transparent" />
-          <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#071317]/70 to-transparent" />
-          <div className="absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-[#071317]/40 to-transparent" />
-        </div>
-
-        {/* ======================================================== */}
-        {/* HERO CONTENT CONTAINER (z-10+)                           */}
-        {/* ======================================================== */}
-        <div className="relative z-10 flex flex-col justify-between min-h-screen w-full">
-          {/* ======================================================== */}
-          {/* NAVIGATION BAR WITH CHOREOGRAPHED ENTRANCES (RTL)        */}
-          {/* ======================================================== */}
-          <header className="relative z-30 w-full px-6 sm:px-10 md:px-14 lg:px-16 pt-6 sm:pt-8 pb-4 flex items-center justify-between">
         {/* 1. Right in RTL: Logo */}
         <motion.div
           initial={{ rotate: 220, scale: 0.25, opacity: 0 }}
@@ -157,6 +143,7 @@ export default function App() {
             onClick={(e) => {
               e.preventDefault();
               setActiveNav('Home');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
             className="flex items-center gap-3 group transition-opacity hover:opacity-90 cursor-pointer"
           >
@@ -256,9 +243,9 @@ export default function App() {
         </div>
       </header>
 
-      {/* Mobile Drawer Navigation */}
+      {/* Mobile Drawer Navigation (with z-[1000] above everything) */}
       {mobileMenuOpen && (
-        <div className="md:hidden fixed inset-x-4 top-20 z-40 bg-[#0a2328]/95 backdrop-blur-xl border border-white/15 p-5 rounded-3xl shadow-2xl space-y-3 text-right">
+        <div className="md:hidden fixed inset-x-4 top-20 z-[1000] bg-[#0a2328]/95 backdrop-blur-xl border border-white/15 p-5 rounded-3xl shadow-2xl space-y-3 text-right">
           <div className="flex flex-col space-y-1">
             {navItems.map((item) => (
               <button
@@ -294,9 +281,42 @@ export default function App() {
       )}
 
       {/* ======================================================== */}
+      {/* HERO SECTION WITH UNZOOMED BACKGROUND IMAGE             */}
+      {/* EXACTLY FROM assets/imgs/Hero.png                         */}
+      {/* ======================================================== */}
+      <section
+        id="home"
+        className="relative w-full min-h-screen flex flex-col justify-between overflow-hidden"
+      >
+        {/* ======================================================== */}
+        {/* HERO BACKGROUND IMAGE LAYER (z-0)                         */}
+        {/* ======================================================== */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <img
+            src={heroBg}
+            alt="نمای معماری ساختمان ورت"
+            className="absolute inset-0 w-full h-full object-cover object-center select-text"
+            onError={(e) => {
+              console.warn('Hero background image failed to load', e);
+            }}
+          />
+
+          {/* Semi-transparent overlays for dark cinematic look and high text readability (no opaque layer) */}
+          <div className="absolute inset-0 bg-[#071317]/30" />
+          <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-[#071317] via-[#071317]/60 to-transparent" />
+          <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#071317]/70 to-transparent" />
+          <div className="absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-[#071317]/40 to-transparent" />
+        </div>
+
+        {/* ======================================================== */}
+        {/* HERO CONTENT CONTAINER (z-10+)                           */}
+        {/* ======================================================== */}
+        <div className="relative z-10 flex flex-col justify-between min-h-screen w-full">
+
+      {/* ======================================================== */}
       {/* HERO MAIN CONTENT SECTION (RTL)                          */}
       {/* ======================================================== */}
-      <main className="relative z-20 min-h-[calc(100vh-100px)] flex flex-col justify-end px-6 sm:px-10 md:px-14 lg:px-16 pt-4 pb-4 sm:pb-6 text-right">
+      <main className="relative z-20 min-h-[calc(100vh-100px)] flex flex-col justify-end px-6 sm:px-10 md:px-14 lg:px-16 pt-24 sm:pt-28 pb-4 sm:pb-6 text-right">
         {/* Main Content Grid positioned close to bottom */}
         <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mt-auto mb-1">
           {/* Right Column in RTL: Heading + Paragraph + Action Buttons */}
@@ -464,30 +484,31 @@ export default function App() {
       <BackToTop />
 
       {/* ======================================================== */}
-      {/* CONTACT MODAL (RTL & PERSIAN)                            */}
+      {/* ONLINE SUPPORT MODAL (LIGHT THEME, WIDER, PHONE NUMBER, NO SCROLL) */}
       {/* ======================================================== */}
       {contactModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-md" dir="rtl">
-          <div className="relative w-full max-w-lg bg-[#0a1e23] border border-white/15 rounded-3xl p-6 sm:p-8 shadow-2xl text-slate-100 text-right">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-slate-950/65 backdrop-blur-md select-text" dir="rtl">
+          <div className="relative w-full max-w-2xl bg-white border border-slate-200 rounded-[28px] p-6 sm:p-7 shadow-[0_20px_60px_rgba(0,0,0,0.2)] text-slate-800 text-right">
             <button
               type="button"
               onClick={() => {
                 setContactModalOpen(false);
                 setContactSubmitted(false);
               }}
-              className="absolute top-5 left-5 p-2 rounded-full bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white transition-colors cursor-pointer"
+              className="absolute top-5 left-5 p-2 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-900 transition-colors cursor-pointer"
+              aria-label="بستن پنجره"
             >
               <X className="w-5 h-5" />
             </button>
 
             {contactSubmitted ? (
-              <div className="py-8 text-center space-y-4">
-                <div className="w-14 h-14 mx-auto rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center border border-emerald-400/30">
+              <div className="py-7 text-center space-y-3.5">
+                <div className="w-14 h-14 mx-auto rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center border border-emerald-200">
                   <CheckCircle2 className="w-8 h-8" />
                 </div>
-                <h3 className="text-2xl font-semibold text-white">پیام شما با موفقیت ثبت شد</h3>
-                <p className="text-sm text-slate-300 max-w-sm mx-auto leading-relaxed">
-                  از تماس شما با مجموعه ورت سپاسگزاریم. یکی از اعضای کمیته سرمایه‌گذاری در اسرع وقت پیام شما را بررسی و پاسخ خواهد داد.
+                <h3 className="text-xl sm:text-2xl font-bold text-slate-900">درخواست شما در پشتیبانی آنلاین ثبت شد</h3>
+                <p className="text-xs sm:text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
+                  از ارتباط شما با پشتیبانی آنلاین ورت متشکریم. کارشناسان ما به زودی از طریق شماره تلفن و ایمیل ثبت‌شده با شما ارتباط برقرار خواهند کرد.
                 </p>
                 <button
                   type="button"
@@ -495,7 +516,7 @@ export default function App() {
                     setContactModalOpen(false);
                     setContactSubmitted(false);
                   }}
-                  className="mt-4 px-6 py-2.5 rounded-full bg-white text-slate-950 font-medium text-sm hover:bg-slate-100 transition-colors"
+                  className="mt-3 px-6 py-2.5 rounded-full bg-[#0a4852] text-white font-semibold text-xs sm:text-sm hover:bg-[#07363e] transition-colors cursor-pointer"
                 >
                   بستن
                 </button>
@@ -506,69 +527,84 @@ export default function App() {
                   e.preventDefault();
                   setContactSubmitted(true);
                 }}
-                className="space-y-5"
+                className="space-y-4"
               >
                 <div>
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-[11px] font-medium flex items-center gap-1.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  <div className="flex items-center gap-2 mb-1.5">
+                    <span className="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200 text-[11px] font-semibold flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse" />
                       پشتیبانی آنلاین فعال — پاسخگویی سریع
                     </span>
                   </div>
-                  <h3 className="text-2xl font-bold text-white tracking-tight">پشتیبانی آنلاین و ارتباط با کارشناسان</h3>
-                  <p className="text-xs sm:text-sm text-slate-300 mt-1">
-                    تیم پشتیبانی و کارشناسان سرمایه‌گذاری ورت هم‌اکنون آنلاین و آماده پاسخ به شما هستند.
+                  <h3 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
+                    پشتیبانی آنلاین و ارتباط مستقیم با کارشناسان
+                  </h3>
+                  <p className="text-xs text-slate-500 mt-0.5 leading-relaxed">
+                    پرسش یا درخواست خود را مطرح نمایید؛ کارشناسان پشتیبانی و سرمایه‌گذاری ورت آماده پاسخگویی هستند.
                   </p>
                 </div>
 
-                <div className="space-y-4 text-right">
-                  <div>
-                    <label className="block text-xs font-medium text-slate-300 mb-1">نام و نام خانوادگی</label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="مثال: علی احمدی"
-                      className="w-full px-4 py-2.5 rounded-xl bg-black/40 border border-white/15 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-emerald-400 transition-colors text-right"
-                    />
+                <div className="space-y-3 text-right">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                      <label className="block text-xs font-semibold text-slate-700 mb-1">نام و نام خانوادگی <span className="text-emerald-600">*</span></label>
+                      <input
+                        type="text"
+                        required
+                        placeholder="مثال: علی احمدی"
+                        className="w-full px-3.5 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 text-xs sm:text-sm focus:outline-none focus:border-emerald-500 focus:bg-white transition-all text-right"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-semibold text-slate-700 mb-1">شماره تلفن تماس <span className="text-emerald-600">*</span></label>
+                      <input
+                        type="tel"
+                        required
+                        placeholder="۰۹۱۲۳۴۵۶۷۸۹"
+                        className="w-full px-3.5 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 text-xs sm:text-sm focus:outline-none focus:border-emerald-500 focus:bg-white transition-all text-right dir-ltr"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                      <label className="block text-xs font-semibold text-slate-700 mb-1">ایمیل سازمانی</label>
+                      <input
+                        type="email"
+                        placeholder="name@company.com"
+                        className="w-full px-3.5 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 text-xs sm:text-sm focus:outline-none focus:border-emerald-500 focus:bg-white transition-all text-left dir-ltr"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-semibold text-slate-700 mb-1">موضوع گفتگو</label>
+                      <select className="w-full px-3.5 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-800 text-xs sm:text-sm focus:outline-none focus:border-emerald-500 focus:bg-white transition-all cursor-pointer text-right">
+                        <option>مشاوره فنی طراحی سایت و نرم‌افزار</option>
+                        <option>مشارکت در جذب سرمایه و پورتفولیو</option>
+                        <option>توسعه و بازآفرینی محصول دیجیتال</option>
+                        <option>پشتیبانی و پیگیری قراردادهای فعال</option>
+                      </select>
+                    </div>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-medium text-slate-300 mb-1">ایمیل سازمانی</label>
-                    <input
-                      type="email"
-                      required
-                      placeholder="name@company.com"
-                      className="w-full px-4 py-2.5 rounded-xl bg-black/40 border border-white/15 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-emerald-400 transition-colors dir-ltr text-left"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-medium text-slate-300 mb-1">موضوع گفتگو</label>
-                    <select className="w-full px-4 py-2.5 rounded-xl bg-[#07171c] border border-white/15 text-white text-sm focus:outline-none focus:border-emerald-400 transition-colors cursor-pointer text-right">
-                      <option>مشارکت در جذب سرمایه</option>
-                      <option>واگذاری یا توسعه کسب‌وکار</option>
-                      <option>بررسی پورتفولیو و فرصت‌ها</option>
-                      <option>همکاری‌های راهبردی سازمانی</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-medium text-slate-300 mb-1">متن پیام یا خلاصه معرفی کسب‌وکار</label>
+                    <label className="block text-xs font-semibold text-slate-700 mb-1">متن پیام یا پرسش شما <span className="text-emerald-600">*</span></label>
                     <textarea
-                      rows={3}
+                      rows={2}
                       required
-                      placeholder="خلاصه‌ای از چشم‌انداز یا هدف همکاری خود را بنویسید..."
-                      className="w-full px-4 py-2.5 rounded-xl bg-black/40 border border-white/15 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-emerald-400 transition-colors resize-none text-right"
+                      placeholder="پرسش، ایده یا جزئیات درخواست خود را بنویسید..."
+                      className="w-full px-3.5 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 text-xs sm:text-sm focus:outline-none focus:border-emerald-500 focus:bg-white transition-all resize-none text-right"
                     />
                   </div>
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full py-3 rounded-full bg-white hover:bg-slate-100 text-slate-950 font-bold text-sm transition-all shadow-md cursor-pointer flex items-center justify-center gap-2"
+                  className="w-full py-2.5 rounded-full bg-[#0a4852] hover:bg-[#07363e] text-white font-bold text-xs sm:text-sm transition-all shadow-md hover:shadow-lg cursor-pointer flex items-center justify-center gap-2"
                 >
-                  <span>ارسال درخواست همکاری</span>
-                  <ArrowLeft className="w-4 h-4" />
+                  <PhoneCall className="w-4 h-4" />
+                  <span>ثبت و اتصال به پشتیبانی آنلاین</span>
                 </button>
               </form>
             )}
@@ -649,33 +685,34 @@ export default function App() {
       )}
 
       {/* ======================================================== */}
-      {/* CONSULTATION & ORDER REGISTRATION MODAL                  */}
+      {/* CONSULTATION & ORDER REGISTRATION MODAL (LIGHT THEME, WIDE, COMPREHENSIVE WEB & SOFTWARE ORDER) */}
       {/* ======================================================== */}
       {orderModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-md" dir="rtl">
-          <div className="relative w-full max-w-lg bg-[#0a1e23] border border-white/15 rounded-3xl p-6 sm:p-8 shadow-2xl text-slate-100 text-right max-h-[92vh] overflow-y-auto">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-slate-950/70 backdrop-blur-md select-text" dir="rtl">
+          <div className="relative w-full max-w-4xl bg-white border border-slate-200/90 rounded-[28px] sm:rounded-[34px] p-6 sm:p-9 shadow-[0_25px_70px_rgba(0,0,0,0.25)] text-slate-900 text-right max-h-[92vh] overflow-y-auto">
             <button
               type="button"
               onClick={() => {
                 setOrderModalOpen(false);
                 setOrderSubmitted(false);
               }}
-              className="absolute top-5 left-5 p-2 rounded-full bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white transition-colors cursor-pointer"
+              className="absolute top-5 left-5 p-2.5 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-950 transition-colors cursor-pointer"
+              aria-label="بستن پنجره"
             >
               <X className="w-5 h-5" />
             </button>
 
             {orderSubmitted ? (
-              <div className="py-8 text-center space-y-4">
-                <div className="w-16 h-16 mx-auto rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center border border-emerald-400/30">
+              <div className="py-10 text-center space-y-4">
+                <div className="w-16 h-16 mx-auto rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center border border-emerald-200">
                   <CheckCircle2 className="w-9 h-9" />
                 </div>
-                <h3 className="text-2xl font-bold text-white">سفارش و درخواست مشاوره شما ثبت شد</h3>
-                <div className="inline-block px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs font-mono">
-                  کد رهگیری: VRT-{Math.floor(10000 + Math.random() * 90000)}
+                <h3 className="text-2xl sm:text-3xl font-bold text-slate-900">سفارش پروژه شما با موفقیت ثبت شد</h3>
+                <div className="inline-block px-3.5 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-mono font-bold">
+                  کد پیگیری رسمی: VRT-PRJ-{Math.floor(10000 + Math.random() * 90000)}
                 </div>
-                <p className="text-sm text-slate-300 max-w-sm mx-auto leading-relaxed">
-                  اطلاعات شما با موفقیت در سامانه اختصاصی ورت ثبت گردید. کارشناسان ارشد سرمایه‌گذاری ظرف کمتر از ۲ ساعت کاری جهت هماهنگی جلسه با شما تماس خواهند گرفت.
+                <p className="text-sm text-slate-600 max-w-lg mx-auto leading-relaxed">
+                  مشخصات فنی و نیازمندی‌های پروژه شما دریافت گردید. تیم فنی و مهندسی ورت پروپوزال و برآورد زمان‌بندی را آماده کرده و ظرف حداکثر ۲ ساعت کاری جهت هماهنگی جلسه مشاوره آنلاین یا حضوری با شما تماس خواهند گرفت.
                 </p>
                 <button
                   type="button"
@@ -683,9 +720,9 @@ export default function App() {
                     setOrderModalOpen(false);
                     setOrderSubmitted(false);
                   }}
-                  className="mt-4 px-7 py-2.5 rounded-full bg-white text-slate-950 font-bold text-sm hover:bg-slate-100 transition-colors cursor-pointer"
+                  className="mt-4 px-8 py-3 rounded-full bg-[#0a4852] text-white font-bold text-sm hover:bg-[#07363e] transition-colors cursor-pointer"
                 >
-                  بستن و بازگشت به سایت
+                  بستن و بازگشت به صفحه
                 </button>
               </div>
             ) : (
@@ -694,91 +731,186 @@ export default function App() {
                   e.preventDefault();
                   setOrderSubmitted(true);
                 }}
-                className="space-y-4"
+                className="space-y-6"
               >
                 <div>
                   <div className="flex items-center gap-2 mb-2">
-                    <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-[11px] font-medium flex items-center gap-1.5">
-                      <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
-                      مشاوره تخصصی و ثبت سفارش رسمی
+                    <span className="px-3 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200 text-xs font-bold flex items-center gap-1.5">
+                      <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
+                      فرم جامع سفارش پروژه‌های طراحی سایت، اپلیکیشن و نرم‌افزار سازمانی
                     </span>
                   </div>
-                  <h3 className="text-2xl font-bold text-white tracking-tight">مشاوره و ثبت سفارش</h3>
-                  <p className="text-xs sm:text-sm text-slate-300 mt-1 leading-relaxed">
-                    برای دریافت مشاوره اختصاصی، بررسی فرصت سرمایه‌گذاری یا شروع سفارش پروژه، فرم زیر را تکمیل نمایید.
+                  <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
+                    مشاوره تخصصی و ثبت سفارش پروژه
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-500 mt-1 leading-relaxed">
+                    لطفاً اطلاعات و نیازمندی‌های پروژه خود را جهت برآورد دقیق فنی، هزینه‌ای و تدوین پروپوزال رسمی تکمیل فرمایید.
                   </p>
                 </div>
 
-                <div className="space-y-3.5 text-right">
-                  <div>
-                    <label className="block text-xs font-medium text-slate-300 mb-1">نام و نام خانوادگی <span className="text-emerald-400">*</span></label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="مثال: رضا صادقی"
-                      className="w-full px-4 py-2.5 rounded-xl bg-black/40 border border-white/15 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-emerald-400 transition-colors text-right"
-                    />
+                <div className="space-y-5 text-right">
+                  {/* بخش ۱: اطلاعات متقاضی */}
+                  <div className="p-4 sm:p-5 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-3.5">
+                    <h4 className="text-xs sm:text-sm font-bold text-slate-800 flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                      <span>۱. مشخصات ارتباطی متقاضی / کارفرما</span>
+                    </h4>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                      <div>
+                        <label className="block text-xs font-medium text-slate-700 mb-1">نام و نام خانوادگی <span className="text-rose-500">*</span></label>
+                        <input
+                          type="text"
+                          required
+                          placeholder="مثال: رضا صادقی"
+                          className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-900 placeholder-slate-400 text-xs sm:text-sm focus:outline-none focus:border-emerald-500 transition-colors text-right"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-xs font-medium text-slate-700 mb-1">شماره تماس مستقیم <span className="text-rose-500">*</span></label>
+                        <input
+                          type="tel"
+                          required
+                          placeholder="۰۹۱۲۳۴۵۶۷۸۹"
+                          className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-900 placeholder-slate-400 text-xs sm:text-sm focus:outline-none focus:border-emerald-500 transition-colors text-right dir-ltr"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-xs font-medium text-slate-700 mb-1">نام سازمان / شرکت / استارتاپ</label>
+                        <input
+                          type="text"
+                          placeholder="نام برند شما"
+                          className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-900 placeholder-slate-400 text-xs sm:text-sm focus:outline-none focus:border-emerald-500 transition-colors text-right"
+                        />
+                      </div>
+                    </div>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {/* بخش ۲: مشخصات فنی و نوع پروژه */}
+                  <div className="p-4 sm:p-5 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-3.5">
+                    <h4 className="text-xs sm:text-sm font-bold text-slate-800 flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-teal-500" />
+                      <span>۲. نوع پروژه و مشخصات نرم‌افزاری</span>
+                    </h4>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                      <div>
+                        <label className="block text-xs font-medium text-slate-700 mb-1">دسته‌بندی اصلی پروژه <span className="text-rose-500">*</span></label>
+                        <select className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-800 text-xs sm:text-sm focus:outline-none focus:border-emerald-500 transition-colors cursor-pointer text-right">
+                          <option>طراحی وب‌سایت شرکتی و پورتال سازمانی</option>
+                          <option>فروشگاه آنلاین و مارکت‌پلیس پیشرفته</option>
+                          <option>نرم‌افزار تحت وب اختصاصی (SaaS / Web App)</option>
+                          <option>اپلیکیشن موبایل (iOS و Android)</option>
+                          <option>اتوماسیون اداری و CRM اختصاصی</option>
+                          <option>بازطراحی کامل (Redesign) و ارتقای UI/UX</option>
+                          <option>یکپارچه‌سازی با هوش مصنوعی و ربات‌های خودکار</option>
+                        </select>
+                      </div>
+
+                      <div>
+                        <label className="block text-xs font-medium text-slate-700 mb-1">سکوی اجرایی مدنظر</label>
+                        <select className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-800 text-xs sm:text-sm focus:outline-none focus:border-emerald-500 transition-colors cursor-pointer text-right">
+                          <option>وب رسپانسیو مدرن (React / Next.js)</option>
+                          <option>وب همراه با اپلیکیشن موبایل یکپارچه</option>
+                          <option>PWA (وب‌اپلیکیشن پیش‌رونده قابل نصب)</option>
+                          <option>سامانه ابری متمرکز چندشعبه‌ای</option>
+                          <option>نیاز به مشاوره فنی برای انتخاب استک</option>
+                        </select>
+                      </div>
+
+                      <div>
+                        <label className="block text-xs font-medium text-slate-700 mb-1">بازه زمانی مورد انتظار تحویل</label>
+                        <select className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-800 text-xs sm:text-sm focus:outline-none focus:border-emerald-500 transition-colors cursor-pointer text-right">
+                          <option>فوری (کمتر از ۱ ماه - MVP سریع)</option>
+                          <option>معمولی (۱ الی ۳ ماه)</option>
+                          <option>طرح توسعه‌ای جامع (۳ الی ۶ ماه)</option>
+                          <option>پشتیبانی و توسعه مستمر بلندمدت</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    {/* امکانات و ماژول‌های تکمیلی مورد نیاز */}
                     <div>
-                      <label className="block text-xs font-medium text-slate-300 mb-1">شماره تماس مستقیم <span className="text-emerald-400">*</span></label>
-                      <input
-                        type="tel"
-                        required
-                        placeholder="۰۹۱۲۳۴۵۶۷۸۹"
-                        className="w-full px-4 py-2.5 rounded-xl bg-black/40 border border-white/15 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-emerald-400 transition-colors text-right dir-ltr"
+                      <label className="block text-xs font-medium text-slate-700 mb-1.5">امکانات و نیازمندی‌های کلیدی پروژه (چند موردی):</label>
+                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs text-slate-700">
+                        {[
+                          'درگاه پرداخت آنلاین شتابی',
+                          'احراز هویت پیامکی / دو مرحله‌ای',
+                          'پنل مدیریت اختصاصی و گزارشات',
+                          'چندزبانه بودن (انگلیسی / عربی)',
+                          'سئو و بهینه‌سازی موتورهای جستجو',
+                          'یکپارچگی با سپیدار / حسابداری',
+                          'چت آنلاین و سیستم تیکتینگ',
+                          'اتصال به هوش مصنوعی گفتگوگر',
+                        ].map((feature, fIdx) => (
+                          <label key={fIdx} className="flex items-center gap-2 p-2 rounded-lg bg-white border border-slate-200/80 hover:border-emerald-400 cursor-pointer transition-colors">
+                            <input type="checkbox" className="rounded text-emerald-600 focus:ring-emerald-500 cursor-pointer" />
+                            <span className="text-[11.5px]">{feature}</span>
+                          </label>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* بخش ۳: بودجه و شرح جزئیات */}
+                  <div className="p-4 sm:p-5 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-3.5">
+                    <h4 className="text-xs sm:text-sm font-bold text-slate-800 flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-cyan-500" />
+                      <span>۳. برآورد بودجه و توضیحات تکمیلی</span>
+                    </h4>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      <div>
+                        <label className="block text-xs font-medium text-slate-700 mb-1">بازه بودجه مدنظر کارفرما</label>
+                        <select className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-800 text-xs sm:text-sm focus:outline-none focus:border-emerald-500 transition-colors cursor-pointer text-right">
+                          <option>۲۰ الی ۵۰ میلیون تومان (پروژه پایه)</option>
+                          <option>۵۰ الی ۱۲۰ میلیون تومان (سایت حرفه‌ای و پورتال)</option>
+                          <option>۱۲۰ الی ۳۰۰ میلیون تومان (پلتفرم و وب‌اپلیکیشن اختصاصی)</option>
+                          <option>بیش از ۳۰۰ میلیون تومان (سامانه سازمانی در مقیاس بالا)</option>
+                          <option>نیاز به برآورد و کارشناسی دقیق قیمت پس از جلسه</option>
+                        </select>
+                      </div>
+
+                      <div>
+                        <label className="block text-xs font-medium text-slate-700 mb-1">آدرس سایت یا نمونه رفرنس مشابه (در صورت وجود)</label>
+                        <input
+                          type="text"
+                          placeholder="https://example.com"
+                          className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-900 placeholder-slate-400 text-xs sm:text-sm focus:outline-none focus:border-emerald-500 transition-colors text-left dir-ltr"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-medium text-slate-700 mb-1">شرح کامل نیازمندی‌ها، سناریوهای کاربری یا ایده‌های پروژه</label>
+                      <textarea
+                        rows={3}
+                        placeholder="در مورد مخاطبان هدف، قابلیت‌های مدنظر، اهداف بازاریابی و هر نکته مهمی که مایلید تیم فنی در نظر بگیرد بنویسید..."
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-900 placeholder-slate-400 text-xs sm:text-sm focus:outline-none focus:border-emerald-500 transition-colors resize-none text-right"
                       />
                     </div>
-                    <div>
-                      <label className="block text-xs font-medium text-slate-300 mb-1">نام شرکت / برند</label>
-                      <input
-                        type="text"
-                        placeholder="نام مجموعه شما"
-                        className="w-full px-4 py-2.5 rounded-xl bg-black/40 border border-white/15 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-emerald-400 transition-colors text-right"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-medium text-slate-300 mb-1">نوع خدمت یا سفارش مورد تقاضا <span className="text-emerald-400">*</span></label>
-                    <select className="w-full px-4 py-2.5 rounded-xl bg-[#07171c] border border-white/15 text-white text-sm focus:outline-none focus:border-emerald-400 transition-colors cursor-pointer text-right">
-                      <option>جذب سرمایه و تأمین مالی هوشمند</option>
-                      <option>مشاوره استراتژیک، توسعه بازار و مقیاس‌پذیری</option>
-                      <option>بازطراحی زنجیره ارزش، فناوری و صادرات</option>
-                      <option>ادغام و تملک یا شراکت راهبردی (M&A)</option>
-                      <option>سایر خدمات و برنامه‌های اختصاصی</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-medium text-slate-300 mb-1">حجم تخمینی پروژه یا بودجه مدنظر</label>
-                    <select className="w-full px-4 py-2.5 rounded-xl bg-[#07171c] border border-white/15 text-white text-sm focus:outline-none focus:border-emerald-400 transition-colors cursor-pointer text-right">
-                      <option>کمتر از ۱ میلیارد تومان</option>
-                      <option>۱ الی ۵ میلیارد تومان</option>
-                      <option>۵ الی ۲۰ میلیارد تومان</option>
-                      <option>بیش از ۲۰ میلیارد تومان</option>
-                      <option>نیازمند ارزیابی و برآورد اولیه کارشناس</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-medium text-slate-300 mb-1">توضیحات و شرح نیاز پروژه</label>
-                    <textarea
-                      rows={3}
-                      placeholder="چکیده‌ای از وضعیت کنونی کسب‌وکار، اهداف مدنظر یا نیازمندی‌های خود را یادداشت نمایید..."
-                      className="w-full px-4 py-2.5 rounded-xl bg-black/40 border border-white/15 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-emerald-400 transition-colors resize-none text-right"
-                    />
                   </div>
                 </div>
 
-                <button
-                  type="submit"
-                  className="w-full py-3 rounded-full bg-emerald-400 hover:bg-emerald-300 text-slate-950 font-bold text-sm transition-all shadow-lg hover:shadow-emerald-400/20 cursor-pointer flex items-center justify-center gap-2 mt-2"
-                >
-                  <PhoneCall className="w-4 h-4" />
-                  <span>ثبت سفارش و هماهنگی جلسه مشاوره</span>
-                </button>
+                <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-3">
+                  <button
+                    type="button"
+                    onClick={() => setOrderModalOpen(false)}
+                    className="w-full sm:w-auto px-6 py-3 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition-colors cursor-pointer"
+                  >
+                    انصراف
+                  </button>
+
+                  <button
+                    type="submit"
+                    className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-[#0a4852] hover:bg-[#07363e] text-white font-bold text-xs sm:text-sm transition-all shadow-md hover:shadow-lg cursor-pointer flex items-center justify-center gap-2"
+                  >
+                    <PhoneCall className="w-4 h-4" />
+                    <span>ثبت نهایی سفارش و ارسال به کارشناس پروژه</span>
+                  </button>
+                </div>
               </form>
             )}
           </div>

@@ -188,7 +188,7 @@ export const WhyPartnerSection: React.FC<WhyPartnerSectionProps> = ({ onOpenCont
   );
 
   return (
-    <section id="testimonials-section" className="relative w-full bg-[#0a383d] text-white py-14 sm:py-20 overflow-hidden select-none" dir="rtl">
+    <section id="testimonials-section" className="relative w-full bg-[#0a383d] text-white py-14 sm:py-20 overflow-hidden select-text" dir="rtl">
       {/* Background rich dark teal gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#0c3d42] via-[#09353a] to-[#062428] pointer-events-none" />
 

@@ -83,7 +83,7 @@ const StatCounter: React.FC<StatItemProps> = ({
       dir="rtl"
     >
       {/* Number with Incremental Animation */}
-      <div className="text-4xl sm:text-5xl lg:text-[54px] font-bold tracking-tight text-[#0a1e23] leading-none select-none flex items-center justify-center">
+      <div className="text-4xl sm:text-5xl lg:text-[54px] font-bold tracking-tight text-[#0a1e23] leading-none select-text flex items-center justify-center">
         <span>{persianFormatted}</span>
         <span className="text-[#124d57] mr-1">{suffix}</span>
         {prefix && <span className="text-2xl mr-1 text-slate-600">{prefix}</span>}

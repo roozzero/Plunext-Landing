@@ -113,7 +113,7 @@ export const ClientLogosSection: React.FC = () => {
       </div>
 
       {/* Infinite Seamless Continuous Motion Track */}
-      <div className="w-full overflow-hidden flex select-none py-2" dir="ltr">
+      <div className="w-full overflow-hidden flex select-text py-2" dir="ltr">
         <div className="animate-marquee-logos">
           {renderCompanyGroup(0)}
           {renderCompanyGroup(1)}

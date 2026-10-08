@@ -49,7 +49,7 @@ export const CtaBannerSection: React.FC<CtaBannerSectionProps> = ({ onOpenContac
             <button
               type="button"
               onClick={onOpenContact}
-              className="inline-flex items-center gap-2.5 bg-white hover:bg-slate-100 text-[#0d383f] font-bold text-xs sm:text-[14px] px-6 py-3.5 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer select-none group"
+              className="inline-flex items-center gap-2.5 bg-white hover:bg-slate-100 text-[#0d383f] font-bold text-xs sm:text-[14px] px-6 py-3.5 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer select-text group"
             >
               <span>مشاوره و ثبت سفارش</span>
               <span className="group-hover:-translate-x-0.5 transition-transform text-sm">←</span>

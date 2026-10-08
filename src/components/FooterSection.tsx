@@ -15,7 +15,7 @@ export const FooterSection: React.FC<FooterSectionProps> = ({
   };
 
   return (
-    <footer className="relative w-full bg-[#08383f] text-slate-300 pt-8 sm:pt-10 pb-5 sm:pb-6 px-6 sm:px-10 md:px-14 lg:px-16 rounded-t-[28px] sm:rounded-t-[36px] overflow-hidden select-none" dir="rtl">
+    <footer className="relative w-full bg-[#08383f] text-slate-300 pt-8 sm:pt-10 pb-5 sm:pb-6 px-6 sm:px-10 md:px-14 lg:px-16 rounded-t-[28px] sm:rounded-t-[36px] overflow-hidden select-text" dir="rtl">
       {/* Decorative dot matrix pattern */}
       <div className="absolute bottom-2 right-4 w-48 h-36 opacity-10 pointer-events-none">
         <svg width="100%" height="100%" fill="none">
@@ -53,7 +53,7 @@ export const FooterSection: React.FC<FooterSectionProps> = ({
             <button
               type="button"
               onClick={onOpenContact}
-              className="mt-4 inline-flex items-center gap-2 bg-white hover:bg-slate-100 text-[#08383f] font-medium text-xs sm:text-[13px] px-4 py-2 rounded-full shadow-md hover:shadow-lg transition-all hover:scale-105 active:scale-95 cursor-pointer select-none group"
+              className="mt-4 inline-flex items-center gap-2 bg-white hover:bg-slate-100 text-[#08383f] font-medium text-xs sm:text-[13px] px-4 py-2 rounded-full shadow-md hover:shadow-lg transition-all hover:scale-105 active:scale-95 cursor-pointer select-text group"
             >
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
               <span>پشتیبانی آنلاین</span>
@@ -187,7 +187,7 @@ export const FooterSection: React.FC<FooterSectionProps> = ({
           <button
             type="button"
             onClick={scrollToTop}
-            className="text-xs text-slate-300 hover:text-white flex items-center gap-1.5 transition-colors cursor-pointer group select-none"
+            className="text-xs text-slate-300 hover:text-white flex items-center gap-1.5 transition-colors cursor-pointer group select-text"
           >
             <span>بازگشت به ابتدای صفحه</span>
             <span className="group-hover:-translate-y-0.5 transition-transform">↑</span>

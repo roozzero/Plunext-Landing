@@ -12,8 +12,9 @@ interface FaqSectionProps {
   onAskQuestion?: () => void;
 }
 
-export const FaqSection: React.FC<FaqSectionProps> = ({ onAskQuestion }) => {
-  const [openId, setOpenId] = useState<string | null>('faq-1');
+export const FaqSection: React.FC<FaqSectionProps> = () => {
+  // همه منوها در ابتدا بسته هستند (openId = null)
+  const [openId, setOpenId] = useState<string | null>(null);
 
   const faqs: FaqItem[] = [
     {
@@ -95,28 +96,6 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ onAskQuestion }) => {
             >
               پاسخ‌های شفاف و سریع به پرسش‌های کلیدی پیرامون نحوه مشارکت، خدمات و سیاست‌های سرمایه‌گذاری مجموعه ورت.
             </motion.p>
-
-            {/* Bottom prompt & CTA Button */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-40px' }}
-              transition={{ duration: 0.6, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-10 sm:mt-12 flex flex-col items-start text-right"
-            >
-              <span className="text-xs sm:text-[13px] text-slate-500 font-normal mb-3">
-                پاسخ سوال مدنظرتان را پیدا نکردید؟
-              </span>
-
-              <button
-                type="button"
-                onClick={onAskQuestion}
-                className="inline-flex items-center gap-2 bg-[#094751] hover:bg-[#07363e] text-white text-xs sm:text-[13px] font-medium px-6 py-2.5 rounded-full shadow-sm transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer group select-none"
-              >
-                <span>طرح پرسش با کارشناسان</span>
-                <span className="group-hover:-translate-x-0.5 transition-transform text-sm">←</span>
-              </button>
-            </motion.div>
           </div>
 
           {/* Left Column in RTL: Expandable Accordion List */}
