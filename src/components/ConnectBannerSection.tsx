@@ -1,11 +1,13 @@
 import React from 'react';
 import { motion } from 'motion/react';
+import { MessageSquareQuote } from 'lucide-react';
 
 interface ConnectBannerSectionProps {
   onOpenContact?: () => void;
+  onOpenReview?: () => void;
 }
 
-export const ConnectBannerSection: React.FC<ConnectBannerSectionProps> = ({ onOpenContact }) => {
+export const ConnectBannerSection: React.FC<ConnectBannerSectionProps> = ({ onOpenContact, onOpenReview }) => {
   return (
     <section className="relative w-full bg-white py-12 sm:py-16 px-6 sm:px-10 md:px-14 lg:px-16 overflow-hidden" dir="rtl">
       <div className="max-w-7xl mx-auto">
@@ -44,15 +46,24 @@ export const ConnectBannerSection: React.FC<ConnectBannerSectionProps> = ({ onOp
               فرصت راهبردی بعدی شما از اینجا آغاز می‌شود. با تیم تخصصی ما گفتگو کنید و ظرفیت‌های رشد کسب‌وکار خود را کشف نمایید.
             </p>
 
-            {/* White Pill Button */}
-            <div className="mt-8">
+            {/* Action Buttons: Start Conversation & Submit Review */}
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-3.5">
               <button
                 type="button"
                 onClick={onOpenContact}
-                className="inline-flex items-center gap-2 bg-white hover:bg-slate-100 text-[#0e3b42] font-medium text-xs sm:text-[13px] px-6 py-2.5 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer select-text group"
+                className="inline-flex items-center gap-2 bg-white hover:bg-slate-100 text-[#0e3b42] font-semibold text-xs sm:text-sm px-6 sm:px-7 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer select-text group"
               >
                 <span>شروع گفتگوی اختصاصی</span>
                 <span className="group-hover:-translate-x-0.5 transition-transform text-sm">←</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={onOpenReview}
+                className="inline-flex items-center gap-2.5 bg-emerald-950/40 hover:bg-emerald-900/50 text-white border border-emerald-400/30 hover:border-emerald-300/60 font-semibold text-xs sm:text-sm px-6 sm:px-7 py-3 rounded-full backdrop-blur-md shadow-md hover:shadow-lg transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer select-text group"
+              >
+                <MessageSquareQuote className="w-4 h-4 text-emerald-300 group-hover:text-emerald-200 transition-colors" />
+                <span>ثبت نظر و تجربه همکاری</span>
               </button>
             </div>
           </div>

@@ -27,7 +27,11 @@ interface ValueCardItem {
   };
 }
 
-export const ApproachSection: React.FC = () => {
+interface ApproachSectionProps {
+  onOpenOrder?: () => void;
+}
+
+export const ApproachSection: React.FC<ApproachSectionProps> = ({ onOpenOrder }) => {
   const [selectedCard, setSelectedCard] = useState<ValueCardItem | null>(null);
 
   const items: ValueCardItem[] = [
@@ -303,17 +307,18 @@ export const ApproachSection: React.FC = () => {
       {/* ======================================================== */}
       {/* WIDE MODAL FOR INTRODUCING TEAM EXPERTISE & SERVICES     */}
       {/* max-w-5xl, Light Theme, Rich Imagery & Beautiful Grid     */}
+      {/* z-[1050] to always sit on top of floating navbar (z-[999])*/}
       {/* ======================================================== */}
       <AnimatePresence>
         {selectedCard && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6" dir="rtl">
+          <div className="fixed inset-0 z-[1050] flex items-center justify-center p-3 sm:p-6" dir="rtl">
             {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setSelectedCard(null)}
-              className="absolute inset-0 bg-slate-950/70 backdrop-blur-md"
+              className="absolute inset-0 bg-slate-950/75 backdrop-blur-md"
             />
 
             {/* Modal Dialog: Ultra Wide (max-w-5xl) with Clean Light Styling */}
@@ -441,19 +446,22 @@ export const ApproachSection: React.FC = () => {
                       بستن پنجره
                     </button>
 
-                    <a
-                      href="#order"
-                      onClick={(e) => {
-                        e.preventDefault();
+                    <button
+                      type="button"
+                      onClick={() => {
                         setSelectedCard(null);
-                        const el = document.getElementById('consultation-trigger') || document.getElementById('contact-trigger');
-                        if (el) el.click();
+                        if (onOpenOrder) {
+                          onOpenOrder();
+                        } else {
+                          const el = document.getElementById('consultation-trigger') || document.getElementById('contact-trigger');
+                          if (el) el.click();
+                        }
                       }}
                       className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3 rounded-full bg-[#0a4852] hover:bg-[#07363e] text-white text-xs sm:text-sm font-bold transition-all shadow-md hover:shadow-lg cursor-pointer"
                     >
                       <span>ثبت سفارش و مذاکره با این تیم</span>
                       <ArrowLeft className="w-4 h-4" />
-                    </a>
+                    </button>
                   </div>
                 </div>
               </div>

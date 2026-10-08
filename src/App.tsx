@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
-import { ArrowLeft, Menu, X, CheckCircle2, Sparkles, PhoneCall } from 'lucide-react';
+import { ArrowLeft, Menu, X, CheckCircle2, Sparkles, PhoneCall, Star, Quote, MessageSquareQuote } from 'lucide-react';
 import heroBg from './assets/imgs/Hero.png';
 import logoImg from './assets/imgs/Logo.png';
 import { InsightSection } from './components/InsightSection';
@@ -24,6 +24,18 @@ export default function App() {
   const [contactSubmitted, setContactSubmitted] = useState(false);
   const [orderModalOpen, setOrderModalOpen] = useState(false);
   const [orderSubmitted, setOrderSubmitted] = useState(false);
+  const [reviewModalOpen, setReviewModalOpen] = useState(false);
+  const [reviewSubmitted, setReviewSubmitted] = useState(false);
+  const [reviewRating, setReviewRating] = useState(5);
+  const [hoveredStar, setHoveredStar] = useState<number | null>(null);
+  const [reviewForm, setReviewForm] = useState({
+    name: '',
+    role: '',
+    company: '',
+    category: 'طراحی وب‌سایت و پورتال سازمانی',
+    duration: 'همکاری ۲ ساله',
+    quote: '',
+  });
   const [portfolioModalOpen, setPortfolioModalOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -430,7 +442,7 @@ export default function App() {
       {/* ======================================================== */}
       {/* APPROACH SECTION                                         */}
       {/* ======================================================== */}
-      <ApproachSection />
+      <ApproachSection onOpenOrder={() => setOrderModalOpen(true)} />
 
       {/* ======================================================== */}
       {/* CLIENT LOGOS SECTION                                     */}
@@ -470,7 +482,10 @@ export default function App() {
       {/* ======================================================== */}
       {/* CONNECT WITH US BANNER                                   */}
       {/* ======================================================== */}
-      <ConnectBannerSection onOpenContact={() => setContactModalOpen(true)} />
+      <ConnectBannerSection
+        onOpenContact={() => setContactModalOpen(true)}
+        onOpenReview={() => setReviewModalOpen(true)}
+      />
 
       {/* ======================================================== */}
       {/* FOOTER SECTION                                           */}
@@ -485,9 +500,10 @@ export default function App() {
 
       {/* ======================================================== */}
       {/* ONLINE SUPPORT MODAL (LIGHT THEME, WIDER, PHONE NUMBER, NO SCROLL) */}
+      {/* z-[1050] to always sit on top of floating navbar (z-[999])*/}
       {/* ======================================================== */}
       {contactModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-slate-950/65 backdrop-blur-md select-text" dir="rtl">
+        <div className="fixed inset-0 z-[1050] flex items-center justify-center p-3 sm:p-5 bg-slate-950/70 backdrop-blur-md select-text" dir="rtl">
           <div className="relative w-full max-w-2xl bg-white border border-slate-200 rounded-[28px] p-6 sm:p-7 shadow-[0_20px_60px_rgba(0,0,0,0.2)] text-slate-800 text-right">
             <button
               type="button"
@@ -614,9 +630,10 @@ export default function App() {
 
       {/* ======================================================== */}
       {/* PORTFOLIO & INVESTMENT CRITERIA MODAL                    */}
+      {/* z-[1050] so it stays above floating navbar (z-[999])    */}
       {/* ======================================================== */}
       {portfolioModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-md" dir="rtl">
+        <div className="fixed inset-0 z-[1050] flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-md" dir="rtl">
           <div className="relative w-full max-w-3xl bg-[#091b20] border border-white/15 rounded-3xl p-6 sm:p-9 shadow-2xl text-slate-200 max-h-[90vh] overflow-y-auto text-right">
             <button
               type="button"
@@ -686,10 +703,11 @@ export default function App() {
 
       {/* ======================================================== */}
       {/* CONSULTATION & ORDER REGISTRATION MODAL (LIGHT THEME, WIDE, COMPREHENSIVE WEB & SOFTWARE ORDER) */}
+      {/* z-[1050] so it stays above floating navbar (z-[999])    */}
       {/* ======================================================== */}
       {orderModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-slate-950/70 backdrop-blur-md select-text" dir="rtl">
-          <div className="relative w-full max-w-4xl bg-white border border-slate-200/90 rounded-[28px] sm:rounded-[34px] p-6 sm:p-9 shadow-[0_25px_70px_rgba(0,0,0,0.25)] text-slate-900 text-right max-h-[92vh] overflow-y-auto">
+        <div className="fixed inset-0 z-[1050] flex items-center justify-center p-3 sm:p-6 bg-slate-950/75 backdrop-blur-md select-text" dir="rtl">
+          <div className="relative w-full max-w-4xl bg-white border border-slate-200/90 rounded-[28px] sm:rounded-[34px] p-6 sm:p-9 shadow-[0_25px_70px_rgba(0,0,0,0.35)] text-slate-900 text-right max-h-[92vh] overflow-y-auto">
             <button
               type="button"
               onClick={() => {
@@ -909,6 +927,283 @@ export default function App() {
                   >
                     <PhoneCall className="w-4 h-4" />
                     <span>ثبت نهایی سفارش و ارسال به کارشناس پروژه</span>
+                  </button>
+                </div>
+              </form>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* ======================================================== */}
+      {/* TESTIMONIAL / USER REVIEW MODAL (LIGHT THEME, MATCHES TESTIMONIAL CARDS) */}
+      {/* z-[1050] to always sit on top of floating navbar (z-[999])*/}
+      {/* ======================================================== */}
+      {reviewModalOpen && (
+        <div className="fixed inset-0 z-[1050] flex items-center justify-center p-3 sm:p-6 bg-slate-950/75 backdrop-blur-md select-text" dir="rtl">
+          <div className="relative w-full max-w-3xl bg-white border border-slate-200/90 rounded-[28px] sm:rounded-[36px] p-6 sm:p-9 shadow-[0_25px_70px_rgba(0,0,0,0.35)] text-slate-900 text-right max-h-[92vh] overflow-y-auto">
+            {/* Close Button */}
+            <button
+              type="button"
+              onClick={() => {
+                setReviewModalOpen(false);
+                setReviewSubmitted(false);
+              }}
+              className="absolute top-5 left-5 p-2.5 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-950 transition-colors cursor-pointer"
+              aria-label="بستن پنجره"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            {reviewSubmitted ? (
+              <div className="py-8 text-center space-y-5">
+                <div className="w-16 h-16 mx-auto rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center border border-emerald-200">
+                  <CheckCircle2 className="w-9 h-9" />
+                </div>
+                <div>
+                  <h3 className="text-2xl sm:text-3xl font-bold text-slate-900">
+                    نظر و دیدگاه ارزشمند شما با موفقیت ثبت شد
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-600 max-w-md mx-auto mt-2 leading-relaxed">
+                    از همراهی شما سپاسگزاریم. دیدگاه شما با موفقیت دریافت گردید و پس از تأیید تیم روابط عمومی، در بخش تجربیات شرکای تجاری ورت قرار خواهد گرفت.
+                  </p>
+                </div>
+
+                {/* Preview of the review styled exactly like WhyPartnerSection testimonial cards */}
+                <div className="max-w-lg mx-auto p-5 sm:p-6 rounded-[24px] bg-slate-50 border border-slate-200 text-right shadow-sm relative overflow-hidden">
+                  <div className="flex items-start justify-between gap-3 mb-3">
+                    <div className="flex items-center gap-3">
+                      <div className="w-11 h-11 rounded-full bg-gradient-to-tr from-emerald-500 to-teal-600 text-white font-bold flex items-center justify-center text-sm shadow-sm">
+                        {reviewForm.name ? reviewForm.name.slice(0, 2) : 'شما'}
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-bold text-slate-900">{reviewForm.name || 'کاربر گرامی'}</h4>
+                        <p className="text-xs text-slate-500 font-medium">
+                          {reviewForm.role || 'مدیر'} • {reviewForm.company || 'شرکت همکار'}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-0.5">
+                      {[1, 2, 3, 4, 5].map((s) => (
+                        <Star
+                          key={s}
+                          className={`w-3.5 h-3.5 ${
+                            s <= reviewRating ? 'text-amber-400 fill-amber-400' : 'text-slate-300'
+                          }`}
+                        />
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="flex flex-wrap items-center gap-2 mb-3">
+                    <span className="text-[11px] px-2.5 py-0.5 rounded-md bg-emerald-50 text-emerald-800 border border-emerald-200 font-medium">
+                      {reviewForm.category}
+                    </span>
+                    <span className="text-[11px] px-2.5 py-0.5 rounded-md bg-slate-200/70 text-slate-700 font-medium">
+                      {reviewForm.duration}
+                    </span>
+                  </div>
+
+                  <p className="text-xs sm:text-[13px] text-slate-700 leading-relaxed italic bg-white p-3 rounded-xl border border-slate-200/80">
+                    "{reviewForm.quote || 'همکاری بسیار عالی، حرفه‌ای و ارزش‌آفرین با تیم ورت.'}"
+                  </p>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    setReviewModalOpen(false);
+                    setReviewSubmitted(false);
+                  }}
+                  className="px-8 py-3 rounded-full bg-[#0a4852] hover:bg-[#07363e] text-white font-bold text-xs sm:text-sm transition-all shadow-md cursor-pointer"
+                >
+                  بستن و بازگشت به سایت
+                </button>
+              </div>
+            ) : (
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  setReviewSubmitted(true);
+                }}
+                className="space-y-5"
+              >
+                <div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="px-3 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200 text-xs font-bold flex items-center gap-1.5">
+                      <MessageSquareQuote className="w-3.5 h-3.5 text-emerald-700" />
+                      فرم ثبت نظر و رضایت‌سنجی همکاری با ورت
+                    </span>
+                  </div>
+                  <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
+                    ثبت نظر و تجربه همکاری با گروه ورت
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-500 mt-1 leading-relaxed">
+                    دیدگاه شما به سایر کارآفرینان و مدیران کمک می‌کند تا شناخت بهتری از رویکرد و کیفیت خدمات ورت به دست آورند.
+                  </p>
+                </div>
+
+                {/* Form Fields Matching Testimonials Data */}
+                <div className="space-y-4 text-right">
+                  {/* Row 1: Name & Role */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                    <div>
+                      <label className="block text-xs font-semibold text-slate-700 mb-1">
+                        نام و نام خانوادگی <span className="text-rose-500">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        value={reviewForm.name}
+                        onChange={(e) => setReviewForm({ ...reviewForm, name: e.target.value })}
+                        placeholder="مثال: دکتر علیرضا صادقی"
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 text-xs sm:text-sm focus:outline-none focus:border-emerald-500 focus:bg-white transition-all text-right"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-semibold text-slate-700 mb-1">
+                        سمت یا نقش سازمانی <span className="text-rose-500">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        value={reviewForm.role}
+                        onChange={(e) => setReviewForm({ ...reviewForm, role: e.target.value })}
+                        placeholder="مثال: مدیرعامل و هم‌بنیان‌گذار"
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 text-xs sm:text-sm focus:outline-none focus:border-emerald-500 focus:bg-white transition-all text-right"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Row 2: Company & Category */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                    <div>
+                      <label className="block text-xs font-semibold text-slate-700 mb-1">
+                        نام برند یا شرکت <span className="text-rose-500">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        value={reviewForm.company}
+                        onChange={(e) => setReviewForm({ ...reviewForm, company: e.target.value })}
+                        placeholder="مثال: آکادمی تیچرشو"
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 text-xs sm:text-sm focus:outline-none focus:border-emerald-500 focus:bg-white transition-all text-right"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-semibold text-slate-700 mb-1">
+                        حوزه فعالیت / دسته‌بندی پروژه <span className="text-rose-500">*</span>
+                      </label>
+                      <select
+                        value={reviewForm.category}
+                        onChange={(e) => setReviewForm({ ...reviewForm, category: e.target.value })}
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-800 text-xs sm:text-sm focus:outline-none focus:border-emerald-500 focus:bg-white transition-all cursor-pointer text-right"
+                      >
+                        <option>فناوری آموزشی (EdTech)</option>
+                        <option>تجارت الکترونیک و مارکت‌پلیس</option>
+                        <option>سلامت دیجیتال و ورزش</option>
+                        <option>طراحی وب‌سایت و پورتال سازمانی</option>
+                        <option>نرم‌افزار تحت وب و اپلیکیشن اختصاصی</option>
+                        <option>اتوماسیون صنعتی و لجستیک</option>
+                        <option>هوش مصنوعی و مهندسی داده</option>
+                        <option>خدمات مالی و فین‌تک</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  {/* Row 3: Duration & Star Rating */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                    <div>
+                      <label className="block text-xs font-semibold text-slate-700 mb-1">
+                        مدت زمان همکاری با ورت
+                      </label>
+                      <select
+                        value={reviewForm.duration}
+                        onChange={(e) => setReviewForm({ ...reviewForm, duration: e.target.value })}
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-800 text-xs sm:text-sm focus:outline-none focus:border-emerald-500 focus:bg-white transition-all cursor-pointer text-right"
+                      >
+                        <option>همکاری ۶ ماهه (پروژه کوتاه‌مدت)</option>
+                        <option>همکاری ۱ ساله</option>
+                        <option>همکاری ۲ ساله</option>
+                        <option>همکاری ۳ ساله</option>
+                        <option>بیش از ۳ سال (شریک راهبردی بلندمدت)</option>
+                      </select>
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-semibold text-slate-700 mb-1">
+                        امتیاز و درجه رضایت از همکاری ({reviewRating} از ۵ ستاره)
+                      </label>
+                      <div className="flex items-center gap-1.5 p-2 rounded-xl bg-slate-50 border border-slate-200">
+                        {[1, 2, 3, 4, 5].map((star) => (
+                          <button
+                            key={star}
+                            type="button"
+                            onClick={() => setReviewRating(star)}
+                            onMouseEnter={() => setHoveredStar(star)}
+                            onMouseLeave={() => setHoveredStar(null)}
+                            className="p-1 hover:scale-125 transition-transform cursor-pointer"
+                            title={`${star} ستاره`}
+                          >
+                            <Star
+                              className={`w-5 h-5 ${
+                                star <= (hoveredStar ?? reviewRating)
+                                  ? 'text-amber-400 fill-amber-400'
+                                  : 'text-slate-300'
+                              } transition-colors`}
+                            />
+                          </button>
+                        ))}
+                        <span className="text-xs font-bold text-amber-700 mr-2">
+                          {reviewRating === 5
+                            ? 'عالی (۵ ستاره)'
+                            : reviewRating === 4
+                            ? 'بسیار خوب (۴ ستاره)'
+                            : reviewRating === 3
+                            ? 'خوب (۳ ستاره)'
+                            : reviewRating === 2
+                            ? 'متوسط (۲ ستاره)'
+                            : 'قابل بهبود (۱ ستاره)'}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Row 4: Review Quote Textarea */}
+                  <div>
+                    <label className="block text-xs font-semibold text-slate-700 mb-1">
+                      متن دیدگاه، نظر و تجربه همکاری شما <span className="text-rose-500">*</span>
+                    </label>
+                    <textarea
+                      rows={3}
+                      required
+                      value={reviewForm.quote}
+                      onChange={(e) => setReviewForm({ ...reviewForm, quote: e.target.value })}
+                      placeholder="کیفیت مشاوره، انضباط مالی، سرعت اجرا، تخصص تیم یا دستاوردهای این همکاری را شرح دهید..."
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 text-xs sm:text-sm focus:outline-none focus:border-emerald-500 focus:bg-white transition-all resize-none text-right"
+                    />
+                  </div>
+                </div>
+
+                {/* Footer Buttons */}
+                <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-3">
+                  <button
+                    type="button"
+                    onClick={() => setReviewModalOpen(false)}
+                    className="w-full sm:w-auto px-6 py-2.5 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition-colors cursor-pointer"
+                  >
+                    انصراف
+                  </button>
+
+                  <button
+                    type="submit"
+                    className="w-full sm:w-auto px-8 py-3 rounded-full bg-[#0a4852] hover:bg-[#07363e] text-white font-bold text-xs sm:text-sm transition-all shadow-md hover:shadow-lg cursor-pointer flex items-center justify-center gap-2"
+                  >
+                    <Star className="w-4 h-4 text-amber-300 fill-amber-300" />
+                    <span>ثبت رسمی دیدگاه و ارسال</span>
                   </button>
                 </div>
               </form>
