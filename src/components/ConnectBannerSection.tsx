@@ -9,7 +9,7 @@ interface ConnectBannerSectionProps {
 
 export const ConnectBannerSection: React.FC<ConnectBannerSectionProps> = ({ onOpenContact, onOpenReview }) => {
   return (
-    <section className="relative w-full bg-white py-12 sm:py-16 px-6 sm:px-10 md:px-14 lg:px-16 overflow-hidden" dir="rtl">
+    <section id="contact-section" className="relative w-full bg-white py-12 sm:py-16 px-6 sm:px-10 md:px-14 lg:px-16 overflow-hidden" dir="rtl">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 25 }}
@@ -30,19 +30,22 @@ export const ConnectBannerSection: React.FC<ConnectBannerSectionProps> = ({ onOp
           </div>
 
           <div className="relative z-10 max-w-xl mx-auto flex flex-col items-center">
-            {/* Top Subtitle with bullet */}
-            <div className="flex items-center gap-2 text-xs sm:text-[13px] text-emerald-100/90 font-normal tracking-wide mb-3">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-300" />
-              <span>همین امروز گام نخست را بردارید</span>
+            {/* Centered Badge */}
+            <div className="w-full flex justify-center mb-3">
+              <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 text-emerald-200 border border-white/20 text-xs font-semibold tracking-wide shadow-xs">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                ارتباط مستقیم و شروع پروژه
+              </span>
             </div>
 
             {/* Main Heading */}
-            <h2 className="text-3xl sm:text-4xl lg:text-[52px] font-medium tracking-tight text-white leading-tight">
-              با ما در ارتباط باشید
+            <h2 className="text-2xl sm:text-3xl lg:text-[44px] font-bold tracking-tight text-white flex flex-wrap items-baseline justify-center gap-x-2 gap-y-1.5 leading-tight">
+              <span>با ما در ارتباط</span>
+              <span className="text-emerald-300 font-normal">باشید</span>
             </h2>
 
             {/* Subtitle Description */}
-            <p className="mt-4 text-xs sm:text-sm text-slate-200/90 font-normal leading-relaxed max-w-md mx-auto">
+            <p className="mt-4 text-xs sm:text-sm text-slate-200/90 font-normal leading-relaxed max-w-md mx-auto text-justify">
               فرصت راهبردی بعدی شما از اینجا آغاز می‌شود. با تیم تخصصی ما گفتگو کنید و ظرفیت‌های رشد کسب‌وکار خود را کشف نمایید.
             </p>
 

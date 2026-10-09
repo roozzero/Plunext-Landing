@@ -1,62 +1,18 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { X, Clock, Calendar } from 'lucide-react';
-import ipoImg from '../assets/imgs/insight_ipo.jpg';
-import skyscraperImg from '../assets/imgs/insight_skyscraper.jpg';
-import globeImg from '../assets/imgs/insight_globe.jpg';
+import React from 'react';
+import { motion } from 'motion/react';
+import { Clock, Calendar, ArrowLeft } from 'lucide-react';
+import { BLOG_ARTICLES } from '../data/blogData';
 
-interface InsightArticle {
-  id: string;
-  title: string;
-  excerpt: string;
-  readTime: string;
-  date: string;
-  image: string;
-  category: string;
-  fullContent?: string;
+interface FeaturedInsightsSectionProps {
+  onOpenBlog?: () => void;
+  onSelectArticle?: (articleId: string) => void;
 }
 
-export const FeaturedInsightsSection: React.FC = () => {
-  const [selectedArticle, setSelectedArticle] = useState<InsightArticle | null>(null);
-
-  const articles: InsightArticle[] = [
-    {
-      id: 'ipo-planning',
-      title: 'چرا هر کسب‌وکاری به یک وب‌سایت حرفه‌ای نیاز دارد؟',
-      excerpt:
-        'حضور در فضای آنلاین فقط به شبکه‌های اجتماعی محدود نمی‌شود. وب‌سایت به کسب‌وکار شما هویتی مستقل می‌دهد، خدمات و محصولاتتان را معرفی می‌کند و راه ارتباط مشتریان با شما را ساده‌تر می‌سازد',
-      readTime: '۱۸ دقیقه مطالعه',
-      date: '8 مهرماه 1405',
-      image: ipoImg,
-      category: 'کسب‌وکار آنلاین',
-      fullContent:
-        'ورود به بازار عمومی یکی از سرنوشت‌سازترین نقاط عطف در چرخه حیات هر بنگاه اقتصادی است. موفقیت در این مسیر نیازمند آمادگی دقیق از سال‌ها قبل در گزارشگری مالی، استانداردهای حاکمیت شرکتی، ارتباط با سرمایه‌گذاران نهادی و تبیین شفاف اقتصاد واحد کسب‌وکار است. در بازارهای امروز، انضباط مالی و شفافیت تفاوت میان یک عرضه اولیه درخشان و یک ورود ناموفق را رقم می‌زند.',
-    },
-    {
-      id: 'growth-blueprint',
-      title: 'طراحی سایت حرفه‌ای چگونه به رشد کسب‌وکار شما کمک می‌کند؟',
-      excerpt:
-        'یک سایت حرفه‌ای فراتر از ظاهر زیباست. سرعت مناسب، تجربه کاربری روان، نمایش درست در موبایل و مسیر خرید یا ثبت درخواست ساده، به شما کمک می‌کنند اعتماد مخاطبان را جلب کنید و فرصت‌های بیشتری برای جذب مشتری داشته باشید',
-      readTime: '۱۵ دقیقه مطالعه',
-      date: '14 مردادماه 1405',
-      image: skyscraperImg,
-      category: 'طراحی سایت',
-      fullContent:
-        'نوسانات بازار و تحولات پرشتاب فناوری، تیم‌های مدیریتی را ناگزیر به بازنگری بنیادین در مدل‌های عملیاتی خود کرده است. مدیران عامل پیشرو از ابهامات کلان اقتصادی نه به عنوان مانع، بلکه به عنوان فرصتی طلایی برای متوازن‌سازی دارایی‌ها، سرمایه‌گذاری روی فناوری‌های اختصاصی و ادغام‌های هدفمند استفاده می‌کنند.',
-    },
-    {
-      id: 'reimagining-risk',
-      title: 'سئو چیست و چگونه مشتریان بیشتری از گوگل جذب کنیم؟',
-      excerpt:
-        'وقتی کاربران خدمات یا محصولات مرتبط با کسب‌وکار شما را جست‌وجو می‌کنند، حضور در نتایج مرتبط گوگل می‌تواند فرصتی ارزشمند برای جذب مخاطب باشد. با اصول سئو و نقش بهینه‌سازی فنی، محتوا و کلمات کلیدی در افزایش دیده‌شدن سایت آشنا شوید',
-      readTime: '۱۲ دقیقه مطالعه',
-      date: '28 خردادماه 1405',
-      image: globeImg,
-      category: 'سئو و جذب مشتری',
-      fullContent:
-        'به‌جای نگاه سنتی به ریسک به عنوان یک مکانیزم دفاعی، سازمان‌های پیشگام، تاب‌آوری را به مزیتی رقابتی و ماندگار تبدیل می‌کنند. با پیش‌بینی نقاط تنش در زنجیره تأمین و ادغام داده‌های تحلیلی در تصمیمات هیئت‌مدیره، بنگاه‌های چابک در زمانی که رقبا دچار تردید هستند سهم بازار خود را تثبیت کرده و ارتقا می‌بخشند.',
-    },
-  ];
+export const FeaturedInsightsSection: React.FC<FeaturedInsightsSectionProps> = ({
+  onOpenBlog,
+  onSelectArticle,
+}) => {
+  const articles = BLOG_ARTICLES.slice(0, 3);
 
   return (
     <section id="blog-section" className="relative w-full bg-white text-[#0a181c] py-16 sm:py-24 px-6 sm:px-10 md:px-14 lg:px-16 overflow-hidden" dir="rtl">
@@ -65,27 +21,37 @@ export const FeaturedInsightsSection: React.FC = () => {
       <div className="absolute bottom-6 left-8 w-44 h-44 bg-slate-100/40 rotate-12 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
+        {/* Section Badge (Centered) */}
+        <div className="w-full flex justify-center mb-3">
+          <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 text-[#0a4852] border border-emerald-200/60 text-xs font-semibold tracking-wide shadow-xs">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#439683]" />
+            وبلاگ و مقالات آموزشی تخصصی
+          </span>
+        </div>
+
         {/* ======================================================== */}
         {/* HEADER: TITLE RIGHT | "View All" BUTTON LEFT */}
         {/* ======================================================== */}
-        <div className="flex items-center justify-between mb-10 sm:mb-14">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-10 sm:mb-14">
           <motion.h2
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-40px' }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="text-3xl sm:text-4xl lg:text-[42px] font-medium tracking-tight text-[#0a1e23]"
+            className="text-xl sm:text-2xl md:text-3xl lg:text-[40px] font-bold tracking-tight text-[#0a1e23] flex flex-wrap items-baseline gap-x-2 gap-y-1.5 leading-snug"
           >
-            هرآنچه برای رشد آنلاین باید بدانید
+            <span className="text-[#0c2227]">هرآنچه برای رشد آنلاین</span>
+            <span className="text-[#439683] font-normal">باید بدانید</span>
           </motion.h2>
 
           {/* View All Button */}
           <motion.button
             type="button"
+            onClick={onOpenBlog}
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 bg-[#094751] hover:bg-[#07363e] text-white text-xs sm:text-[13px] font-medium px-5 py-2.5 rounded-full shadow-sm transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer group select-text"
+            className="inline-flex items-center gap-2 bg-[#094751] hover:bg-[#07363e] text-white text-xs sm:text-[13px] font-medium px-5 py-2.5 rounded-full shadow-sm transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer group select-text self-start sm:self-auto shrink-0"
           >
             <span>مشاهده همه مقالات</span>
             <span className="group-hover:-translate-x-0.5 transition-transform text-sm">←</span>
@@ -103,7 +69,7 @@ export const FeaturedInsightsSection: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.6, delay: idx * 0.12, ease: [0.16, 1, 0.3, 1] }}
-              onClick={() => setSelectedArticle(article)}
+              onClick={() => onSelectArticle ? onSelectArticle(article.id) : (onOpenBlog && onOpenBlog())}
               className="group cursor-pointer flex flex-col justify-between text-right"
             >
               {/* Card Image */}
@@ -113,91 +79,46 @@ export const FeaturedInsightsSection: React.FC = () => {
                   alt={article.title}
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                 />
+                <div className="absolute top-4 right-4">
+                  <span className="px-3 py-1 rounded-full bg-white/90 backdrop-blur-md text-[#0a4852] text-[11px] font-bold shadow-xs">
+                    {article.category}
+                  </span>
+                </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
               </div>
 
               {/* Card Text Content */}
               <div className="mt-5 flex flex-col flex-grow justify-between text-right">
                 <div>
-                  <h3 className="text-lg sm:text-[21px] font-medium text-[#0b242a] tracking-tight leading-snug group-hover:text-[#094751] transition-colors">
+                  <h3 className="text-lg sm:text-[21px] font-medium text-[#0b242a] tracking-tight leading-snug group-hover:text-[#439683] transition-colors">
                     {article.title}
                   </h3>
-                  <p className="mt-2.5 text-xs sm:text-[13px] text-slate-500 font-normal leading-relaxed line-clamp-2">
+                  <p className="mt-2.5 text-xs sm:text-[13px] text-slate-500 font-normal leading-relaxed line-clamp-2 text-justify">
                     {article.excerpt}
                   </p>
                 </div>
 
-                {/* Card Meta */}
-                <div className="mt-4 pt-1 flex items-center gap-2 text-[11px] sm:text-xs text-slate-400 font-normal">
-                  <span>{article.readTime}</span>
-                  <span className="text-slate-300">•</span>
-                  <span>{article.date}</span>
+                {/* Card Meta & Read Link */}
+                <div className="mt-4 pt-1 flex items-center justify-between text-[11px] sm:text-xs text-slate-400 font-normal">
+                  <div className="flex items-center gap-2">
+                    <span className="flex items-center gap-1">
+                      <Clock className="w-3.5 h-3.5 text-[#439683]" />
+                      {article.readTime}
+                    </span>
+                    <span>•</span>
+                    <span>{article.date}</span>
+                  </div>
+                  <span className="text-xs font-semibold text-[#0a4852] group-hover:text-[#439683] flex items-center gap-1 transition-colors">
+                    <span>مطالعه</span>
+                    <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
+                  </span>
                 </div>
               </div>
             </motion.article>
           ))}
         </div>
       </div>
-
-      {/* ======================================================== */}
-      {/* ARTICLE READER MODAL */}
-      {/* ======================================================== */}
-      <AnimatePresence>
-        {selectedArticle && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/70 backdrop-blur-md" dir="rtl">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="relative w-full max-w-2xl bg-white rounded-3xl p-6 sm:p-8 shadow-2xl overflow-hidden text-[#0a1e23] max-h-[90vh] overflow-y-auto text-right"
-            >
-              {/* Close Button top-left in RTL */}
-              <button
-                type="button"
-                onClick={() => setSelectedArticle(null)}
-                className="absolute top-5 left-5 p-2 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 transition-colors cursor-pointer"
-              >
-                <X className="w-5 h-5" />
-              </button>
-
-              <div className="w-full aspect-[16/9] rounded-2xl overflow-hidden mb-6">
-                <img
-                  src={selectedArticle.image}
-                  alt={selectedArticle.title}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-
-              <div className="flex items-center gap-3 text-xs text-slate-400 mb-3">
-                <span className="px-2.5 py-1 bg-emerald-50 text-[#094751] font-medium rounded-full">
-                  {selectedArticle.category}
-                </span>
-                <span>{selectedArticle.readTime}</span>
-                <span>•</span>
-                <span>{selectedArticle.date}</span>
-              </div>
-
-              <h2 className="text-2xl sm:text-3xl font-bold text-[#08292e] leading-snug mb-4">
-                {selectedArticle.title}
-              </h2>
-
-              <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal whitespace-pre-line">
-                {selectedArticle.fullContent}
-              </p>
-
-              <div className="mt-8 pt-6 border-t border-slate-100 flex justify-end">
-                <button
-                  type="button"
-                  onClick={() => setSelectedArticle(null)}
-                  className="px-6 py-2.5 rounded-full bg-[#094751] text-white text-xs sm:text-sm font-medium hover:bg-[#07363e] transition-colors"
-                >
-                  بستن پنجره
-                </button>
-              </div>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
     </section>
   );
 };
+

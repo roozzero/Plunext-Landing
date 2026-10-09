@@ -59,32 +59,27 @@ export const FaqSection: React.FC<FaqSectionProps> = () => {
       <div className="absolute -bottom-16 -right-16 w-56 h-56 bg-slate-100/60 rotate-45 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
+        {/* Section Badge (Centered) */}
+        <div className="w-full flex justify-center mb-6">
+          <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 text-[#0a4852] border border-emerald-200/60 text-xs font-semibold tracking-wide shadow-xs">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#439683]" />
+            پرسش‌های متداول مشتریان
+          </span>
+        </div>
+
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Right Column in RTL: Header */}
           <div className="lg:col-span-5 flex flex-col items-start lg:sticky lg:top-28 text-right">
-            {/* Category Subtitle */}
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-40px' }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="flex items-center gap-2 text-xs sm:text-[13px] text-slate-500 font-normal tracking-wide"
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-slate-700" />
-              <span>پرسش‌های پرتکرار</span>
-            </motion.div>
-
             {/* Main Title */}
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-4 text-3xl sm:text-4xl lg:text-[46px] font-medium tracking-tight text-[#0a1e23] leading-[1.2]"
+              className="text-2xl sm:text-3xl lg:text-[40px] font-bold tracking-tight text-[#0a1e23] flex flex-wrap items-baseline gap-x-2 gap-y-1.5 leading-snug"
             >
-              سؤالات شما،
-              <br />
-              پاسخ‌های ما
+              <span className="text-[#0c2227]">سؤالات شما،</span>
+              <span className="text-[#439683] font-normal">پاسخ‌های ما</span>
             </motion.h2>
 
             {/* Subtitle description */}
@@ -93,7 +88,7 @@ export const FaqSection: React.FC<FaqSectionProps> = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-5 text-xs sm:text-sm text-slate-500 font-normal leading-relaxed max-w-sm text-right"
+              className="mt-4 text-sm sm:text-base text-slate-600 font-normal leading-relaxed max-w-sm text-justify"
             >
               از هزینه و زمان طراحی سایت تا انتخاب بهترین راهکار برای کسب‌وکار آنلاین و بهینه‌سازی سایت برای گوگل؛ پاسخ پرسش‌های متداول را اینجا پیدا کنید تا با آگاهی بیشتر برای پروژه خود تصمیم بگیرید
             </motion.p>
@@ -145,7 +140,7 @@ export const FaqSection: React.FC<FaqSectionProps> = () => {
                         transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                         className="overflow-hidden"
                       >
-                        <p className="pt-3 pb-2 text-xs sm:text-[13px] text-slate-500 font-normal leading-relaxed pl-8 text-right">
+                        <p className="pt-3 pb-2 text-xs sm:text-[13px] text-slate-500 font-normal leading-relaxed pl-8 text-justify">
                           {faq.answer}
                         </p>
                       </motion.div>

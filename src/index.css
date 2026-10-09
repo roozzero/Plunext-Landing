@@ -106,16 +106,28 @@
     font-family: 'Vazir', 'Vazirmatn', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     color-scheme: dark;
     direction: rtl;
+    font-feature-settings: "ss01";
   }
 
   body {
     font-family: 'Vazir', 'Vazirmatn', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     direction: rtl;
     text-align: right;
+    font-feature-settings: "ss01";
   }
 
   * {
     font-family: 'Vazir', 'Vazirmatn', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    font-feature-settings: "ss01";
+  }
+
+  /* Global Persian text justification */
+  p,
+  article p,
+  section p,
+  .prose p {
+    text-align: justify;
+    text-justify: inter-word;
   }
 
   /* Custom dark glass scrollbar */

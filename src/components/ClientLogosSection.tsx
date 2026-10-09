@@ -117,13 +117,20 @@ export const ClientLogosSection: React.FC = () => {
 
 
   return (
-    <section className="relative w-full bg-white text-[#0a181c] py-10 sm:py-14 border-t border-[#f0f4f3] overflow-hidden" dir="rtl">
+    <section id="clients-section" className="relative w-full bg-white text-[#0a181c] py-10 sm:py-14 border-t border-[#f0f4f3] overflow-hidden" dir="rtl">
       {/* Soft gradient masks on sides for elegant fade-in / fade-out */}
       <div className="absolute top-0 right-0 bottom-0 w-24 sm:w-36 bg-gradient-to-l from-white via-white/80 to-transparent z-10 pointer-events-none" />
       <div className="absolute top-0 left-0 bottom-0 w-24 sm:w-36 bg-gradient-to-r from-white via-white/80 to-transparent z-10 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 mb-7 text-center">
-        <p className="text-xs sm:text-[13px] text-slate-400 font-medium tracking-wide">
+        {/* Section Badge (Centered) */}
+        <div className="w-full flex justify-center mb-3">
+          <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 text-[#0a4852] border border-emerald-200/60 text-xs font-semibold tracking-wide shadow-xs">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#439683]" />
+            برندهای همکار و مشتریان
+          </span>
+        </div>
+        <p className="text-xs sm:text-[13px] text-slate-500 font-medium tracking-wide">
           مورد اعتماد برترین استارت‌آپ‌ها و پلتفرم‌های تخصصی پیشرو
         </p>
       </div>

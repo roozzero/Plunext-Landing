@@ -16,8 +16,14 @@ import { FaqSection } from './components/FaqSection';
 import { ConnectBannerSection } from './components/ConnectBannerSection';
 import { FooterSection } from './components/FooterSection';
 import { BackToTop } from './components/BackToTop';
+import { BlogListPage } from './components/BlogListPage';
+import { BlogDetailPage } from './components/BlogDetailPage';
+import { TermsPage } from './components/TermsPage';
+import { PrivacyPage } from './components/PrivacyPage';
 
 export default function App() {
+  const [currentPage, setCurrentPage] = useState<'home' | 'blog' | 'article' | 'terms' | 'privacy'>('home');
+  const [selectedArticleId, setSelectedArticleId] = useState<string>('why-every-business-needs-a-website');
   const [activeNav, setActiveNav] = useState('Home');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [contactModalOpen, setContactModalOpen] = useState(false);
@@ -81,16 +87,35 @@ export default function App() {
 
   const navItems = [
     { id: 'Home', label: 'صفحه اصلی' },
-    { id: 'Portfolio', label: 'نمونه کارها' },
-    { id: 'Blog', label: 'وبلاگ' },
-    { id: 'About Us', label: 'درباره ما' },
-    { id: 'Contact', label: 'ارتباط با ما' },
+    { id: 'Approach', label: 'رویکرد ما', targetId: 'insight-section' },
+    { id: 'Expertise', label: 'تخصص ها', targetId: 'approach-section' },
+    { id: 'Clients', label: 'مشتریان', targetId: 'clients-section' },
+    { id: 'Portfolio', label: 'نمونه کار ها', targetId: 'portfolio-section' },
+    { id: 'Testimonials', label: 'نظرات', targetId: 'testimonials-section' },
+    { id: 'Blog', label: 'وبلاگ', targetId: 'blog' },
+    { id: 'About Us', label: 'درباره ما', targetId: 'leadership-section' },
+    { id: 'Contact', label: 'ارتباط با ما', targetId: 'contact-section' },
   ];
 
-  const scrollToInsight = () => {
-    const el = document.getElementById('insight-section');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
+  const scrollToTarget = (targetId: string) => {
+    const doScroll = () => {
+      const el = document.getElementById(targetId);
+      if (el) {
+        const headerOffset = 85;
+        const elementPosition = el.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        window.scrollTo({
+          top: Math.max(0, offsetPosition),
+          behavior: 'smooth',
+        });
+      }
+    };
+
+    if (currentPage !== 'home') {
+      setCurrentPage('home');
+      setTimeout(doScroll, 180);
+    } else {
+      doScroll();
     }
   };
 
@@ -98,23 +123,33 @@ export default function App() {
     setActiveNav(id);
     setMobileMenuOpen(false);
     if (id === 'Home') {
+      setCurrentPage('home');
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else if (id === 'Approach') {
+      // رویکرد ما = بخش رویکرد و فلسفه پلانکس
+      scrollToTarget('insight-section');
+    } else if (id === 'Expertise') {
+      // تخصص ها = تخصص‌ها و راهکارهای طراحی سایت
+      scrollToTarget('approach-section');
+    } else if (id === 'Clients') {
+      // مشتریان = بخش برندهای همکار و مشتریان
+      scrollToTarget('clients-section');
     } else if (id === 'Portfolio') {
-      const el = document.getElementById('portfolio-section');
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth' });
-      } else {
-        setPortfolioModalOpen(true);
-      }
+      // نمونه کار ها
+      scrollToTarget('portfolio-section');
+    } else if (id === 'Testimonials') {
+      // نظرات
+      scrollToTarget('testimonials-section');
     } else if (id === 'Blog') {
-      const el = document.getElementById('blog-section');
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth' });
-      }
+      // وبلاگ
+      setCurrentPage('blog');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     } else if (id === 'About Us') {
-      scrollToInsight();
+      // درباره ما
+      scrollToTarget('leadership-section');
     } else if (id === 'Contact') {
-      setContactModalOpen(true);
+      // ارتباط با ما
+      scrollToTarget('contact-section');
     }
   };
 
@@ -155,6 +190,7 @@ export default function App() {
             onClick={(e) => {
               e.preventDefault();
               setActiveNav('Home');
+              setCurrentPage('home');
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
             className="flex items-center gap-3 group transition-opacity hover:opacity-90 cursor-pointer"
@@ -184,7 +220,7 @@ export default function App() {
           initial={{ x: -120, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.85, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
-          className="hidden md:flex items-center bg-white/95 backdrop-blur-md p-1.5 rounded-full shadow-[0_8px_24px_rgba(0,0,0,0.28)] border border-white/40 overflow-hidden"
+          className="hidden md:flex items-center bg-white/95 backdrop-blur-md p-1 lg:p-1.5 rounded-full shadow-[0_8px_24px_rgba(0,0,0,0.28)] border border-white/40 overflow-hidden"
         >
           {navItems.map((item, index) => {
             const isActive = activeNav === item.id;
@@ -197,13 +233,13 @@ export default function App() {
                 animate={{ x: 0, opacity: 1 }}
                 transition={{
                   duration: 0.5,
-                  delay: 0.65 + index * 0.08,
+                  delay: 0.65 + index * 0.05,
                   ease: [0.16, 1, 0.3, 1],
                 }}
-                className={`text-[13px] lg:text-[14px] font-medium transition-all duration-200 cursor-pointer ${
+                className={`text-[12px] lg:text-[13.5px] font-medium transition-all duration-200 cursor-pointer ${
                   isActive
-                    ? 'bg-[#0d3b43] text-white px-5 py-1.5 rounded-full shadow-[0_2px_8px_rgba(13,59,67,0.4)]'
-                    : 'text-[#334155] hover:text-[#0f172a] px-4 py-1.5 rounded-full hover:bg-slate-100/60'
+                    ? 'bg-[#0d3b43] text-white px-3.5 lg:px-4 py-1.5 rounded-full shadow-[0_2px_8px_rgba(13,59,67,0.4)]'
+                    : 'text-[#334155] hover:text-[#0f172a] px-2.5 lg:px-3 py-1.5 rounded-full hover:bg-slate-100/60'
                 }`}
               >
                 {item.label}
@@ -292,200 +328,273 @@ export default function App() {
         </div>
       )}
 
-      {/* ======================================================== */}
-      {/* HERO SECTION WITH UNZOOMED BACKGROUND IMAGE             */}
-      {/* EXACTLY FROM assets/imgs/Hero.png                         */}
-      {/* ======================================================== */}
-      <section
-        id="home"
-        className="relative w-full min-h-screen flex flex-col justify-between overflow-hidden"
-      >
-        {/* ======================================================== */}
-        {/* HERO BACKGROUND IMAGE LAYER (z-0)                         */}
-        {/* ======================================================== */}
-        <div className="absolute inset-0 z-0 pointer-events-none">
-          <img
-            src={heroBg}
-            alt="توسعه و برنامه نویسی"
-            className="absolute inset-0 w-full h-full object-cover object-center select-text"
-            onError={(e) => {
-              console.warn('Hero background image failed to load', e);
+      {currentPage === 'home' && (
+        <>
+          {/* ======================================================== */}
+          {/* HERO SECTION WITH UNZOOMED BACKGROUND IMAGE             */}
+          {/* EXACTLY FROM assets/imgs/Hero.png                         */}
+          {/* ======================================================== */}
+          <section
+            id="home"
+            className="relative w-full min-h-screen flex flex-col justify-between overflow-hidden"
+          >
+            {/* ======================================================== */}
+            {/* HERO BACKGROUND IMAGE LAYER (z-0)                         */}
+            {/* ======================================================== */}
+            <div className="absolute inset-0 z-0 pointer-events-none">
+              <img
+                src={heroBg}
+                alt="توسعه و برنامه نویسی"
+                className="absolute inset-0 w-full h-full object-cover object-center select-text"
+                onError={(e) => {
+                  console.warn('Hero background image failed to load', e);
+                }}
+              />
+
+              {/* Semi-transparent overlays for dark cinematic look and high text readability (no opaque layer) */}
+              <div className="absolute inset-0 bg-[#071317]/30" />
+              <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-[#071317] via-[#071317]/60 to-transparent" />
+              <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#071317]/70 to-transparent" />
+              <div className="absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-[#071317]/40 to-transparent" />
+            </div>
+
+            {/* ======================================================== */}
+            {/* HERO CONTENT CONTAINER (z-10+)                           */}
+            {/* ======================================================== */}
+            <div className="relative z-10 flex flex-col justify-between min-h-screen w-full">
+
+          {/* ======================================================== */}
+          {/* HERO MAIN CONTENT SECTION (RTL)                          */}
+          {/* ======================================================== */}
+          <main className="relative z-20 min-h-[calc(100vh-100px)] flex flex-col justify-end px-6 sm:px-10 md:px-14 lg:px-16 pt-24 sm:pt-28 pb-4 sm:pb-6 text-right">
+            {/* Main Content Grid positioned close to bottom */}
+            <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mt-auto mb-1">
+              {/* Right Column in RTL: Heading + Paragraph + Action Buttons */}
+              <div className="lg:col-span-8 space-y-4 sm:space-y-5 mb-1 text-right">
+                {/* 4. Main Headline: Appears from bottom to top */}
+                <motion.h1
+                  initial={{ y: 50, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.85, delay: 0.75, ease: [0.16, 1, 0.3, 1] }}
+                  className="text-[40px] sm:text-[48px] lg:text-[54px] font-bold text-white tracking-tight leading-[1.2] max-w-3xl drop-shadow-[0_4px_24px_rgba(0,0,0,0.65)]"
+                >
+                  انتخابی حرفه‌ای<br />
+                  برای ساختن برندی متمایز
+                </motion.h1>
+
+                {/* Subtitle / Paragraph */}
+                <motion.p
+                  initial={{ y: 40, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.8, delay: 0.95, ease: [0.16, 1, 0.3, 1] }}
+                  className="text-[14px] sm:text-[15px] text-slate-200/90 font-normal leading-relaxed max-w-2xl drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)] text-right"
+                >
+                 در پلانکس، وب‌سایت‌هایی طراحی و توسعه می‌دهیم که ترکیبی از استراتژی، طراحی و تکنولوژی‌اند؛ از اولین ایده تا تجربه‌ای سریع، زیبا و هدفمند که برای رشد برند شما ساخته شده است.
+                </motion.p>
+
+                {/* 5. Hero Buttons */}
+                <div className="flex flex-wrap items-center gap-4 pt-1 text-[15px]">
+                  {/* White Pill Button: Start Project -> Opens Order Modal */}
+                  <motion.button
+                    type="button"
+                    onClick={() => setOrderModalOpen(true)}
+                    initial={{ x: 60, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ duration: 0.75, delay: 1.1, ease: [0.16, 1, 0.3, 1] }}
+                    className="bg-white hover:bg-slate-100 text-slate-950 font-bold px-6 sm:px-7 py-2.5 sm:py-3 rounded-full flex items-center gap-2 shadow-[0_8px_20px_rgba(0,0,0,0.35)] transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer text-[14px] group overflow-hidden"
+                  >
+                    <motion.span
+                      initial={{ x: 14, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{ duration: 0.45, delay: 1.45, ease: 'easeOut' }}
+                    >
+                      پروژه‌تان را شروع کنید
+                    </motion.span>
+                    <motion.span
+                      initial={{ scale: 0, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      transition={{ duration: 0.4, delay: 1.25, ease: [0.34, 1.56, 0.64, 1] }}
+                      className="text-base font-normal group-hover:-translate-x-0.5 transition-transform"
+                    >
+                      ←
+                    </motion.span>
+                  </motion.button>
+
+                  {/* Dark Translucent Glass Pill: See Projects -> Scrolls to Portfolio Section */}
+                  <motion.button
+                    type="button"
+                    onClick={() => {
+                      const el = document.getElementById('portfolio-section');
+                      if (el) {
+                        el.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }}
+                    initial={{ x: 50, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ duration: 0.7, delay: 1.25, ease: [0.16, 1, 0.3, 1] }}
+                    className="bg-[#0b242a]/60 hover:bg-[#0b242a]/85 border border-white/20 text-white font-medium px-6 sm:px-7 py-2.5 sm:py-3 rounded-full backdrop-blur-md transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer text-[14px] shadow-[0_4px_16px_rgba(0,0,0,0.2)]"
+                  >
+                    <motion.span
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 1.4 }}
+                    >
+                      پروژه‌های ما را ببینید
+                    </motion.span>
+                  </motion.button>
+                </div>
+              </div>
+
+              {/* 6. Left Column in RTL: Stat Card */}
+              <div className="lg:col-span-4 flex flex-col items-start lg:items-start justify-end">
+                <motion.div
+                  initial={{ y: -70, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.85, delay: 1.05, ease: [0.16, 1, 0.3, 1] }}
+                  className="bg-white/[0.06] hover:bg-white/[0.09] border border-white/15 backdrop-blur-xl rounded-2xl p-6 sm:p-7 shadow-[0_16px_40px_rgba(0,0,0,0.35)] min-w-[240px] sm:min-w-[270px] transition-all duration-300 text-right"
+                >
+                  {/* Animated Incrementing Counter */}
+                  <div className="text-3xl sm:text-4xl lg:text-[40px] font-bold text-white tracking-tight leading-none drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
+                    <span>{toPersianDigits(27)}</span>
+                    {/* <span className="text-emerald-400 mr-1">B$</span> */}
+                    {isCountingDone ? <span className="text-emerald-400">+</span> : ''}
+                  </div>
+                  <p className="text-xs sm:text-sm text-slate-200/80 mt-2 font-normal leading-snug text-right">
+                    برندی که با پلانکس همکاری داشته‌اند
+                  </p>
+                </motion.div>
+              </div>
+            </div>
+
+            {/* 7. Bottom spacing */}
+            <div className="w-full pb-1" />
+          </main>
+          </div>
+        </section>
+
+          {/* ======================================================== */}
+          {/* INSIGHT & GROWTH SECTION                                 */}
+          {/* ======================================================== */}
+          <InsightSection />
+
+          {/* ======================================================== */}
+          {/* STATS COUNTER SECTION                                    */}
+          {/* ======================================================== */}
+          <StatsCounterSection />
+
+          {/* ======================================================== */}
+          {/* APPROACH SECTION                                         */}
+          {/* ======================================================== */}
+          <ApproachSection onOpenOrder={() => setOrderModalOpen(true)} />
+
+          {/* ======================================================== */}
+          {/* CLIENT LOGOS SECTION                                     */}
+          {/* ======================================================== */}
+          <ClientLogosSection />
+
+          {/* ======================================================== */}
+          {/* PORTFOLIO CASES SECTION                                  */}
+          {/* ======================================================== */}
+          <PortfolioCasesSection onOpenOrder={() => setOrderModalOpen(true)} />
+
+          {/* ======================================================== */}
+          {/* WHY PARTNER WITH US SECTION                              */}
+          {/* ======================================================== */}
+          <WhyPartnerSection onOpenContact={() => setContactModalOpen(true)} />
+
+          {/* ======================================================== */}
+          {/* LEADERSHIP SECTION                                       */}
+          {/* ======================================================== */}
+          <LeadershipSection />
+
+          {/* ======================================================== */}
+          {/* CTA BANNER SECTION                                       */}
+          {/* ======================================================== */}
+          <CtaBannerSection onOpenContact={() => setOrderModalOpen(true)} />
+
+          {/* ======================================================== */}
+          {/* FEATURED INSIGHTS SECTION                                */}
+          {/* ======================================================== */}
+          <FeaturedInsightsSection
+            onOpenBlog={() => {
+              setCurrentPage('blog');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            onSelectArticle={(articleId) => {
+              setSelectedArticleId(articleId);
+              setCurrentPage('article');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
           />
 
-          {/* Semi-transparent overlays for dark cinematic look and high text readability (no opaque layer) */}
-          <div className="absolute inset-0 bg-[#071317]/30" />
-          <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-[#071317] via-[#071317]/60 to-transparent" />
-          <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#071317]/70 to-transparent" />
-          <div className="absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-[#071317]/40 to-transparent" />
-        </div>
+          {/* ======================================================== */}
+          {/* FAQ SECTION                                              */}
+          {/* ======================================================== */}
+          <FaqSection onAskQuestion={() => setContactModalOpen(true)} />
 
-        {/* ======================================================== */}
-        {/* HERO CONTENT CONTAINER (z-10+)                           */}
-        {/* ======================================================== */}
-        <div className="relative z-10 flex flex-col justify-between min-h-screen w-full">
+          {/* ======================================================== */}
+          {/* CONNECT WITH US BANNER                                   */}
+          {/* ======================================================== */}
+          <ConnectBannerSection
+            onOpenContact={() => setContactModalOpen(true)}
+            onOpenReview={() => setReviewModalOpen(true)}
+          />
+        </>
+      )}
 
-      {/* ======================================================== */}
-      {/* HERO MAIN CONTENT SECTION (RTL)                          */}
-      {/* ======================================================== */}
-      <main className="relative z-20 min-h-[calc(100vh-100px)] flex flex-col justify-end px-6 sm:px-10 md:px-14 lg:px-16 pt-24 sm:pt-28 pb-4 sm:pb-6 text-right">
-        {/* Main Content Grid positioned close to bottom */}
-        <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mt-auto mb-1">
-          {/* Right Column in RTL: Heading + Paragraph + Action Buttons */}
-          <div className="lg:col-span-8 space-y-4 sm:space-y-5 mb-1 text-right">
-            {/* 4. Main Headline: Appears from bottom to top */}
-            <motion.h1
-              initial={{ y: 50, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.85, delay: 0.75, ease: [0.16, 1, 0.3, 1] }}
-              className="text-[40px] sm:text-[48px] lg:text-[54px] font-bold text-white tracking-tight leading-[1.2] max-w-3xl drop-shadow-[0_4px_24px_rgba(0,0,0,0.65)]"
-            >
-              انتخابی حرفه‌ای<br />
-              برای ساختن برندی متمایز
-            </motion.h1>
+      {currentPage === 'blog' && (
+        <BlogListPage
+          onSelectArticle={(articleId) => {
+            setSelectedArticleId(articleId);
+            setCurrentPage('article');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+          onGoHome={() => {
+            setCurrentPage('home');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+          onOpenOrder={() => setOrderModalOpen(true)}
+        />
+      )}
 
-            {/* Subtitle / Paragraph */}
-            <motion.p
-              initial={{ y: 40, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.95, ease: [0.16, 1, 0.3, 1] }}
-              className="text-[14px] sm:text-[15px] text-slate-200/90 font-normal leading-relaxed max-w-2xl drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)] text-right"
-            >
-             در پلانکس، وب‌سایت‌هایی طراحی و توسعه می‌دهیم که ترکیبی از استراتژی، طراحی و تکنولوژی‌اند؛ از اولین ایده تا تجربه‌ای سریع، زیبا و هدفمند که برای رشد برند شما ساخته شده است.
-            </motion.p>
+      {currentPage === 'article' && (
+        <BlogDetailPage
+          articleId={selectedArticleId}
+          onGoBackToBlog={() => {
+            setCurrentPage('blog');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+          onGoHome={() => {
+            setCurrentPage('home');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+          onSelectArticle={(articleId) => {
+            setSelectedArticleId(articleId);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+          onOpenOrder={() => setOrderModalOpen(true)}
+        />
+      )}
 
-            {/* 5. Hero Buttons */}
-            <div className="flex flex-wrap items-center gap-4 pt-1 text-[15px]">
-              {/* White Pill Button: Contact */}
-              <motion.button
-                type="button"
-                onClick={() => setContactModalOpen(true)}
-                initial={{ x: 60, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ duration: 0.75, delay: 1.1, ease: [0.16, 1, 0.3, 1] }}
-                className="bg-white hover:bg-slate-100 text-slate-950 font-bold px-6 sm:px-7 py-2.5 sm:py-3 rounded-full flex items-center gap-2 shadow-[0_8px_20px_rgba(0,0,0,0.35)] transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer text-[14px] group overflow-hidden"
-              >
-                <motion.span
-                  initial={{ x: 14, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ duration: 0.45, delay: 1.45, ease: 'easeOut' }}
-                >
-                  پروژه‌تان را شروع کنید
-                </motion.span>
-                <motion.span
-                  initial={{ scale: 0, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ duration: 0.4, delay: 1.25, ease: [0.34, 1.56, 0.64, 1] }}
-                  className="text-base font-normal group-hover:-translate-x-0.5 transition-transform"
-                >
-                  ←
-                </motion.span>
-              </motion.button>
+      {currentPage === 'terms' && (
+        <TermsPage
+          onGoHome={() => {
+            setCurrentPage('home');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+          onOpenContact={() => setContactModalOpen(true)}
+        />
+      )}
 
-              {/* Dark Translucent Glass Pill: Portfolio */}
-              <motion.button
-                type="button"
-                onClick={() => setPortfolioModalOpen(true)}
-                initial={{ x: 50, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ duration: 0.7, delay: 1.25, ease: [0.16, 1, 0.3, 1] }}
-                className="bg-[#0b242a]/60 hover:bg-[#0b242a]/85 border border-white/20 text-white font-medium px-6 sm:px-7 py-2.5 sm:py-3 rounded-full backdrop-blur-md transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer text-[14px] shadow-[0_4px_16px_rgba(0,0,0,0.2)]"
-              >
-                <motion.span
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 1.4 }}
-                >
-                  پروژه‌های ما را ببینید
-                </motion.span>
-              </motion.button>
-            </div>
-          </div>
-
-          {/* 6. Left Column in RTL: Stat Card */}
-          <div className="lg:col-span-4 flex flex-col items-start lg:items-start justify-end">
-            <motion.div
-              initial={{ y: -70, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.85, delay: 1.05, ease: [0.16, 1, 0.3, 1] }}
-              className="bg-white/[0.06] hover:bg-white/[0.09] border border-white/15 backdrop-blur-xl rounded-2xl p-6 sm:p-7 shadow-[0_16px_40px_rgba(0,0,0,0.35)] min-w-[240px] sm:min-w-[270px] transition-all duration-300 text-right"
-            >
-              {/* Animated Incrementing Counter */}
-              <div className="text-3xl sm:text-4xl lg:text-[40px] font-bold text-white tracking-tight leading-none drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
-                <span>{toPersianDigits(27)}</span>
-                {/* <span className="text-emerald-400 mr-1">B$</span> */}
-                {isCountingDone ? <span className="text-emerald-400">+</span> : ''}
-              </div>
-              <p className="text-xs sm:text-sm text-slate-200/80 mt-2 font-normal leading-snug text-right">
-                برندی که با پلانکس همکاری داشته‌اند
-              </p>
-            </motion.div>
-          </div>
-        </div>
-
-        {/* 7. Bottom spacing */}
-        <div className="w-full pb-1" />
-      </main>
-      </div>
-    </section>
-
-      {/* ======================================================== */}
-      {/* INSIGHT & GROWTH SECTION                                 */}
-      {/* ======================================================== */}
-      <InsightSection />
-
-      {/* ======================================================== */}
-      {/* STATS COUNTER SECTION                                    */}
-      {/* ======================================================== */}
-      <StatsCounterSection />
-
-      {/* ======================================================== */}
-      {/* APPROACH SECTION                                         */}
-      {/* ======================================================== */}
-      <ApproachSection onOpenOrder={() => setOrderModalOpen(true)} />
-
-      {/* ======================================================== */}
-      {/* CLIENT LOGOS SECTION                                     */}
-      {/* ======================================================== */}
-      <ClientLogosSection />
-
-      {/* ======================================================== */}
-      {/* PORTFOLIO CASES SECTION                                  */}
-      {/* ======================================================== */}
-      <PortfolioCasesSection />
-
-      {/* ======================================================== */}
-      {/* WHY PARTNER WITH US SECTION                              */}
-      {/* ======================================================== */}
-      <WhyPartnerSection onOpenContact={() => setContactModalOpen(true)} />
-
-      {/* ======================================================== */}
-      {/* LEADERSHIP SECTION                                       */}
-      {/* ======================================================== */}
-      <LeadershipSection />
-
-      {/* ======================================================== */}
-      {/* CTA BANNER SECTION                                       */}
-      {/* ======================================================== */}
-      <CtaBannerSection onOpenContact={() => setOrderModalOpen(true)} />
-
-      {/* ======================================================== */}
-      {/* FEATURED INSIGHTS SECTION                                */}
-      {/* ======================================================== */}
-      <FeaturedInsightsSection />
-
-      {/* ======================================================== */}
-      {/* FAQ SECTION                                              */}
-      {/* ======================================================== */}
-      <FaqSection onAskQuestion={() => setContactModalOpen(true)} />
-
-      {/* ======================================================== */}
-      {/* CONNECT WITH US BANNER                                   */}
-      {/* ======================================================== */}
-      <ConnectBannerSection
-        onOpenContact={() => setContactModalOpen(true)}
-        onOpenReview={() => setReviewModalOpen(true)}
-      />
+      {currentPage === 'privacy' && (
+        <PrivacyPage
+          onGoHome={() => {
+            setCurrentPage('home');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
+          onOpenContact={() => setContactModalOpen(true)}
+        />
+      )}
 
       {/* ======================================================== */}
       {/* FOOTER SECTION                                           */}
@@ -493,6 +602,14 @@ export default function App() {
       <FooterSection
         onOpenContact={() => setContactModalOpen(true)}
         onNavigate={(id) => handleNavClick(id)}
+        onOpenTerms={() => {
+          setCurrentPage('terms');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+        onOpenPrivacy={() => {
+          setCurrentPage('privacy');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
       />
 
       {/* Floating Back-To-Top Button */}

@@ -153,7 +153,7 @@ export const WhyPartnerSection: React.FC<WhyPartnerSectionProps> = ({ onOpenCont
             </div>
 
             {/* Quote Body */}
-            <p className="mt-4 text-[13px] sm:text-sm text-slate-100 font-normal leading-relaxed text-right line-clamp-4">
+            <p className="mt-4 text-[13px] sm:text-sm text-slate-100 font-normal leading-relaxed text-justify line-clamp-4">
               «{item.quote}»
             </p>
           </div>
@@ -206,6 +206,20 @@ export const WhyPartnerSection: React.FC<WhyPartnerSectionProps> = ({ onOpenCont
           </defs>
           <rect width="100%" height="100%" fill="url(#testimonials-dots)" />
         </svg>
+      </div>
+
+      {/* Centered Badge and Header */}
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 md:px-14 lg:px-16 mb-8 sm:mb-10 text-center relative z-10">
+        <div className="w-full flex justify-center mb-3">
+          <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 text-emerald-300 border border-white/15 text-xs font-semibold tracking-wide shadow-xs">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+            نظرات مشتریان و همکاران پلانکس
+          </span>
+        </div>
+        <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-[38px] font-bold text-white tracking-tight flex flex-wrap items-baseline justify-center gap-x-2.5 gap-y-1.5 leading-snug">
+          <span>روایت همراهی و رضایت</span>
+          <span className="text-emerald-400 font-normal">کسب‌وکارهای همکار</span>
+        </h2>
       </div>
 
       {/* ======================================================== */}

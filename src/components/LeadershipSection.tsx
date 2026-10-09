@@ -273,39 +273,37 @@ export const LeadershipSection: React.FC = () => {
   return (
     <section id="leadership-section" className="relative w-full bg-white text-[#0a181c] py-16 sm:py-24 px-6 sm:px-10 md:px-14 lg:px-16 overflow-hidden select-text" dir="rtl">
       <div className="max-w-7xl mx-auto">
-        {/* ======================================================== */}
-        {/* HEADER: TITLE RIGHT & SUBTITLE */}
-        {/* ======================================================== */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12 sm:mb-16">
-          <div className="text-right">
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-40px' }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="flex items-center gap-2 text-xs sm:text-[13px] text-[#094751] font-medium tracking-wide mb-2"
-            >
-              <Users className="w-4 h-4 text-emerald-600" />
-              <span>اعضای تیم استارت‌آپ پلانکس</span>
-            </motion.div>
+        {/* Section Badge (Centered) */}
+        <div className="w-full flex justify-center mb-3">
+          <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 text-[#0a4852] border border-emerald-200/60 text-xs font-semibold tracking-wide shadow-xs">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#439683]" />
+            تیم و مدیران متخصص پلانکس
+          </span>
+        </div>
 
-            <motion.h2
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-40px' }}
-              transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="text-3xl sm:text-4xl lg:text-[42px] font-medium tracking-tight text-[#0a1e23]"
-            >
-              با اعضای متخصص پلانکس آشنا شویم
-            </motion.h2>
-          </div>
-
-          <motion.p
-            initial={{ opacity: 0, y: 18 }}
+        {/* ======================================================== */}
+        {/* HEADER: TITLE & SUBTITLE DIRECTLY BELOW IT (MATCHING OTHER SECTIONS) */}
+        {/* ======================================================== */}
+        <div className="w-full mb-10 sm:mb-14 text-right">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-40px' }}
-            transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="text-xs sm:text-sm text-slate-500 font-normal max-w-md text-right leading-relaxed"
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-[36px] font-bold text-[#0c2227] tracking-tight flex flex-wrap items-baseline gap-x-2.5 gap-y-1.5 leading-snug mt-2"
+          >
+            <span className="text-[#0c2227]">تیم متخصص و همراهان پلانکس:</span>
+            <span className="text-[#439683] font-normal">
+              با اعضای متخصص و مدیران فنی پلانکس آشنا شویم
+            </span>
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="mt-3 text-sm sm:text-base text-slate-600 font-normal leading-relaxed w-full max-w-none text-justify"
           >
             تیمی متخصص در طراحی و توسعه وب‌سایت که با تکیه بر دانش فنی، تجربه و شناخت نیازهای کسب‌وکارها، راهکارهای دیجیتال متناسب با اهداف هر پروژه ارائه می‌دهد. برای آشنایی بیشتر با اعضای تیم، روی تصویر هر فرد کلیک کنید.
           </motion.p>

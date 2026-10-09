@@ -4,19 +4,24 @@ import logoImg from '../assets/imgs/Logo.png';
 interface FooterSectionProps {
   onOpenContact?: () => void;
   onNavigate?: (navId: string) => void;
+  onOpenTerms?: () => void;
+  onOpenPrivacy?: () => void;
 }
 
 export const FooterSection: React.FC<FooterSectionProps> = ({
   onOpenContact,
   onNavigate,
+  onOpenTerms,
+  onOpenPrivacy,
 }) => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <footer className="relative w-full bg-[#08383f] text-slate-300 pt-8 sm:pt-10 pb-5 sm:pb-6 px-6 sm:px-10 md:px-14 lg:px-16 rounded-t-[28px] sm:rounded-t-[36px] overflow-hidden select-text" dir="rtl">
-      {/* Decorative dot matrix pattern */}
+    <div className="w-full bg-white">
+      <footer className="relative w-full bg-[#08383f] text-slate-300 pt-8 sm:pt-10 pb-5 sm:pb-6 px-6 sm:px-10 md:px-14 lg:px-16 rounded-t-[28px] sm:rounded-t-[36px] overflow-hidden select-text" dir="rtl">
+        {/* Decorative dot matrix pattern */}
       <div className="absolute bottom-2 right-4 w-48 h-36 opacity-10 pointer-events-none">
         <svg width="100%" height="100%" fill="none">
           <defs>
@@ -46,10 +51,24 @@ export const FooterSection: React.FC<FooterSectionProps> = ({
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-7 lg:gap-8 pb-7 sm:pb-8 text-right">
           {/* Column 1: Mission Tagline & CTA Button (lg:col-span-4) */}
           <div className="lg:col-span-4 flex flex-col items-start text-right">
-            <h2>
-              پلانکس؛ همراه شما در مسیر رشد آنلاین
-            </h2>
-            <p className="text-xs sm:text-[13px] text-slate-200/90 font-normal leading-relaxed max-w-[320px]">
+            <div className="mb-2.5">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 text-emerald-300 text-[11px] font-semibold border border-white/15 mb-2.5 shadow-xs">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                استودیو طراحی و فناوری وب
+              </span>
+              
+              {/* Prominently Styled Brand Tagline */}
+              <div className="relative inline-block py-1">
+                <div className="absolute -inset-1 rounded-xl bg-gradient-to-r from-emerald-500/25 via-teal-400/10 to-transparent blur-sm pointer-events-none" />
+                <h2 className="relative text-base sm:text-lg lg:text-xl font-extrabold tracking-tight leading-snug flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_10px_#34d399] animate-pulse shrink-0" />
+                  <span className="bg-gradient-to-r from-white via-emerald-200 to-teal-100 bg-clip-text text-transparent font-black tracking-normal">
+                    پلانکس؛ همراه شما در مسیر رشد آنلاین
+                  </span>
+                </h2>
+              </div>
+            </div>
+            <p className="text-xs sm:text-[13px] text-slate-200/90 font-normal leading-relaxed max-w-[320px] text-justify">
               طراحی سایت فروشگاهی و شرکتی تا توسعه وردپرس، برنامه‌نویسی اختصاصی و خدمات سئو
             </p>
 
@@ -128,16 +147,22 @@ export const FooterSection: React.FC<FooterSectionProps> = ({
           <div className="lg:col-span-3 flex flex-col space-y-2 text-xs sm:text-[13px] text-right">
             <a
               href="#terms"
-              onClick={(e) => e.preventDefault()}
-              className="text-slate-300 hover:text-white transition-colors cursor-pointer w-fit"
+              onClick={(e) => {
+                e.preventDefault();
+                if (onOpenTerms) onOpenTerms();
+              }}
+              className="text-slate-300 hover:text-emerald-300 transition-colors cursor-pointer w-fit"
             >
               شرایط و قوانین استفاده
             </a>
 
             <a
               href="#privacy"
-              onClick={(e) => e.preventDefault()}
-              className="text-slate-300 hover:text-white transition-colors cursor-pointer w-fit"
+              onClick={(e) => {
+                e.preventDefault();
+                if (onOpenPrivacy) onOpenPrivacy();
+              }}
+              className="text-slate-300 hover:text-emerald-300 transition-colors cursor-pointer w-fit"
             >
               سیاست حفظ حریم خصوصی
             </a>
@@ -174,10 +199,11 @@ export const FooterSection: React.FC<FooterSectionProps> = ({
 
           {/* Center: Copyright Notice */}
           <div className="text-xs text-slate-400 font-normal">
-            تمامی حقوق مادی و معنوی محفوظ است © 2026
+            تمامی حقوق مادی و معنوی محفوظ است © ۱۴۰۵
           </div>
         </div>
       </div>
     </footer>
+    </div>
   );
 };

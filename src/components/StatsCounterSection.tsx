@@ -85,7 +85,7 @@ const StatCounter: React.FC<StatItemProps> = ({
       {/* Number with Incremental Animation */}
       <div className="text-4xl sm:text-5xl lg:text-[54px] font-bold tracking-tight text-[#0a1e23] leading-none select-text flex items-center justify-center">
         <span>{persianFormatted}</span>
-        <span className="text-[#124d57] mr-1">{suffix}</span>
+        <span className="text-[#439683] mr-1">{suffix}</span>
         {prefix && <span className="text-2xl mr-1 text-slate-600">{prefix}</span>}
       </div>
 
@@ -102,6 +102,13 @@ export const StatsCounterSection: React.FC = () => {
   return (
     <section className="relative w-full bg-[#fbfdfc] text-[#0a181c] py-14 sm:py-20 px-6 sm:px-10 md:px-14 lg:px-16 border-t border-[#e8eeec]/80 overflow-hidden" dir="rtl">
       <div className="max-w-6xl mx-auto flex flex-col items-center justify-center">
+        {/* Section Badge (Centered) */}
+        <div className="w-full flex justify-center mb-6">
+          <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 text-[#0a4852] border border-emerald-200/60 text-xs font-semibold tracking-wide shadow-xs">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#439683]" />
+            آمار و دستاوردهای کلیدی پلانکس
+          </span>
+        </div>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-14 w-full items-center justify-center text-center">
           {/* Stat 1: کل پروژه ها = +17 */}
           <StatCounter

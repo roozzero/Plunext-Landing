@@ -72,19 +72,27 @@ export const InsightSection: React.FC = () => {
       dir="rtl"
     >
       <div className="max-w-7xl mx-auto">
+        {/* Section Badge (Centered) */}
+        <div className="w-full flex justify-center mb-3">
+          <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 text-[#0a4852] border border-emerald-200/60 text-xs font-semibold tracking-wide shadow-xs">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#439683]" />
+            رویکرد و فلسفه پلانکس
+          </span>
+        </div>
+
         {/* ======================================================== */}
         {/* SECTION HEADER                                           */}
         {/* ======================================================== */}
-        <div className="max-w-2xl mb-6 sm:mb-8 text-right">
+        <div className="w-full mb-6 sm:mb-8 text-right">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-40px' }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="text-3xl sm:text-4xl lg:text-[44px] font-medium tracking-tight leading-[1.2]"
+            className="text-xl sm:text-2xl md:text-3xl lg:text-[40px] font-bold tracking-tight flex flex-wrap items-baseline gap-x-2.5 gap-y-1.5 leading-snug"
           >
-            <span className="block text-[#0b1e22]">هر وب‌سایت ماندگار،</span>
-            <span className="block text-[#439683] font-normal">با یک فکر خوب آغاز می‌شود</span>
+            <span className="text-[#0b1e22]">هر وب‌سایت ماندگار،</span>
+            <span className="text-[#439683] font-normal">با یک فکر خوب آغاز می‌شود</span>
           </motion.h2>
 
           <motion.p
@@ -92,7 +100,7 @@ export const InsightSection: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-40px' }}
             transition={{ duration: 0.6, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-2.5 text-xs sm:text-sm text-slate-500 font-normal leading-relaxed max-w-xl text-right"
+            className="mt-3 text-sm sm:text-base text-slate-600 font-normal leading-relaxed w-full max-w-none text-justify"
           >
             ما در پلانکس فقط وب‌سایت طراحی نمی‌کنیم؛ تجربه‌های دیجیتالی می‌سازیم که با هدف، هویت و آینده‌ی برند شما شکل گرفته‌اند.
           </motion.p>
@@ -133,7 +141,7 @@ export const InsightSection: React.FC = () => {
               <div className="flex items-center gap-6 justify-between">
                 <div className="text-right">
                   <div className="text-xl sm:text-2xl font-bold text-white tracking-tight leading-none">
-                    01
+                    ۰۱
                   </div>
                   <div className="text-[10px] sm:text-[11px] text-slate-300 mt-1 font-normal">
                     استراتژی و شناخت
@@ -144,7 +152,7 @@ export const InsightSection: React.FC = () => {
 
                 <div className="text-right">
                   <div className="text-xl sm:text-2xl font-bold text-white tracking-tight leading-none">
-                    02
+                    ۰۲
                   </div>
                   <div className="text-[10px] sm:text-[11px] text-slate-300 mt-1 font-normal">
                     طراحی و توسعه
