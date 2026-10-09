@@ -39,8 +39,7 @@ export const CtaBannerSection: React.FC<CtaBannerSectionProps> = ({ onOpenContac
           {/* Right Title in RTL: 2 lines */}
           <div className="relative z-10 max-w-2xl text-right">
             <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-normal sm:font-medium tracking-tight text-white leading-snug">
-              آماده‌اید شریک سرمایه‌گذاری ایده‌آل را<br className="hidden sm:inline" />
-              {' '}برای گام و جهش بعدی خود بیابید؟
+              سفارش طراحی سایت خود را به پلانکس بسپارید<br className="hidden sm:inline" />
             </h2>
           </div>
 

@@ -46,8 +46,11 @@ export const FooterSection: React.FC<FooterSectionProps> = ({
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-7 lg:gap-8 pb-7 sm:pb-8 text-right">
           {/* Column 1: Mission Tagline & CTA Button (lg:col-span-4) */}
           <div className="lg:col-span-4 flex flex-col items-start text-right">
+            <h2>
+              پلانکس؛ همراه شما در مسیر رشد آنلاین
+            </h2>
             <p className="text-xs sm:text-[13px] text-slate-200/90 font-normal leading-relaxed max-w-[320px]">
-              ورت (Vort) حامی مدیران و کارآفرینان استثنایی در تملک، تحول راهبردی و رشد پایدار کسب‌وکارها در بازارهای مدرن است.
+              طراحی سایت فروشگاهی و شرکتی تا توسعه وردپرس، برنامه‌نویسی اختصاصی و خدمات سئو
             </p>
 
             <button
@@ -124,15 +127,6 @@ export const FooterSection: React.FC<FooterSectionProps> = ({
           {/* Column 3: Legal & Social Links (lg:col-span-3) */}
           <div className="lg:col-span-3 flex flex-col space-y-2 text-xs sm:text-[13px] text-right">
             <a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-slate-300 hover:text-white transition-colors cursor-pointer w-fit"
-            >
-              لینکدین رسمی
-            </a>
-
-            <a
               href="#terms"
               onClick={(e) => e.preventDefault()}
               className="text-slate-300 hover:text-white transition-colors cursor-pointer w-fit"
@@ -155,11 +149,11 @@ export const FooterSection: React.FC<FooterSectionProps> = ({
               href="mailto:info@vort.com"
               className="text-slate-300 hover:text-white transition-colors cursor-pointer w-fit dir-ltr"
             >
-              info@vort.com
+              info@plunex.ir
             </a>
 
             <span className="text-slate-300">
-              لس‌آنجلس، کالیفرنیا
+              زنجان، ابهر 
             </span>
           </div>
         </div>
@@ -172,7 +166,7 @@ export const FooterSection: React.FC<FooterSectionProps> = ({
           <div className="flex items-center gap-2">
             <img
               src={logoImg}
-              alt="لوگوی ورت (Vort)"
+              alt="لوگوی پلانکس"
               className="h-6 sm:h-7 w-auto object-contain cursor-pointer brightness-100"
               onClick={scrollToTop}
             />
@@ -180,18 +174,8 @@ export const FooterSection: React.FC<FooterSectionProps> = ({
 
           {/* Center: Copyright Notice */}
           <div className="text-xs text-slate-400 font-normal">
-            تمامی حقوق مادی و معنوی محفوظ است © ۲۰۲۵
+            تمامی حقوق مادی و معنوی محفوظ است © 2026
           </div>
-
-          {/* Left: Back to Top */}
-          <button
-            type="button"
-            onClick={scrollToTop}
-            className="text-xs text-slate-300 hover:text-white flex items-center gap-1.5 transition-colors cursor-pointer group select-text"
-          >
-            <span>بازگشت به ابتدای صفحه</span>
-            <span className="group-hover:-translate-y-0.5 transition-transform">↑</span>
-          </button>
         </div>
       </div>
     </footer>

@@ -123,11 +123,11 @@ export const PortfolioCasesSection: React.FC = () => {
     {
       id: 'steel-river-text',
       type: 'text',
-      title: 'استیل ریور (Steel River)',
-      category: 'مهندسی و تجهیزات سنگین صنعتی',
-      metricsBadge: 'رشد سودآوری ۳۴٪+',
+      title: 'تیچرشو',
+      category: 'پلتفرم آموزشی و تحلیلی مدارس',
+      metricsBadge: 'طراحی وب‌سایت سفارشی',
       description:
-        'پلتفرم خدمات صنعتی پیشرو با راهبرد خرید و توسعه هدفمند در حوزه‌های تخصصی. هسته اصلی آن، CraneTech، متخصص در بازرسی، نوسازی و ساخت جرثقیل‌های سقفی سنگین و پیشرفته صنعتی است.',
+        'تیچرشو بستری برای ارائه محتوای هوشمند تحلیلی و آموزشی ویژه مدارس است. در طراحی چنین پلتفرمی، ساختار منظم محتوا، دسترسی آسان کاربران و تجربه کاربری روان، نقش مهمی در ارائه مؤثر خدمات آموزشی دارند',
       bgColor: 'bg-[#edf4f2]',
       textColor: 'text-[#0b333a]',
       logo: (
@@ -153,18 +153,18 @@ export const PortfolioCasesSection: React.FC = () => {
       id: 'steel-river-image',
       type: 'image',
       imageSrc: constructionImg,
-      imageAlt: 'تجهیزات و زیرساخت‌های مهندسی استیل ریور',
+      imageAlt: 'پلتفرم هوشمند تیچرشو',
     },
 
     // 3. Union Software Group (Text Card: Vibrant Teal)
     {
       id: 'union-software-text',
       type: 'text',
-      title: 'گروه نرم‌افزاری یونین (Union)',
-      category: 'نرم‌افزارهای یکپارچه سازمانی و ناوگان',
-      metricsBadge: 'پوشش ۱۲ هزار ناوگان',
+      title: 'دیجی کلاه',
+      category: 'مرجع مد و اکسسوری',
+      metricsBadge: 'طراحی وب‌سایت فروشگاهی',
       description:
-        'هلدینگ بلندمدت که نرم‌افزارهای تخصصی بازارهای عمودی را جذب و توسعه می‌دهد. دارایی اصلی آن، BusPlanner، نرم‌افزار پیشرو مدیریت لجستیک، مسیربندی و ناوبری ناوگان ترابری دانش‌آموزی و شهری است.',
+        'طراحی وب‌سایت دیجی کلاه با تمرکز بر معرفی محصولات مد و اکسسوری، دسته‌بندی منظم کالاها و فراهم‌کردن مسیر خریدی ساده و کاربرپسند برای مشتریان',
       bgColor: 'bg-[#4096a1]',
       textColor: 'text-white',
       logo: (
@@ -182,18 +182,18 @@ export const PortfolioCasesSection: React.FC = () => {
       id: 'union-software-image',
       type: 'image',
       imageSrc: skyscraperImg,
-      imageAlt: 'زیرساخت‌های فناوری و مراکز ابری سازمانی',
+      imageAlt: 'دیجی کلاه',
     },
 
     // 5. Sabrepak (Text Card)
     {
       id: 'sabrepak-text',
       type: 'text',
-      title: 'صنایع فناور سابرپک (Sabrepak)',
-      category: 'تجهیزات فوق دقیق و هوانوردی',
-      metricsBadge: 'استاندارد بین‌المللی ISO',
+      title: 'فیت کلاب',
+      category: 'سلامت و تناسب اندام',
+      metricsBadge: 'طراحی وب‌سایت خدماتی',
       description:
-        'توسعه‌دهنده بسته‌بندی‌ها و تجهیزات محافظتی فوق دقیق با استانداردهای سخت‌گیرانه برای زنجیره تأمین تجهیزات پزشکی حیاتی و صنایع هوانوردی در سطح جهانی.',
+        'یک وب‌سایت حرفه‌ای در حوزه تناسب اندام باید خدمات را شفاف معرفی کند و مسیر ارتباط کاربران با مجموعه را ساده سازد. ساختار محتوایی فیت کلاب با تمرکز بر معرفی خدمات سلامت و ورزش تعریف می‌شود',
       bgColor: 'bg-[#e7efec]',
       textColor: 'text-[#0a333b]',
       logo: (
@@ -213,18 +213,18 @@ export const PortfolioCasesSection: React.FC = () => {
       id: 'sabrepak-image',
       type: 'image',
       imageSrc: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=900&q=80',
-      imageAlt: 'آزمایشگاه کالیبراسیون و فناوری مواد سابرپک',
+      imageAlt: 'فیت کلاب',
     },
 
     // 7. NexaCloud Fintech (Text Card: Dark Slate Luxury)
     {
       id: 'nexacloud-text',
       type: 'text',
-      title: 'نکساکلاود فین‌تک (NexaCloud)',
-      category: 'زیرساخت پرداخت و خدمات بانکی نوین',
-      metricsBadge: 'پردازش روزانه +۲ میلیون تراکنش',
+      title: 'چرمدوزک',
+      category: 'صنایع چرم دست‌دوز',
+      metricsBadge: 'وب‌سایت فروشگاهی',
       description:
-        'سامانه مدیریت پرداخت‌های هوشمند سازمانی، تسویه ارزی بلادرنگ و پلتفرم‌های لایسنس‌گذاری بانکداری باز با امنیت رمزنگاری شده چندمرحله‌ای.',
+        'طراحی وب‌سایت چرمدوزک با تمرکز بر معرفی محصولات چرمی دست‌دوز، نمایش جزئیات محصولات و بازتاب هویت برند در تجربه کاربری؛ بستری برای معرفی حرفه‌ای هنر و محصولات چرمی در فضای آنلاین',
       bgColor: 'bg-[#0b2b32]',
       textColor: 'text-white',
       logo: (
@@ -242,18 +242,18 @@ export const PortfolioCasesSection: React.FC = () => {
       id: 'nexacloud-image',
       type: 'image',
       imageSrc: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80',
-      imageAlt: 'داشبورد آنالیز تراکنش‌ها و ابزارهای نکساکلاود',
+      imageAlt: 'چرمدوزک',
     },
 
     // 9. BioVant Health (Text Card: Fresh Mint)
     {
       id: 'biovant-text',
       type: 'text',
-      title: 'بایووانت سلامت دیجیتال (BioVant)',
-      category: 'سلامت همراه و تله‌مدیسین',
-      metricsBadge: 'بیش از ۴۵۰ مرکز درمانی متصل',
+      title: 'ویکی پکیج',
+      category: 'صنعت بسته‌بندی و لجستیک',
+      metricsBadge: 'وب‌سایت شرکتی',
       description:
-        'پلتفرم پرونده الکترونیک سلامت، پایش هوشمند بیماران و اتصال سیستم‌های بیمارستانی به هوش مصنوعی تشخیص زودهنگام در خاورمیانه.',
+        'طراحی وب‌سایت ویکی پکیج با تمرکز بر معرفی محصولات و خدمات صنعت بسته‌بندی، سازمان‌دهی اطلاعات تخصصی و ایجاد بستری مناسب برای ارتباط مشتریان و کسب‌وکارهای فعال در حوزه بسته‌بندی و لجستیک',
       bgColor: 'bg-[#e2ede9]',
       textColor: 'text-[#0a3338]',
       logo: (
@@ -271,18 +271,18 @@ export const PortfolioCasesSection: React.FC = () => {
       id: 'biovant-image',
       type: 'image',
       imageSrc: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=900&q=80',
-      imageAlt: 'فناوری تله‌مدیسین و پایش پرونده بیماران',
+      imageAlt: 'ویکی پکیج',
     },
 
     // 11. LogixTrade AI (Text Card: Emerald Accent)
     {
       id: 'logixtrade-text',
       type: 'text',
-      title: 'لوجیکس‌ترِید (LogixTrade AI)',
-      category: 'لجستیک بین‌الملل و بهینه‌سازی باربری',
-      metricsBadge: 'کاهش ۳۸٪ زمان ترخیص و انبارداری',
+      title: 'چی مده',
+      category: 'رسانه ترند و فشن',
+      metricsBadge: 'وب‌سایت فروشگاهی',
       description:
-        'نرم‌افزار مدیریت کانتینری و ناوگان کشتیرانی مبتنی بر هوش مصنوعی پیش‌بین برای بهینه‌سازی مسیرهای ترانزیت، ترخیص گمرکی و تخصیص انبارها.',
+        'طراحی وب‌سایت چی مده با تمرکز بر انتشار محتوای مرتبط با مد و فشن، نمایش منظم مطالب و فراهم‌کردن تجربه‌ای روان برای مخاطبانی که به دنبال جدیدترین موضوعات و ترندهای دنیای مد هستند',
       bgColor: 'bg-[#2a737d]',
       textColor: 'text-white',
       logo: (
@@ -300,7 +300,65 @@ export const PortfolioCasesSection: React.FC = () => {
       id: 'logixtrade-image',
       type: 'image',
       imageSrc: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=80',
-      imageAlt: 'پایانه‌های کانتینری و باربری هوشمند لوجیکس‌ترِید',
+      imageAlt: 'چی مده',
+    },
+
+    {
+      id: 'sabrepak-text',
+      type: 'text',
+      title: 'ساپینو شاپ',
+      category: 'فروشگاه سبک زندگی مدرن',
+      metricsBadge: 'وب‌سایت فروشگاهی',
+      description:
+        'طراحی فروشگاه اینترنتی ساپینو شاپ با تمرکز بر معرفی محصولات سبک زندگی، دسته‌بندی کاربردی کالاها و ایجاد تجربه خرید آنلاین ساده و منظم برای مشتریان',
+      bgColor: 'bg-[#e7efec]',
+      textColor: 'text-[#0a333b]',
+      logo: (
+        <div className="flex items-center gap-2 text-[#0a3d46]">
+          <span className="font-extrabold italic tracking-wider text-xl font-sans">
+            SABREPAK
+          </span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5">
+            <path d="M4 14c2-4 6-7 12-7l2 3-4 2 4 4-5 1-2 4-7-7z" />
+          </svg>
+        </div>
+      ),
+    },
+
+    // 6. Sabrepak (Image Card)
+    {
+      id: 'sabrepak-image',
+      type: 'image',
+      imageSrc: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=900&q=80',
+      imageAlt: 'ساپینو شاپ',
+    },
+
+    {
+      id: 'nexacloud-text',
+      type: 'text',
+      title: 'آکادمی روزیرو',
+      category: 'آکادمی آموزش انلاین',
+      metricsBadge: 'وب‌سایت سفارشی',
+      description:
+        'طراحی وب‌سایت آکادمی روزیرو با تمرکز بر معرفی دوره‌ها و محتوای آموزشی در حوزه توسعه مهارت و سرمایه‌گذاری، سازمان‌دهی مطالب و فراهم‌کردن دسترسی آسان کاربران به اطلاعات آموزشی',
+      bgColor: 'bg-[#0b2b32]',
+      textColor: 'text-white',
+      logo: (
+        <div className="flex items-center gap-2 text-emerald-300">
+          <div className="w-7 h-7 rounded-lg bg-emerald-500/20 border border-emerald-400/30 flex items-center justify-center font-bold font-mono text-sm">
+            N
+          </div>
+          <span className="font-bold tracking-tight text-lg font-sans text-white">NexaCloud</span>
+        </div>
+      ),
+    },
+
+    // 8. NexaCloud Fintech (Image Card)
+    {
+      id: 'nexacloud-image',
+      type: 'image',
+      imageSrc: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80',
+      imageAlt: 'آکادمی روزیرو',
     },
   ];
 
@@ -315,17 +373,14 @@ export const PortfolioCasesSection: React.FC = () => {
         {/* TOP ROW: HEADINGS ON RIGHT ONLY                           */}
         {/* ======================================================== */}
         <div className="max-w-3xl mb-10 sm:mb-14 text-right">
-          <span className="text-xs font-mono uppercase tracking-wider text-[#0a8268] font-bold">
-            پورتفولیو و شرکت‌های سرمایه‌پذیر
-          </span>
           <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#0c2227] tracking-tight leading-[1.25] mt-2">
-            گزیده‌ای از مشارکت‌های فعال
+            پورتفولیو پلانکس؛ از ایده تا اجرای پروژه‌ها
             <span className="block text-[#0a8268] font-normal">
-              و نمونه پروژه‌های پیشرو در صنایع زیرساختی
+              نگاهی به نمونه پروژه‌های طراحی و توسعه وب‌اپلیکیشن پلانکس
             </span>
           </h2>
           <p className="mt-3 text-xs sm:text-sm text-slate-500 font-normal leading-relaxed text-right">
-            همکاری‌های متمرکز ما در شرکت‌های صنعتی، نرم‌افزارهای عمودی، لجستیک و سلامت با تمرکز بر شتابدهی سودآوری و رهبری بازار.
+            در پلانکس، وب‌سایت‌هایی متناسب با نیاز کسب‌وکارها طراحی و توسعه می‌دهیم؛ از فروشگاه‌های اینترنتی و وب‌سایت‌های شرکتی تا پلتفرم‌های آموزشی و پروژه‌های اختصاصی. در این بخش، با نمونه‌کارها و حوزه‌های فعالیت برندهایی آشنا شوید که در مسیر حضور حرفه‌ای در فضای دیجیتال گام برداشته‌اند
           </p>
         </div>
 
@@ -384,7 +439,7 @@ export const PortfolioCasesSection: React.FC = () => {
 
                 {/* Bottom link */}
                 <div className="pt-4 border-t border-black/10 flex items-center justify-between text-xs font-semibold cursor-pointer group">
-                  <span>مطالعه موردی و نتایج راهبردی</span>
+                  <span>مشاهده کاتالوگ و تصاویر</span>
                   <div className="w-7 h-7 rounded-full bg-black/10 flex items-center justify-center group-hover:-translate-x-1 transition-transform">
                     <ArrowLeft className="w-3.5 h-3.5" />
                   </div>
@@ -415,11 +470,10 @@ export const PortfolioCasesSection: React.FC = () => {
               onClick={handlePrev}
               disabled={!canGoPrev}
               aria-label="کارت‌های قبلی"
-              className={`w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center transition-all ${
-                canGoPrev
-                  ? 'bg-white text-slate-800 shadow-sm hover:bg-slate-50 hover:border-slate-300 hover:scale-105 active:scale-95 cursor-pointer'
-                  : 'bg-slate-100/70 text-slate-300 cursor-not-allowed border-transparent'
-              }`}
+              className={`w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center transition-all ${canGoPrev
+                ? 'bg-white text-slate-800 shadow-sm hover:bg-slate-50 hover:border-slate-300 hover:scale-105 active:scale-95 cursor-pointer'
+                : 'bg-slate-100/70 text-slate-300 cursor-not-allowed border-transparent'
+                }`}
             >
               <ArrowRight className="w-4 h-4" />
             </button>
@@ -430,11 +484,10 @@ export const PortfolioCasesSection: React.FC = () => {
               onClick={handleNext}
               disabled={!canGoNext}
               aria-label="کارت‌های بعدی"
-              className={`w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center transition-all ${
-                canGoNext
-                  ? 'bg-[#0a8268] text-white shadow-md hover:bg-[#086b55] hover:scale-105 active:scale-95 cursor-pointer'
-                  : 'bg-slate-100/70 text-slate-300 cursor-not-allowed border-transparent'
-              }`}
+              className={`w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center transition-all ${canGoNext
+                ? 'bg-[#0a8268] text-white shadow-md hover:bg-[#086b55] hover:scale-105 active:scale-95 cursor-pointer'
+                : 'bg-slate-100/70 text-slate-300 cursor-not-allowed border-transparent'
+                }`}
             >
               <ArrowLeft className="w-4 h-4" />
             </button>

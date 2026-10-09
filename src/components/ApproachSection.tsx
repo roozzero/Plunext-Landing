@@ -37,9 +37,9 @@ export const ApproachSection: React.FC<ApproachSectionProps> = ({ onOpenOrder })
   const items: ValueCardItem[] = [
     {
       id: 'insight',
-      title: 'تخصص مبتنی بر بینش و تحلیل عمیق از بازار',
-      shortDesc: 'استفاده از داده‌های ساختاریافته، روندهای کلان اقتصادی و پژوهش‌های اختصاصی در هر صنعت.',
-      tag: 'تحلیل داده‌محور و مهندسی سیستم',
+      title: 'طراحی سایت حرفه‌ای متناسب با نیاز کسب‌وکار',
+      shortDesc: 'طراحی و توسعه وب‌سایت‌های فروشگاهی و شرکتی با وردپرس، React و برنامه‌نویسی اختصاصی، متناسب با اهداف و نیازهای کسب‌وکار شما',
+      tag: 'طراحی سایت',
       image: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80',
       specialtyTitle: 'تیم معماری داده، تحلیلگران مالی و استراتژیست‌های بازار',
       specialtyDescription:
@@ -78,9 +78,9 @@ export const ApproachSection: React.FC<ApproachSectionProps> = ({ onOpenOrder })
     },
     {
       id: 'partnership',
-      title: 'شراکتی که بسیار فراتر از تأمین سرمایه امتداد می‌یابد',
-      shortDesc: 'حضور فعال در کنار بنیان‌گذاران و مدیران ارشد برای گشایش بازارهای جدید و ارتقای حاکمیت شرکتی.',
-      tag: 'توسعه محصول و رهبری فنی',
+      title: 'قالب وردپرس؛ متناسب با برند و اهداف شما',
+      shortDesc: 'طراحی و توسعه قالب‌های وردپرس متناسب با هویت برند و نیازهای کسب‌وکار، با تمرکز بر سرعت، تجربه کاربری و ساختار بهینه برای سئو',
+      tag: 'طراحی قالب وردپرس',
       image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80',
       specialtyTitle: 'تیم توسعه محصول، طراحان تجربه کاربری (UI/UX) و مدیران مهندسی',
       specialtyDescription:
@@ -119,9 +119,9 @@ export const ApproachSection: React.FC<ApproachSectionProps> = ({ onOpenOrder })
     },
     {
       id: 'adaptability',
-      title: 'توانمندی راهبردی از مسیر انعطاف و چابکی عملیاتی',
-      shortDesc: 'تطبیق بلادرنگ استراتژی‌ها با تحولات بازار، پیشرفت‌های فناورانه و تغییرات مقرراتی.',
-      tag: 'تحول دیجیتال و هوش مصنوعی',
+      title: 'سئو و بهینه‌سازی سایت برای جذب مشتری',
+      shortDesc: 'با بهینه‌سازی فنی سایت، بهبود ساختار محتوا و هدف‌گیری کلمات کلیدی مرتبط، به افزایش شانس دیده‌شدن وب‌سایت شما در نتایج گوگل کمک می‌کنیم',
+      tag: 'سئو و بهینه‌سازی وب‌سایت',
       image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80',
       specialtyTitle: 'تیم تخصصی هوش مصنوعی، اتوماسیون فرآیندها و متدولوژی‌های Agile',
       specialtyDescription:
@@ -160,9 +160,9 @@ export const ApproachSection: React.FC<ApproachSectionProps> = ({ onOpenOrder })
     },
     {
       id: 'trust',
-      title: 'اعتماد متقابل به عنوان شالوده و بنیان ارزش‌آفرینی',
-      shortDesc: 'تعهد پایدار به صداقت، هم‌راستایی کامل منافع و شفافیت مطلق در تمامی تعاملات حرفه‌ای.',
-      tag: 'حاکمیت فنی و پشتیبانی پایدار',
+      title: 'توسعه افزونه وردپرس برای امکانات فراتر از قالب',
+      shortDesc: 'توسعه افزونه‌های اختصاصی وردپرس برای افزودن قابلیت‌های جدید، خودکارسازی فرایندها و یکپارچه‌سازی امکانات موردنیاز وب‌سایت شما',
+      tag: 'طراحی افزونه',
       image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1200&q=80',
       specialtyTitle: 'تیم تضمین کیفیت (QA)، امنیت اطلاعات، حقوقی و مانیتورینگ ۲۴/۷',
       specialtyDescription:
@@ -210,17 +210,6 @@ export const ApproachSection: React.FC<ApproachSectionProps> = ({ onOpenOrder })
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
         <div className="max-w-3xl mb-12 sm:mb-16 text-right">
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-40px' }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0a8268]/10 border border-[#0a8268]/20 text-[#0a8268] text-xs font-semibold mb-3.5"
-          >
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>رویکرد متمایز و تخصص‌های تیم ورت</span>
-          </motion.div>
-
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -228,9 +217,9 @@ export const ApproachSection: React.FC<ApproachSectionProps> = ({ onOpenOrder })
             transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             className="text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#0c2227] tracking-tight leading-[1.25]"
           >
-            رویکرد ما؛ فراتر از سرمایه‌گذاری سنتی،
+            تخصص‌های پلانکس در طراحی و توسعه
             <span className="block text-[#0a8268] font-normal mt-1">
-              معماری پایدار و تخصص فنی در کنار رهبران برجسته
+              راهکارهای تخصصی طراحی سایت برای رشد کسب‌وکار شما
             </span>
           </motion.h2>
 
@@ -241,7 +230,7 @@ export const ApproachSection: React.FC<ApproachSectionProps> = ({ onOpenOrder })
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mt-4 text-sm sm:text-base text-slate-600 font-normal leading-relaxed text-right"
           >
-            ما تجربه انباشته دهه‌ها حضور در بالاترین سطوح بازار، بینش ژرف تحلیل داده‌ها و مهارت‌های نوین مهندسی نرم‌افزار را گردهم آورده‌ایم. برای مشاهده جزئیات و تخصص‌های هر بخش، نشانگر را روی کارت‌ها نگه دارید.
+           از طراحی سایت فروشگاهی و شرکتی تا توسعه قالب و افزونه‌های اختصاصی؛ پلانکس راهکارهای دیجیتال متناسب با نیاز کسب‌وکار شما را ارائه می‌دهد
           </motion.p>
         </div>
 

@@ -161,7 +161,7 @@ export default function App() {
           >
             <img
               src={logoImg}
-              alt="لوگوی ورت"
+              alt="لوگوی پلانکس"
               className="h-7 sm:h-8 md:h-9 w-auto object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]"
               onError={(e) => {
                 e.currentTarget.style.display = 'none';
@@ -306,7 +306,7 @@ export default function App() {
         <div className="absolute inset-0 z-0 pointer-events-none">
           <img
             src={heroBg}
-            alt="نمای معماری ساختمان ورت"
+            alt="توسعه و برنامه نویسی"
             className="absolute inset-0 w-full h-full object-cover object-center select-text"
             onError={(e) => {
               console.warn('Hero background image failed to load', e);
@@ -340,8 +340,8 @@ export default function App() {
               transition={{ duration: 0.85, delay: 0.75, ease: [0.16, 1, 0.3, 1] }}
               className="text-[40px] sm:text-[48px] lg:text-[54px] font-bold text-white tracking-tight leading-[1.2] max-w-3xl drop-shadow-[0_4px_24px_rgba(0,0,0,0.65)]"
             >
-              خلق ارزش پایدار<br />
-              در بازارهای پویا و پرنوسان
+              انتخابی حرفه‌ای<br />
+              برای ساختن برندی متمایز
             </motion.h1>
 
             {/* Subtitle / Paragraph */}
@@ -351,7 +351,7 @@ export default function App() {
               transition={{ duration: 0.8, delay: 0.95, ease: [0.16, 1, 0.3, 1] }}
               className="text-[14px] sm:text-[15px] text-slate-200/90 font-normal leading-relaxed max-w-2xl drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)] text-right"
             >
-              ما با بینش عمیق، انضباط مالی و باوری پایدار سرمایه‌گذاری می‌کنیم — مشارکت با رهبران برجسته برای خلق اثری ماندگار در صنایع رو به تحول.
+             در پلانکس، وب‌سایت‌هایی طراحی و توسعه می‌دهیم که ترکیبی از استراتژی، طراحی و تکنولوژی‌اند؛ از اولین ایده تا تجربه‌ای سریع، زیبا و هدفمند که برای رشد برند شما ساخته شده است.
             </motion.p>
 
             {/* 5. Hero Buttons */}
@@ -370,7 +370,7 @@ export default function App() {
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ duration: 0.45, delay: 1.45, ease: 'easeOut' }}
                 >
-                  ارتباط با ما
+                  پروژه‌تان را شروع کنید
                 </motion.span>
                 <motion.span
                   initial={{ scale: 0, opacity: 0 }}
@@ -396,7 +396,7 @@ export default function App() {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 1.4 }}
                 >
-                  مشاهده پورتفولیو
+                  پروژه‌های ما را ببینید
                 </motion.span>
               </motion.button>
             </div>
@@ -412,12 +412,12 @@ export default function App() {
             >
               {/* Animated Incrementing Counter */}
               <div className="text-3xl sm:text-4xl lg:text-[40px] font-bold text-white tracking-tight leading-none drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
-                <span>{toPersianDigits(statNumber.toFixed(1))}</span>
-                <span className="text-emerald-400 mr-1">B$</span>
+                <span>{toPersianDigits(27)}</span>
+                {/* <span className="text-emerald-400 mr-1">B$</span> */}
                 {isCountingDone ? <span className="text-emerald-400">+</span> : ''}
               </div>
               <p className="text-xs sm:text-sm text-slate-200/80 mt-2 font-normal leading-snug text-right">
-                سرمایه‌گذاری در بازارهای خصوصی و راهبردی
+                برندی که با پلانکس همکاری داشته‌اند
               </p>
             </motion.div>
           </div>

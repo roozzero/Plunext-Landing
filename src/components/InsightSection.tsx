@@ -83,8 +83,8 @@ export const InsightSection: React.FC = () => {
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             className="text-3xl sm:text-4xl lg:text-[44px] font-medium tracking-tight leading-[1.2]"
           >
-            <span className="block text-[#0b1e22]">هر سرمایه‌گذاری ماندگار</span>
-            <span className="block text-[#439683] font-normal">با بینش عمیق آغاز می‌شود</span>
+            <span className="block text-[#0b1e22]">هر وب‌سایت ماندگار،</span>
+            <span className="block text-[#439683] font-normal">با یک فکر خوب آغاز می‌شود</span>
           </motion.h2>
 
           <motion.p
@@ -94,7 +94,7 @@ export const InsightSection: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
             className="mt-2.5 text-xs sm:text-sm text-slate-500 font-normal leading-relaxed max-w-xl text-right"
           >
-            شرکای ما دهه‌ها تجربه در بازارهای پیشرو، چشم‌اندازی آینده‌نگر و تعهدی مشترک به خلق ارزش پایدار و بلندمدت را در کنار یکدیگر قرار داده‌اند.
+            ما در پلانکس فقط وب‌سایت طراحی نمی‌کنیم؛ تجربه‌های دیجیتالی می‌سازیم که با هدف، هویت و آینده‌ی برند شما شکل گرفته‌اند.
           </motion.p>
         </div>
 
@@ -118,7 +118,7 @@ export const InsightSection: React.FC = () => {
             <div className="absolute inset-0 z-0 overflow-hidden">
               <img
                 src={partnersImg}
-                alt="شرکای ورت (Vort)"
+                alt="تیم پلانکس"
                 className="w-full h-full object-cover object-top sm:object-center group-hover:scale-[1.01] transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent pointer-events-none" />
@@ -127,16 +127,16 @@ export const InsightSection: React.FC = () => {
             {/* Floating Glassmorphism Card: Our Funds Over Time */}
             <div className="relative z-10 bg-black/60 hover:bg-black/70 backdrop-blur-2xl border border-white/20 rounded-2xl p-4 sm:p-5 text-white max-w-[290px] shadow-[0_16px_40px_rgba(0,0,0,0.35)] transition-all duration-300 text-right">
               <h4 className="text-xs sm:text-sm font-medium text-slate-100 mb-2.5 tracking-wide">
-                روند ارزش صندوق‌ها
+                روند شکل‌گیری یک تجربه دیجیتال
               </h4>
 
               <div className="flex items-center gap-6 justify-between">
                 <div className="text-right">
                   <div className="text-xl sm:text-2xl font-bold text-white tracking-tight leading-none">
-                    ۳۵M$
+                    01
                   </div>
                   <div className="text-[10px] sm:text-[11px] text-slate-300 mt-1 font-normal">
-                    صندوق ۱ (۱۴۰۳)
+                    استراتژی و شناخت
                   </div>
                 </div>
 
@@ -144,10 +144,10 @@ export const InsightSection: React.FC = () => {
 
                 <div className="text-right">
                   <div className="text-xl sm:text-2xl font-bold text-white tracking-tight leading-none">
-                    ۵۵M$
+                    02
                   </div>
                   <div className="text-[10px] sm:text-[11px] text-slate-300 mt-1 font-normal">
-                    صندوق ۲ (۱۴۰۴)
+                    طراحی و توسعه
                   </div>
                 </div>
               </div>
@@ -172,10 +172,10 @@ export const InsightSection: React.FC = () => {
               <div className="relative z-10 flex items-center justify-between mb-2">
                 <div className="text-right">
                   <h3 className="text-xl sm:text-2xl font-bold text-[#102d33] tracking-tight">
-                    دیدگاه راهبردی
+                    استراتژی و تجربه دیجیتال
                   </h3>
                   <p className="text-[11px] sm:text-xs text-slate-500 mt-0.5 font-normal">
-                    پایش و رصد مستمر فرصت‌های سرمایه‌گذاری بین‌المللی در مقیاس جهانی
+                    شناخت دقیق برند، مخاطب و اهداف کسب‌وکار برای ساخت یک تجربه دیجیتال هدفمند
                   </p>
                 </div>
 
@@ -195,7 +195,7 @@ export const InsightSection: React.FC = () => {
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-80"></span>
                       <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-600"></span>
                     </span>
-                    <span>شبکه فعال جهانی</span>
+                    <span>رویکرد ما</span>
                   </div>
                 )}
               </div>
@@ -369,10 +369,10 @@ export const InsightSection: React.FC = () => {
               {/* Header Texts */}
               <div>
                 <h3 className="text-xl sm:text-2xl font-medium text-[#0c2227] tracking-tight">
-                  رشد منضبط و متمرکز
+                  رشد و توسعه مستمر
                 </h3>
                 <p className="mt-1 text-xs text-slate-500 max-w-sm leading-relaxed">
-                  رویکردی باثبات و مبتنی بر تحقیق و تحلیل، با هدف بازدهی مستمر و مطمئن در طول چرخه‌های گوناگون بازار.
+                  فرآیندی هدفمند از ایده تا اجرا؛ با تمرکز بر کیفیت، عملکرد و ایجاد ارزش پایدار
                 </p>
               </div>
 
@@ -400,9 +400,8 @@ export const InsightSection: React.FC = () => {
                           style={{
                             backgroundColor: item.color,
                           }}
-                          className={`w-full rounded-xl flex items-center justify-center transition-all duration-300 ${
-                            isHovered ? 'brightness-110 shadow-md ring-2 ring-emerald-400/40' : ''
-                          }`}
+                          className={`w-full rounded-xl flex items-center justify-center transition-all duration-300 ${isHovered ? 'brightness-110 shadow-md ring-2 ring-emerald-400/40' : ''
+                            }`}
                         >
                           <motion.span
                             initial={{ opacity: 0, y: 6 }}
@@ -418,11 +417,10 @@ export const InsightSection: React.FC = () => {
                       </div>
 
                       <span
-                        className={`text-[10px] sm:text-[12px] font-mono transition-colors select-text ${
-                          isHovered || item.year === '۱۴۰۴'
-                            ? 'text-[#0a4852] font-bold scale-105'
-                            : 'text-slate-500'
-                        }`}
+                        className={`text-[10px] sm:text-[12px] font-mono transition-colors select-text ${isHovered || item.year === '۱۴۰۴'
+                          ? 'text-[#0a4852] font-bold scale-105'
+                          : 'text-slate-500'
+                          }`}
                       >
                         {item.year}
                       </span>
