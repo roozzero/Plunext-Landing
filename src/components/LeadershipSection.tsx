@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Users, X, Briefcase, GraduationCap, Award, CheckCircle2, Mail, ExternalLink, Sparkles, Building2 } from 'lucide-react';
-import christianImg from '../assets/imgs/christian_miller.jpg';
-import markImg from '../assets/imgs/mark_davies.jpg';
+import RTavakoli from '../assets/imgs/R-Tavakoli.png';
+import HSoleimani from '../assets/imgs/H-Soleimani.png';
 import johnImg from '../assets/imgs/john_wilson.jpg';
 
 interface ExperienceItem {
@@ -50,12 +50,12 @@ export const LeadershipSection: React.FC = () => {
       id: 'christian-miller',
       name: 'مهندس روزبه توکلی',
       role: 'توسعه‌دهنده فرانت‌اند',
-      bio: 'متخصص توسعه فرانت‌اند در تیم پلانکس، با تمرکز بر پیاده‌سازی رابط‌های کاربری حرفه‌ای، واکنش‌گرا و کاربرپسند. هدف، تبدیل طرح‌های بصری به صفحات وب استاندارد، سریع و سازگار با دستگاه‌های مختلف است تا کاربران تجربه‌ای روان و مطلوب از کار با وب‌سایت داشته باشند.',
-      image: christianImg,
+      bio: 'متخصص توسعه فرانت‌اند در تیم پلانکست، با تمرکز بر پیاده‌سازی رابط‌های کاربری حرفه‌ای، واکنش‌گرا و کاربرپسند. هدف، تبدیل طرح‌های بصری به صفحات وب استاندارد، سریع و سازگار با دستگاه‌های مختلف است تا کاربران تجربه‌ای روان و مطلوب از کار با وب‌سایت داشته باشند.',
+      image: RTavakoli,
       linkedinUrl: 'https://linkedin.com',
       email: 'roozbehtavakoli55@gmail.com',
       summary:
-        'روزبه توکلی در حوزه توسعه فرانت‌اند فعالیت می‌کند و بر ساخت رابط‌های کاربری مدرن، پیاده‌سازی دقیق اجزای سایت و بهبود تجربه کاربری تمرکز دارد. در پروژه‌های پلانکس، توسعه فرانت‌اند نقش مهمی در ایجاد وب‌سایت‌هایی زیبا، کاربردی و سازگار با نیاز کاربران ایفا می‌کند.',
+        'روزبه توکلی در حوزه توسعه فرانت‌اند فعالیت می‌کند و بر ساخت رابط‌های کاربری مدرن، پیاده‌سازی دقیق اجزای سایت و بهبود تجربه کاربری تمرکز دارد. در پروژه‌های پلانکست، توسعه فرانت‌اند نقش مهمی در ایجاد وب‌سایت‌هایی زیبا، کاربردی و سازگار با نیاز کاربران ایفا می‌کند.',
       coreCompetencies: [
         'معماری استراتژیک ادغام و تملک (M&A)',
         'بازسازی مدل‌های درآمدی و بهینه‌سازی ترازنامه',
@@ -124,8 +124,8 @@ export const LeadershipSection: React.FC = () => {
       id: 'mark-davies',
       name: 'مهندس حسین سلیمانی ابهری',
       role: 'توسعه‌دهنده بک‌اند',
-      bio: 'متخصص توسعه بک‌اند در تیم پلانکس، مسئول پیاده‌سازی منطق سمت سرور، مدیریت داده‌ها و توسعه قابلیت‌های فنی وب‌سایت‌ها. تمرکز بر ایجاد زیرساختی امن، پایدار و قابل توسعه است تا وب‌سایت‌ها و سامانه‌های تحت وب بتوانند عملکردی قابل اتکا داشته باشند.',
-      image: markImg,
+      bio: 'متخصص توسعه بک‌اند در تیم پلانکست، مسئول پیاده‌سازی منطق سمت سرور، مدیریت داده‌ها و توسعه قابلیت‌های فنی وب‌سایت‌ها. تمرکز بر ایجاد زیرساختی امن، پایدار و قابل توسعه است تا وب‌سایت‌ها و سامانه‌های تحت وب بتوانند عملکردی قابل اتکا داشته باشند.',
+      image: HSoleimani,
       linkedinUrl: 'https://linkedin.com',
       email: 'm.davies@vort-group.com',
       summary:
@@ -198,7 +198,7 @@ export const LeadershipSection: React.FC = () => {
       id: 'john-wilson',
       name: 'مهندس زینب سلیمانی',
       role: 'متخصص سئو',
-      bio: 'متخصص سئو در تیم پلانکس، با تمرکز بر بهینه‌سازی ساختار فنی وب‌سایت، تحلیل کلمات کلیدی و بهبود محتوای صفحات برای موتورهای جست‌وجو. هدف، افزایش شانس دیده‌شدن وب‌سایت در نتایج جست‌وجوی مرتبط و کمک به جذب مخاطبان هدفمند از طریق جست‌وجوی ارگانیک است.',
+      bio: 'متخصص سئو در تیم پلانکست، با تمرکز بر بهینه‌سازی ساختار فنی وب‌سایت، تحلیل کلمات کلیدی و بهبود محتوای صفحات برای موتورهای جست‌وجو. هدف، افزایش شانس دیده‌شدن وب‌سایت در نتایج جست‌وجوی مرتبط و کمک به جذب مخاطبان هدفمند از طریق جست‌وجوی ارگانیک است.',
       image: johnImg,
       linkedinUrl: 'https://linkedin.com',
       email: 'j.wilson@vort-group.com',
@@ -277,7 +277,7 @@ export const LeadershipSection: React.FC = () => {
         <div className="w-full flex justify-center mb-3">
           <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 text-[#0a4852] border border-emerald-200/60 text-xs font-semibold tracking-wide shadow-xs">
             <span className="w-1.5 h-1.5 rounded-full bg-[#439683]" />
-            تیم و مدیران متخصص پلانکس
+            تیم و مدیران متخصص پلانکست
           </span>
         </div>
 
@@ -292,9 +292,9 @@ export const LeadershipSection: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-[36px] font-bold text-[#0c2227] tracking-tight flex flex-wrap items-baseline gap-x-2.5 gap-y-1.5 leading-snug mt-2"
           >
-            <span className="text-[#0c2227]">تیم متخصص و همراهان پلانکس:</span>
+            <span className="text-[#0c2227]">تیم متخصص و همراهان پلانکست:</span>
             <span className="text-[#439683] font-normal">
-              با اعضای متخصص و مدیران فنی پلانکس آشنا شویم
+              با اعضای متخصص و مدیران فنی پلانکست آشنا شویم
             </span>
           </motion.h2>
 

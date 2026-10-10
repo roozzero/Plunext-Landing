@@ -212,7 +212,7 @@ export const BlogDetailPage: React.FC<BlogDetailPageProps> = ({
               نیاز به وب‌سایت استاندارد برای رونق کسب‌وکارتان دارید؟
             </h3>
             <p className="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto leading-relaxed text-justify">
-              تیم متخصص پلانکس آماده است تا ایده‌های شما را در کوتاه‌ترین زمان و با بالاترین کیفیت فنی به مرحله اجرا برساند.
+              تیم متخصص پلانکست آماده است تا ایده‌های شما را در کوتاه‌ترین زمان و با بالاترین کیفیت فنی به مرحله اجرا برساند.
             </p>
             <div className="pt-2 flex items-center justify-center">
               <button

@@ -42,7 +42,7 @@ export const PrivacyPage: React.FC<PrivacyPageProps> = ({ onGoHome, onOpenContac
             سیاست حفظ حریم خصوصی کاربران و مشتریان
           </h1>
           <p className="mt-4 text-sm sm:text-base text-slate-600 font-normal leading-relaxed text-justify">
-            پلانکس متعهد به پاسداری همه‌جانبه از اطلاعات شخصی، تجاری و سورس‌های فنی مشتریان است. این منشور تشریح می‌کند که داده‌های شما چگونه جمع‌آوری، پردازش و حفاظت می‌گردند.
+            پلانکست متعهد به پاسداری همه‌جانبه از اطلاعات شخصی، تجاری و سورس‌های فنی مشتریان است. این منشور تشریح می‌کند که داده‌های شما چگونه جمع‌آوری، پردازش و حفاظت می‌گردند.
           </p>
           <div className="mt-3 flex items-center justify-center gap-2 text-xs text-slate-400">
             <Clock className="w-3.5 h-3.5 text-[#439683]" />
@@ -101,7 +101,7 @@ export const PrivacyPage: React.FC<PrivacyPageProps> = ({ onGoHome, onOpenContac
               تعهد عدم واگذاری یا فروش داده‌ها به اشخاص ثالث
             </h2>
             <p className="text-sm sm:text-base text-slate-700 font-normal leading-relaxed text-justify">
-              پلانکس تحت هیچ شرایطی اطلاعات هویتی، بانک اطلاعات مشتریان، استراتژی‌ها یا اطلاعات تماس شما را به هیچ شرکت بازاریابی، شخص ثالث یا موسسه‌ای واگذار نخواهد کرد و نخواهد فروخت. حفظ اعتماد شما بزرگ‌ترین سرمایه مجموعه ماست.
+              پلانکست تحت هیچ شرایطی اطلاعات هویتی، بانک اطلاعات مشتریان، استراتژی‌ها یا اطلاعات تماس شما را به هیچ شرکت بازاریابی، شخص ثالث یا موسسه‌ای واگذار نخواهد کرد و نخواهد فروخت. حفظ اعتماد شما بزرگ‌ترین سرمایه مجموعه ماست.
             </p>
           </section>
 
@@ -114,7 +114,7 @@ export const PrivacyPage: React.FC<PrivacyPageProps> = ({ onGoHome, onOpenContac
               کوکی‌ها و فایل‌های ردگیری موقت
             </h2>
             <p className="text-sm sm:text-base text-slate-700 font-normal leading-relaxed text-justify">
-              وب‌سایت پلانکس صرفاً از کوکی‌های عملکردی جهت به خاطر سپردن ترجیحات کاربری و بهبود سرعت بارگذاری استفاده می‌نماید. شما در هر زمان می‌توانید از طریق تنظیمات مرورگر خود ذخیره این فایل‌ها را غیرفعال سازید.
+              وب‌سایت پلانکست صرفاً از کوکی‌های عملکردی جهت به خاطر سپردن ترجیحات کاربری و بهبود سرعت بارگذاری استفاده می‌نماید. شما در هر زمان می‌توانید از طریق تنظیمات مرورگر خود ذخیره این فایل‌ها را غیرفعال سازید.
             </p>
           </section>
 
@@ -137,7 +137,7 @@ export const PrivacyPage: React.FC<PrivacyPageProps> = ({ onGoHome, onOpenContac
           <div>
             <h3 className="text-base sm:text-lg font-bold text-slate-900">سوالی پیرامون محرمانگی و حریم خصوصی دارید؟</h3>
             <p className="text-xs sm:text-sm text-slate-500 mt-1">
-              تیم پشتیبانی و امنیت سایبری پلانکس آماده پاسخگویی به پرسش‌های شماست.
+              تیم پشتیبانی و امنیت سایبری پلانکست آماده پاسخگویی به پرسش‌های شماست.
             </p>
           </div>
           <button

@@ -106,7 +106,7 @@ export const StatsCounterSection: React.FC = () => {
         <div className="w-full flex justify-center mb-6">
           <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 text-[#0a4852] border border-emerald-200/60 text-xs font-semibold tracking-wide shadow-xs">
             <span className="w-1.5 h-1.5 rounded-full bg-[#439683]" />
-            آمار و دستاوردهای کلیدی پلانکس
+            آمار و دستاوردهای کلیدی پلانکست
           </span>
         </div>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-14 w-full items-center justify-center text-center">

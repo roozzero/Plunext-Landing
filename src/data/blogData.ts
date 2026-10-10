@@ -1,6 +1,11 @@
-import ipoImg from '../assets/imgs/insight_ipo.jpg';
-import skyscraperImg from '../assets/imgs/insight_skyscraper.jpg';
-import globeImg from '../assets/imgs/insight_globe.jpg';
+import ipoImg from '../assets/imgs/why-every-business-needs-a-website.png';
+import skyscraperImg from '../assets/imgs/professional-web-design-growth-engine.png';
+import globeImg from '../assets/imgs/seo-principles-google-first-page.png';
+import ECommerceImg  from '../assets/imgs/E-Commerce Journey from Idea to Sales.png';
+import ReadyTemplatesImg  from '../assets/imgs/Ready Templates or Custom Design_.png';
+import AvatarRoozbeh from '../assets/imgs/AvatarRoozbeh.jpg';
+import AvatarHossein from '../assets/imgs/AvatarHossein.png';
+// import globeImg from '../assets/imgs/insight_globe.jpg';
 
 export interface BlogArticle {
   id: string;
@@ -39,9 +44,9 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     image: ipoImg,
     category: 'کسب‌وکار آنلاین',
     author: {
-      name: 'مهندس آرش رستمی',
-      role: 'مدیر ارشد استراتژی دیجیتال پلانکس',
-      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
+      name: 'مهندس روزبه توکلی',
+      role: 'مدیر ارشد استراتژی دیجیتال پلانکست',
+      avatar: AvatarRoozbeh,
     },
     tags: ['طراحی سایت', 'کسب‌وکار آنلاین', 'برندینگ دیجیتال', 'اعتماد مشتری'],
     content: {
@@ -82,7 +87,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       quote:
         'وب‌سایت شما شعبه مرکزی برندتان در جهان دیجیتال است؛ جایی که هویت، کیفیت و اعتبار کسب‌وکارتان در بالاترین سطح به نمایش درمی‌آید.',
       conclusion:
-        'سرمایه‌گذاری روی یک وب‌سایت اصولی، هزینه‌بر نیست بلکه بنیادی‌ترین زیرساخت برای مقیاس‌پذیری و رشد پایدار کسب‌وکار شما در قرن جدید محسوب می‌شود. تیم مهندسی پلانکس در کنار شماست تا از مرحله مشاوره اولیه تا راه‌اندازی و پشتیبانی، همراه معتمد مسیرتان باشد.',
+        'سرمایه‌گذاری روی یک وب‌سایت اصولی، هزینه‌بر نیست بلکه بنیادی‌ترین زیرساخت برای مقیاس‌پذیری و رشد پایدار کسب‌وکار شما در قرن جدید محسوب می‌شود. تیم مهندسی پلانکست در کنار شماست تا از مرحله مشاوره اولیه تا راه‌اندازی و پشتیبانی، همراه معتمد مسیرتان باشد.',
     },
   },
   {
@@ -95,9 +100,9 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     image: skyscraperImg,
     category: 'طراحی سایت',
     author: {
-      name: 'مهندس سارا نوری',
-      role: 'سرپرست تیم UI/UX پلانکس',
-      avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80',
+      name: 'مهندس حسین سلیمانی ابهری',
+      role: 'مدیر ارشد توسعه‌دهنده بک‌اند تیم پلانکست',
+      avatar: AvatarHossein,
     },
     tags: ['طراحی UI/UX', 'بهینه‌سازی نرخ تبدیل', 'طراحی واکنش‌گرا', 'رشد فروش'],
     content: {
@@ -136,7 +141,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       quote:
         'طراحی خوب صرفاً زیبایی ظاهری نیست؛ طراحی خوب یعنی کاربری آسان، اعتماد آنی و هدایت بی‌دغدغه مخاطب به سمت خرید.',
       conclusion:
-        'طراحی سایت حرفه‌ای یک دارایی استراتژیک است که نرخ تبدیل مشتریان شما را چندین برابر می‌کند. در پلانکس، ما هر پروژه را با تمرکز بر روانشناسی مخاطب و استانداردهای روز جهانی توسعه می‌دهیم.',
+        'طراحی سایت حرفه‌ای یک دارایی استراتژیک است که نرخ تبدیل مشتریان شما را چندین برابر می‌کند. در پلانکست، ما هر پروژه را با تمرکز بر روانشناسی مخاطب و استانداردهای روز جهانی توسعه می‌دهیم.',
     },
   },
   {
@@ -149,7 +154,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     image: globeImg,
     category: 'سئو و جذب مشتری',
     author: {
-      name: 'مهندس نیما افشار',
+      name: 'مهندس زینب سلیمانی',
       role: 'مشاور سئو و مارکتینگ عملکردی',
       avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80',
     },
@@ -186,7 +191,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       quote:
         'بهترین مکان برای پنهان کردن یک راز، صفحه دوم گوگل است! برای آنکه کسب‌وکارتان دیده شود، باید در نتایج برتر حضور داشته باشید.',
       conclusion:
-        'سئو یک ماراتن است، نه یک دوی سرعت؛ اما سرمایه‌گذاری در آن کم‌هزینه‌ترین و پایدارترین راه جذب ترافیک باکیفیت و مشتریان وفادار است. تیم پلانکس در طراحی و توسعه هر سایت، استانداردهای سئو را از خط اول کدنویسی پیاده‌سازی می‌کند.',
+        'سئو یک ماراتن است، نه یک دوی سرعت؛ اما سرمایه‌گذاری در آن کم‌هزینه‌ترین و پایدارترین راه جذب ترافیک باکیفیت و مشتریان وفادار است. تیم پلانکست در طراحی و توسعه هر سایت، استانداردهای سئو را از خط اول کدنویسی پیاده‌سازی می‌کند.',
     },
   },
   {
@@ -196,12 +201,12 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       'برای راه‌اندازی یک فروشگاه آنلاین موفق چه گام‌هایی باید برداریم؟ از انتخاب درگاه پرداخت و لجستیک تا چیدمان دسته‌بندی‌ها و مدیریت موجودی، نکات طلایی را در این راهنما بخوانید.',
     readTime: '۱۶ دقیقه مطالعه',
     date: '۵ اردیبهشت ۱۴۰۵',
-    image: 'https://images.unsplash.com/photo-1556742049-0a67c5574f73?auto=format&fit=crop&w=1200&q=80',
+    image: ECommerceImg,
     category: 'تجارت الکترونیک',
     author: {
-      name: 'مهندس آرش رستمی',
-      role: 'مدیر ارشد استراتژی دیجیتال پلانکس',
-      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
+      name: 'مهندس روزبه توکلی',
+      role: 'مدیر ارشد استراتژی دیجیتال پلانکست',
+      avatar: AvatarRoozbeh,
     },
     tags: ['فروشگاه اینترنتی', 'تجارت الکترونیک', 'درگاه پرداخت', 'لجستیک فروش'],
     content: {
@@ -224,7 +229,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       quote:
         'موفقیت یک فروشگاه اینترنتی در سه کلمه خلاصه می‌شود: سرعت، سادگی و صداقت در تحویل کالا.',
       conclusion:
-        'پلانکس پلتفرم‌های فروشگاهی اختصاصی با بالاترین استانداردهای امنیتی و سرعت طراحی می‌کند تا برند شما از اولین روز با قدرت وارد بازار آنلاین شود.',
+        'پلانکست پلتفرم‌های فروشگاهی اختصاصی با بالاترین استانداردهای امنیتی و سرعت طراحی می‌کند تا برند شما از اولین روز با قدرت وارد بازار آنلاین شود.',
     },
   },
   {
@@ -234,12 +239,12 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       'آیا برای شروع باید از قالب‌های آماده استفاده کنید یا سراغ کدنویسی و توسعه اختصاصی بروید؟ مقایسه جامع هزینه، مقیاس‌پذیری، امنیت و سرعت این دو رویکرد.',
     readTime: '۱۱ دقیقه مطالعه',
     date: '۲۰ فروردین ۱۴۰۵',
-    image: 'https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=1200&q=80',
+    image: ReadyTemplatesImg,
     category: 'توسعه وب‌سایت',
     author: {
-      name: 'مهندس سارا نوری',
-      role: 'سرپرست تیم UI/UX پلانکس',
-      avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80',
+      name: 'مهندس حسین سلیمانی ابهری',
+      role: 'مدیر ارشد توسعه‌دهنده بک‌اند تیم پلانکست',
+      avatar: AvatarHossein,
     },
     tags: ['کدنویسی اختصاصی', 'قالب آماده', 'سرعت سایت', 'امنیت وب'],
     content: {

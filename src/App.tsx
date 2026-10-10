@@ -88,9 +88,9 @@ export default function App() {
   const navItems = [
     { id: 'Home', label: 'صفحه اصلی' },
     { id: 'Approach', label: 'رویکرد ما', targetId: 'insight-section' },
-    { id: 'Expertise', label: 'تخصص ها', targetId: 'approach-section' },
+    { id: 'Expertise', label: 'تخصص ما', targetId: 'approach-section' },
     { id: 'Clients', label: 'مشتریان', targetId: 'clients-section' },
-    { id: 'Portfolio', label: 'نمونه کار ها', targetId: 'portfolio-section' },
+    { id: 'Portfolio', label: 'نمونه‌کار ما', targetId: 'portfolio-section' },
     { id: 'Testimonials', label: 'نظرات', targetId: 'testimonials-section' },
     { id: 'Blog', label: 'وبلاگ', targetId: 'blog' },
     { id: 'About Us', label: 'درباره ما', targetId: 'leadership-section' },
@@ -126,7 +126,7 @@ export default function App() {
       setCurrentPage('home');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else if (id === 'Approach') {
-      // رویکرد ما = بخش رویکرد و فلسفه پلانکس
+      // رویکرد ما = بخش رویکرد و فلسفه پلانکست
       scrollToTarget('insight-section');
     } else if (id === 'Expertise') {
       // تخصص ها = تخصص‌ها و راهکارهای طراحی سایت
@@ -197,7 +197,7 @@ export default function App() {
           >
             <img
               src={logoImg}
-              alt="لوگوی پلانکس"
+              alt="لوگوی پلانکست"
               className="h-7 sm:h-8 md:h-9 w-auto object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]"
               onError={(e) => {
                 e.currentTarget.style.display = 'none';
@@ -389,7 +389,7 @@ export default function App() {
                   transition={{ duration: 0.8, delay: 0.95, ease: [0.16, 1, 0.3, 1] }}
                   className="text-[14px] sm:text-[15px] text-slate-200/90 font-normal leading-relaxed max-w-2xl drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)] text-right"
                 >
-                 در پلانکس، وب‌سایت‌هایی طراحی و توسعه می‌دهیم که ترکیبی از استراتژی، طراحی و تکنولوژی‌اند؛ از اولین ایده تا تجربه‌ای سریع، زیبا و هدفمند که برای رشد برند شما ساخته شده است.
+                 در پلانکست، وب‌سایت‌هایی طراحی و توسعه می‌دهیم که ترکیبی از استراتژی، طراحی و تکنولوژی‌اند؛ از اولین ایده تا تجربه‌ای سریع، زیبا و هدفمند که برای رشد برند شما ساخته شده است.
                 </motion.p>
 
                 {/* 5. Hero Buttons */}
@@ -460,7 +460,7 @@ export default function App() {
                     {isCountingDone ? <span className="text-emerald-400">+</span> : ''}
                   </div>
                   <p className="text-xs sm:text-sm text-slate-200/80 mt-2 font-normal leading-snug text-right">
-                    برندی که با پلانکس همکاری داشته‌اند
+                    برندی که با پلانکست همکاری داشته‌اند
                   </p>
                 </motion.div>
               </div>

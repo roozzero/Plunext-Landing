@@ -52,10 +52,6 @@ export const FooterSection: React.FC<FooterSectionProps> = ({
           {/* Column 1: Mission Tagline & CTA Button (lg:col-span-4) */}
           <div className="lg:col-span-4 flex flex-col items-start text-right">
             <div className="mb-2.5">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 text-emerald-300 text-[11px] font-semibold border border-white/15 mb-2.5 shadow-xs">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                استودیو طراحی و فناوری وب
-              </span>
               
               {/* Prominently Styled Brand Tagline */}
               <div className="relative inline-block py-1">
@@ -63,7 +59,7 @@ export const FooterSection: React.FC<FooterSectionProps> = ({
                 <h2 className="relative text-base sm:text-lg lg:text-xl font-extrabold tracking-tight leading-snug flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_10px_#34d399] animate-pulse shrink-0" />
                   <span className="bg-gradient-to-r from-white via-emerald-200 to-teal-100 bg-clip-text text-transparent font-black tracking-normal">
-                    پلانکس؛ همراه شما در مسیر رشد آنلاین
+                    پلانکست؛ همراه شما در مسیر رشد آنلاین
                   </span>
                 </h2>
               </div>
@@ -191,7 +187,7 @@ export const FooterSection: React.FC<FooterSectionProps> = ({
           <div className="flex items-center gap-2">
             <img
               src={logoImg}
-              alt="لوگوی پلانکس"
+              alt="لوگوی پلانکست"
               className="h-6 sm:h-7 w-auto object-contain cursor-pointer brightness-100"
               onClick={scrollToTop}
             />

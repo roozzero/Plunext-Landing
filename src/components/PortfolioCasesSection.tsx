@@ -1,8 +1,82 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowLeft, ArrowRight, X, ChevronRight, ChevronLeft, Sparkles, CheckCircle2, Layers, Calendar, Clock, Eye } from 'lucide-react';
-import constructionImg from '../assets/imgs/Construction.jpg';
-import skyscraperImg from '../assets/imgs/Skyscrapers.jpg';
+import TeachershowBanner from '../assets/imgs/portfolio/teachershow/TeachershowBanner.png';
+import TeachershowBanner1 from '../assets/imgs/portfolio/teachershow/TeachershowBanner0.png';
+import digikolahBanner0 from '../assets/imgs/portfolio/digikolah/digikolahBanner0.png';
+import digikolahBanner1 from '../assets/imgs/portfolio/digikolah/digikolahBanner1.png';
+import fitclubBanner0 from '../assets/imgs/portfolio/fitclub/fitclubBanner0.png';
+import fitclubBanner1 from '../assets/imgs/portfolio/fitclub/fitclubBanner1.png';
+import charmBanner0 from '../assets/imgs/portfolio/Chardoozak/charmBanner0.png';
+import charmBanner1 from '../assets/imgs/portfolio/Chardoozak/charmBanner1.png';
+import wikiBanner0 from '../assets/imgs/portfolio/wikiteach/wikiBanner0.png';
+import wikiBanner1 from '../assets/imgs/portfolio/wikiteach/wikiBanner1.png';
+import learnoBanner0 from '../assets/imgs/portfolio/learnobit/learnoBeanner0.png';
+import learnoBanner1 from '../assets/imgs/portfolio/learnobit/learnoBeanner1.png';
+import pelashanBanner0 from '../assets/imgs/portfolio/pelashan/pelashanBanner0.png';
+import pelashanBanner1 from '../assets/imgs/portfolio/pelashan/pelashanBanner1.png';
+import seoBanner0 from '../assets/imgs/portfolio/seo/seoBanner0.png';
+import seoBanner1 from '../assets/imgs/portfolio/seo/seoBanner1.png';
+import giahBanner0 from '../assets/imgs/portfolio/giahgostar/giahBanner0.png';
+import giahBanner1 from '../assets/imgs/portfolio/giahgostar/giahBanner1.png';
+
+import charmLogo from '../assets/imgs/portfolio/Chardoozak/charmlogo.webp';
+import digiLogo from '../assets/imgs/portfolio/digikolah/digilogo.png';
+import fitLogo from '../assets/imgs/portfolio/fitclub/fitlogo.svg';
+import giahLogo from '../assets/imgs/portfolio/giahgostar/giahLogo.png';
+import learnoLogo from '../assets/imgs/portfolio/learnobit/learnologo.png';
+import pelashanLogo from '../assets/imgs/portfolio/pelashan/pelashanLogo.webp';
+import teachershowLogo from '../assets/imgs/portfolio/teachershow/teachershowLogo.png';
+import cheemodeLogo from '../assets/imgs/portfolio/cheemode/CheemodeLogo.png';
+import roozzeroLogo from '../assets/imgs/portfolio/roozzero/roozzeroLogo.png';
+
+
+import Teacher001 from '../assets/imgs/portfolio/teachershow/Teacher001.png';
+import Teacher002 from '../assets/imgs/portfolio/teachershow/Teacher002.png';
+import Teacher003 from '../assets/imgs/portfolio/teachershow/Teacher003.png';
+import Teacher004 from '../assets/imgs/portfolio/teachershow/Teacher004.jpg';
+import Teacher005 from '../assets/imgs/portfolio/teachershow/Teacher005.png';
+import Teacher006 from '../assets/imgs/portfolio/teachershow/Teacher006.jpg';
+import Teacher007 from '../assets/imgs/portfolio/teachershow/Teacher007.png';
+import Teacher008 from '../assets/imgs/portfolio/teachershow/Teacher008.png';
+import Teacher009 from '../assets/imgs/portfolio/teachershow/Teacher009.png';
+import Teacher010 from '../assets/imgs/portfolio/teachershow/Teacher010.png';
+import Teacher011 from '../assets/imgs/portfolio/teachershow/Teacher011.png';
+import Teacher012 from '../assets/imgs/portfolio/teachershow/Teacher012.png';
+
+import digikolah1 from '../assets/imgs/portfolio/digikolah/digikolah1.png';
+import digikolah2 from '../assets/imgs/portfolio/digikolah/digikolah2.png';
+import digikolah3 from '../assets/imgs/portfolio/digikolah/digikolah3.png';
+import digikolah4 from '../assets/imgs/portfolio/digikolah/digikolah4.png';
+
+import fitclub1 from '../assets/imgs/portfolio/fitclub/fitclub1.png';
+import fitclub2 from '../assets/imgs/portfolio/fitclub/fitclub2.png';
+import fitclub3 from '../assets/imgs/portfolio/fitclub/fitclub3.png';
+import fitclub4 from '../assets/imgs/portfolio/fitclub/fitclub4.png';
+
+import charm1 from '../assets/imgs/portfolio/Chardoozak/charm1.png';
+import charm2 from '../assets/imgs/portfolio/Chardoozak/charm2.png';
+import charm3 from '../assets/imgs/portfolio/Chardoozak/charm3.png';
+import charm4 from '../assets/imgs/portfolio/Chardoozak/charm4.png';
+
+import wiki1 from '../assets/imgs/portfolio/wikiteach/wiki1.png';
+import wiki2 from '../assets/imgs/portfolio/wikiteach/wiki2.png';
+import wiki3 from '../assets/imgs/portfolio/wikiteach/wiki3.png';
+
+import learno1 from '../assets/imgs/portfolio/learnobit/learno1.png';
+import learno2 from '../assets/imgs/portfolio/learnobit/learno2.png';
+import learno3 from '../assets/imgs/portfolio/learnobit/learno3.png';
+
+import pelashan1 from '../assets/imgs/portfolio/pelashan/pelashan1.png';
+import pelashan2 from '../assets/imgs/portfolio/pelashan/pelashan2.png';
+import pelashan3 from '../assets/imgs/portfolio/pelashan/pelashan3.png';
+
+import seo1 from '../assets/imgs/portfolio/seo/seo1.png';
+import seo2 from '../assets/imgs/portfolio/seo/seo2.png';
+
+import giah1 from '../assets/imgs/portfolio/giahgostar/giah1.png';
+import giah2 from '../assets/imgs/portfolio/giahgostar/giah2.png';
+
 
 interface CatalogImage {
   url: string;
@@ -73,9 +147,19 @@ const CATALOG_PROJECTS: Record<string, CatalogProject> = {
       { label: 'سرعت بارگذاری', value: '۱.۶ ثانیه' }
     ],
     images: [
-      { url: constructionImg, caption: 'نمای اصلی صفحه اول و معرفی خدمات آموزشی پلتفرم تیچرشو' },
-      { url: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=80', caption: 'رابط کاربری پنل آزمون‌ساز و گزارش‌گیری تحلیلی مدارس' },
-      { url: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1200&q=80', caption: 'نسخه موبایل بهینه‌سازی‌شده برای اولیا و معلمان' }
+      { url: TeachershowBanner1, caption: 'نمای اصلی صفحه اول و معرفی خدمات آموزشی پلتفرم تیچرشو' },
+      { url: Teacher001, caption: 'رابط کاربری پنل آزمون‌ساز و گزارش‌گیری تحلیلی مدارس' },
+      { url: Teacher002, caption: 'نسخه موبایل بهینه‌سازی‌شده برای اولیا و معلمان' },
+      { url: Teacher003, caption: 'نسخه موبایل بهینه‌سازی‌شده برای اولیا و معلمان' },
+      { url: Teacher004, caption: 'نسخه موبایل بهینه‌سازی‌شده برای اولیا و معلمان' },
+      { url: Teacher005, caption: 'نسخه موبایل بهینه‌سازی‌شده برای اولیا و معلمان' },
+      { url: Teacher006, caption: 'نسخه موبایل بهینه‌سازی‌شده برای اولیا و معلمان' },
+      { url: Teacher007, caption: 'نسخه موبایل بهینه‌سازی‌شده برای اولیا و معلمان' },
+      { url: Teacher008, caption: 'نسخه موبایل بهینه‌سازی‌شده برای اولیا و معلمان' },
+      { url: Teacher009, caption: 'نسخه موبایل بهینه‌سازی‌شده برای اولیا و معلمان' },
+      { url: Teacher010, caption: 'نسخه موبایل بهینه‌سازی‌شده برای اولیا و معلمان' },
+      { url: Teacher011, caption: 'نسخه موبایل بهینه‌سازی‌شده برای اولیا و معلمان' },
+      { url: Teacher012, caption: 'نسخه موبایل بهینه‌سازی‌شده برای اولیا و معلمان' },
     ]
   },
   digikolah: {
@@ -87,7 +171,7 @@ const CATALOG_PROJECTS: Record<string, CatalogProject> = {
     year: '۱۴۰۳',
     duration: '۳ هفته کاری',
     overview: 'طراحی فروشگاه اینترنتی دیجی کلاه با تمرکز بر تجربه خرید سریع و لذت‌بخش، فیلترهای پیشرفته سایز و رنگ، سبد خرید تک‌مرحله‌ای و اتصال هوشمند به انبارداری و درگاه‌های پرداخت شتاب.',
-    techStack: ['WordPress', 'WooCommerce Pro', 'قالب اختصاصی پلانکس', 'سیستم کش LSCache', 'درگاه به‌پرداخت'],
+    techStack: ['WordPress', 'WooCommerce Pro', 'قالب اختصاصی پلانکست', 'سیستم کش LSCache', 'درگاه به‌پرداخت'],
     highlights: [
       'سبد خرید سریع و فرآیند ثبت سفارش زیر ۱ دقیقه',
       'گالری باکیفیت و بزرگ‌نمایی جزئیات کالاها و تنوع رنگی',
@@ -100,9 +184,11 @@ const CATALOG_PROJECTS: Record<string, CatalogProject> = {
       { label: 'نمره PageSpeed', value: '۹۶/۱۰۰' }
     ],
     images: [
-      { url: skyscraperImg, caption: 'طراحی گرافیکی صفحه اصلی و اسلایدر محصولات پرفروش دیجی کلاه' },
-      { url: 'https://images.unsplash.com/photo-1556742049-0a67c5574f73?auto=format&fit=crop&w=1200&q=80', caption: 'صفحه محصول پیشرفته با انتخاب رنگ، سایز و راهنمای استایل' },
-      { url: 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=1200&q=80', caption: 'رابط کاربری ریسپانسیو و فرآیند تسویه حساب آسان' }
+      { url: digikolahBanner1, caption: 'طراحی گرافیکی صفحه اصلی و اسلایدر محصولات پرفروش دیجی کلاه' },
+      { url: digikolah1, caption: 'صفحه محصول پیشرفته با انتخاب رنگ، سایز و راهنمای استایل' },
+      { url: digikolah2, caption: 'رابط کاربری ریسپانسیو و فرآیند تسویه حساب آسان' },
+      { url: digikolah3, caption: 'رابط کاربری ریسپانسیو و فرآیند تسویه حساب آسان' },
+      { url: digikolah4, caption: 'رابط کاربری ریسپانسیو و فرآیند تسویه حساب آسان' },
     ]
   },
   fitclub: {
@@ -127,9 +213,12 @@ const CATALOG_PROJECTS: Record<string, CatalogProject> = {
       { label: 'رضایت کاربران', value: '۴.۹ از ۵' }
     ],
     images: [
-      { url: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80', caption: 'صفحه اصلی و پکیج‌های عضویت باشگاه فیت کلاب' },
-      { url: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80', caption: 'داشبورد کاربری پایش سلامت و برنامه تمرینی تعاملی' },
-      { url: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1200&q=80', caption: 'نسخه موبایل اپلیکیشن‌گونه با دسترسی سریع به جلسات' }
+      { url: fitclubBanner0, caption: 'صفحه اصلی و پکیج‌های عضویت باشگاه فیت کلاب' },
+      { url: fitclub1, caption: 'داشبورد کاربری پایش سلامت و برنامه تمرینی تعاملی' },
+      { url: fitclub2, caption: 'نسخه موبایل اپلیکیشن‌گونه با دسترسی سریع به جلسات' },
+      { url: fitclub3, caption: 'نسخه موبایل اپلیکیشن‌گونه با دسترسی سریع به جلسات' },
+      { url: fitclub4, caption: 'نسخه موبایل اپلیکیشن‌گونه با دسترسی سریع به جلسات' },
+
     ]
   },
   charmdoozak: {
@@ -154,16 +243,18 @@ const CATALOG_PROJECTS: Record<string, CatalogProject> = {
       { label: 'زمان بارگذاری', value: '۱.۳ ثانیه' }
     ],
     images: [
-      { url: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80', caption: 'ویترین آنلاین محصولات فاخر و گالری هنری چرمدوزک' },
-      { url: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=1200&q=80', caption: 'صفحه جزئیات کیف و اکسسوری چرم طبیعی دست‌دوز' },
-      { url: 'https://images.unsplash.com/photo-1590736969955-71cc94801759?auto=format&fit=crop&w=1200&q=80', caption: 'نسخه موبایل با اسکرول نرم و سبد خرید شناور' }
+      { url: charmBanner0, caption: 'ویترین آنلاین محصولات فاخر و گالری هنری چرمدوزک' },
+      { url: charm1, caption: 'صفحه جزئیات کیف و اکسسوری چرم طبیعی دست‌دوز' },
+      { url: charm2, caption: 'صفحه جزئیات کیف و اکسسوری چرم طبیعی دست‌دوز' },
+      { url: charm3, caption: 'صفحه جزئیات کیف و اکسسوری چرم طبیعی دست‌دوز' },
+      { url: charm4, caption: 'نسخه موبایل با اسکرول نرم و سبد خرید شناور' }
     ]
   },
   wikipackage: {
     id: 'wikipackage',
-    title: 'پورتال صنعتی صنایع بسته‌بندی ویکی پکیج',
-    client: 'صنایع کارتن‌سازی و بسته‌بندی ویکی پکیج',
-    category: 'صنعت بسته‌بندی و لجستیک',
+    title: 'پورتال صنعتی صنایع بسته‌بندی ویکی تیچ',
+    client: 'صنایع کارتن‌سازی و بسته‌بندی ویکی تیچ',
+    category: 'آموزشی و دوره آنلاین',
     badge: 'وب‌سایت شرکتی B2B',
     year: '۱۴۰۳',
     duration: '۴ هفته کاری',
@@ -181,9 +272,10 @@ const CATALOG_PROJECTS: Record<string, CatalogProject> = {
       { label: 'برندهای همکار', value: '+۱۸۰ برند' }
     ],
     images: [
-      { url: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80', caption: 'صفحه اصلی پورتال ویکی پکیج و معرفی خطوط تولید مدرن' },
-      { url: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80', caption: 'فرم هوشمند استعلام قیمت و انتخاب متریال بسته‌بندی' },
-      { url: 'https://images.unsplash.com/photo-1530587191325-3db32d826c18?auto=format&fit=crop&w=1200&q=80', caption: 'کاتالوگ گرافیکی محصولات در نسخه تبلت و موبایل' }
+      { url: wikiBanner1, caption: 'صفحه اصلی پورتال ویکی پکیج و معرفی خطوط تولید مدرن' },
+      { url: wiki1, caption: 'فرم هوشمند استعلام قیمت و انتخاب متریال بسته‌بندی' },
+      { url: wiki2, caption: 'کاتالوگ گرافیکی محصولات در نسخه تبلت و موبایل' },
+      { url: wiki3, caption: 'فرم هوشمند استعلام قیمت و انتخاب متریال بسته‌بندی' },
     ]
   },
   chimodeh: {
@@ -405,19 +497,8 @@ export const PortfolioCasesSection: React.FC<PortfolioCasesSectionProps> = ({ on
       bgColor: 'bg-[#edf4f2]',
       textColor: 'text-[#0b333a]',
       logo: (
-        <div className="flex items-center gap-2 text-[#0a3d46]">
-          <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
-            <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
-            <path
-              fillRule="evenodd"
-              clipRule="evenodd"
-              d="M8.2 2.5a2 2 0 0 1 2.6-.9l.7.4a2 2 0 0 0 2 0l.7-.4a2 2 0 0 1 2.6.9l.4.7a2 2 0 0 0 1.5 1.5l.7.4a2 2 0 0 1 .9 2.6l-.4.7a2 2 0 0 0 0 2l.4.7a2 2 0 0 1-.9 2.6l-.7.4a2 2 0 0 0-1.5 1.5l-.4.7a2 2 0 0 1-2.6.9l-.7-.4a2 2 0 0 0-2 0l-.7.4a2 2 0 0 1-2.6-.9l-.4-.7a2 2 0 0 0-1.5-1.5l-.7-.4a2 2 0 0 1-.9-2.6l.4-.7a2 2 0 0 0 0-2l-.4-.7a2 2 0 0 1 .9-2.6l.7-.4a2 2 0 0 0 1.5-1.5l.4-.7Z"
-            />
-          </svg>
-          <div className="flex flex-col leading-[1.05] tracking-tight font-extrabold text-sm font-sans">
-            <span>STEEL</span>
-            <span>RIVER</span>
-          </div>
+        <div className="flex items-center gap-2 text-emerald-300">
+          <img src={teachershowLogo} alt="giahLogo" />
         </div>
       ),
     },
@@ -427,7 +508,7 @@ export const PortfolioCasesSection: React.FC<PortfolioCasesSectionProps> = ({ on
       id: 'steel-river-image',
       projectId: 'teachersho',
       type: 'image',
-      imageSrc: constructionImg,
+      imageSrc: TeachershowBanner,
       imageAlt: 'پلتفرم هوشمند تیچرشو',
     },
 
@@ -444,11 +525,8 @@ export const PortfolioCasesSection: React.FC<PortfolioCasesSectionProps> = ({ on
       bgColor: 'bg-[#4096a1]',
       textColor: 'text-white',
       logo: (
-        <div className="flex flex-col items-start leading-[1.05] text-white">
-          <span className="font-bold text-2xl tracking-tight font-sans">Union</span>
-          <span className="font-mono text-[9px] tracking-[0.25em] uppercase text-white/85 font-semibold">
-            SOFTWARE
-          </span>
+        <div className="flex items-center gap-2 text-emerald-300">
+          <img src={digiLogo} alt="giahLogo" />
         </div>
       ),
     },
@@ -458,11 +536,11 @@ export const PortfolioCasesSection: React.FC<PortfolioCasesSectionProps> = ({ on
       id: 'union-software-image',
       projectId: 'digikolah',
       type: 'image',
-      imageSrc: skyscraperImg,
+      imageSrc: digikolahBanner0,
       imageAlt: 'دیجی کلاه',
     },
 
-    // 5. Sabrepak (Text Card)
+    // 5. fitclub (Text Card)
     {
       id: 'sabrepak-text',
       projectId: 'fitclub',
@@ -475,27 +553,22 @@ export const PortfolioCasesSection: React.FC<PortfolioCasesSectionProps> = ({ on
       bgColor: 'bg-[#e7efec]',
       textColor: 'text-[#0a333b]',
       logo: (
-        <div className="flex items-center gap-2 text-[#0a3d46]">
-          <span className="font-extrabold italic tracking-wider text-xl font-sans">
-            SABREPAK
-          </span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5">
-            <path d="M4 14c2-4 6-7 12-7l2 3-4 2 4 4-5 1-2 4-7-7z" />
-          </svg>
+        <div className="flex items-center gap-2 text-emerald-300">
+          <img src={fitLogo} alt="giahLogo" />
         </div>
       ),
     },
 
-    // 6. Sabrepak (Image Card)
+    // 6. fitclub (Image Card)
     {
       id: 'sabrepak-image',
       projectId: 'fitclub',
       type: 'image',
-      imageSrc: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=900&q=80',
+      imageSrc: fitclubBanner1,
       imageAlt: 'فیت کلاب',
     },
 
-    // 7. NexaCloud Fintech (Text Card: Dark Slate Luxury)
+    // 7. chardoozak (Text Card: Dark Slate Luxury)
     {
       id: 'nexacloud-text',
       projectId: 'charmdoozak',
@@ -508,32 +581,29 @@ export const PortfolioCasesSection: React.FC<PortfolioCasesSectionProps> = ({ on
       bgColor: 'bg-[#0b2b32]',
       textColor: 'text-white',
       logo: (
-        <div className="flex items-center gap-2 text-emerald-300">
-          <div className="w-7 h-7 rounded-lg bg-emerald-500/20 border border-emerald-400/30 flex items-center justify-center font-bold font-mono text-sm">
-            N
-          </div>
-          <span className="font-bold tracking-tight text-lg font-sans text-white">NexaCloud</span>
+         <div className="flex items-center gap-2 text-emerald-300">
+          <img src={charmLogo} alt="giahLogo" />
         </div>
       ),
     },
 
-    // 8. NexaCloud Fintech (Image Card)
+    // 8. chardoozak (Image Card)
     {
       id: 'nexacloud-image',
       projectId: 'charmdoozak',
       type: 'image',
-      imageSrc: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80',
+      imageSrc: charmBanner1,
       imageAlt: 'چرمدوزک',
     },
 
-    // 9. BioVant Health (Text Card: Fresh Mint)
+    // 9. wikiteach (Text Card: Fresh Mint)
     {
       id: 'biovant-text',
       projectId: 'wikipackage',
       type: 'text',
-      title: 'ویکی پکیج',
-      category: 'صنعت بسته‌بندی و لجستیک',
-      metricsBadge: 'وب‌سایت شرکتی',
+      title: 'ویکی تیچ',
+      category: 'آموزشی و دوره آنلاین',
+      metricsBadge: 'وب‌سایت آموزشی',
       description:
         'طراحی وب‌سایت ویکی پکیج با تمرکز بر معرفی محصولات و خدمات صنعت بسته‌بندی، سازمان‌دهی اطلاعات تخصصی و ایجاد بستری مناسب برای ارتباط مشتریان و کسب‌وکارهای فعال در حوزه بسته‌بندی و لجستیک',
       bgColor: 'bg-[#e2ede9]',
@@ -543,21 +613,21 @@ export const PortfolioCasesSection: React.FC<PortfolioCasesSectionProps> = ({ on
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-6 h-6">
             <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
           </svg>
-          <span className="font-extrabold tracking-tight text-lg font-sans">BioVant</span>
+          <span className="font-extrabold tracking-tight text-lg font-sans">WIKITEACH</span>
         </div>
       ),
     },
 
-    // 10. BioVant Health (Image Card)
+    // 10. wikiteach (Image Card)
     {
       id: 'biovant-image',
       projectId: 'wikipackage',
       type: 'image',
-      imageSrc: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=900&q=80',
+      imageSrc: wikiBanner0,
       imageAlt: 'ویکی پکیج',
     },
 
-    // 11. LogixTrade AI (Text Card: Emerald Accent)
+    // 11. cheemode (Text Card: Emerald Accent)
     {
       id: 'logixtrade-text',
       projectId: 'chimodeh',
@@ -570,16 +640,13 @@ export const PortfolioCasesSection: React.FC<PortfolioCasesSectionProps> = ({ on
       bgColor: 'bg-[#2a737d]',
       textColor: 'text-white',
       logo: (
-        <div className="flex items-center gap-2 text-white">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-6 h-6">
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-          </svg>
-          <span className="font-extrabold tracking-wider text-base font-sans">LOGIXTRADE</span>
+         <div className="flex items-center gap-2 text-emerald-300">
+          <img src={cheemodeLogo} alt="cheemode" />
         </div>
       ),
     },
 
-    // 12. LogixTrade AI (Image Card)
+    // 12. cheemode (Image Card)
     {
       id: 'logixtrade-image',
       projectId: 'chimodeh',
@@ -603,7 +670,7 @@ export const PortfolioCasesSection: React.FC<PortfolioCasesSectionProps> = ({ on
       logo: (
         <div className="flex items-center gap-2 text-[#0a3d46]">
           <span className="font-extrabold italic tracking-wider text-xl font-sans">
-            SABREPAK
+            SAPINO SHOP
           </span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5">
             <path d="M4 14c2-4 6-7 12-7l2 3-4 2 4 4-5 1-2 4-7-7z" />
@@ -621,7 +688,7 @@ export const PortfolioCasesSection: React.FC<PortfolioCasesSectionProps> = ({ on
       imageAlt: 'ساپینو شاپ',
     },
 
-    // 15. Roziro Academy (Text Card)
+    // 15. Roozzero Academy (Text Card)
     {
       id: 'roziro-academy-text',
       projectId: 'roziroacademy',
@@ -635,10 +702,7 @@ export const PortfolioCasesSection: React.FC<PortfolioCasesSectionProps> = ({ on
       textColor: 'text-white',
       logo: (
         <div className="flex items-center gap-2 text-emerald-300">
-          <div className="w-7 h-7 rounded-lg bg-emerald-500/20 border border-emerald-400/30 flex items-center justify-center font-bold font-mono text-sm">
-            N
-          </div>
-          <span className="font-bold tracking-tight text-lg font-sans text-white">NexaCloud</span>
+          <img src={roozzeroLogo} alt="giahLogo" />
         </div>
       ),
     },
@@ -650,6 +714,120 @@ export const PortfolioCasesSection: React.FC<PortfolioCasesSectionProps> = ({ on
       type: 'image',
       imageSrc: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80',
       imageAlt: 'آکادمی روزیرو',
+    },
+
+    // 13. Learnboit (Text Card)
+    {
+      id: 'sapinoshop-text',
+      projectId: 'sapinoshop',
+      type: 'text',
+      title: 'گروه آموزشی لرنوبیت',
+      category: 'جزوات آموزشی',
+      metricsBadge: 'وب‌سایت آموزشی',
+      description:
+        'طراحی فروشگاه اینترنتی ساپینو شاپ با تمرکز بر معرفی محصولات سبک زندگی، دسته‌بندی کاربردی کالاها و ایجاد تجربه خرید آنلاین ساده و منظم برای مشتریان',
+      bgColor: 'bg-[#e7efec]',
+      textColor: 'text-[#0a333b]',
+      logo: (
+        <div className="flex items-center gap-2 text-emerald-300">
+          <img src={learnoLogo} alt="giahLogo" />
+        </div>
+      ),
+    },
+
+    // 14. Learnboit (Image Card)
+    {
+      id: 'sapinoshop-image',
+      projectId: 'sapinoshop',
+      type: 'image',
+      imageSrc: learnoBanner0,
+      imageAlt: 'ساپینو شاپ',
+    },
+
+        // 11. pelashan
+    {
+      id: 'logixtrade-text',
+      projectId: 'chimodeh',
+      type: 'text',
+      title: 'پلاشان',
+      category: 'تولید محصولات پسته',
+      metricsBadge: 'وب‌سایت فروشگاهی',
+      description:
+        'طراحی وب‌سایت چی مده با تمرکز بر انتشار محتوای مرتبط با مد و فشن، نمایش منظم مطالب و فراهم‌کردن تجربه‌ای روان برای مخاطبانی که به دنبال جدیدترین موضوعات و ترندهای دنیای مد هستند',
+      bgColor: 'bg-[#2a737d]',
+      textColor: 'text-white',
+      logo: (
+        <div className="flex items-center gap-2 text-emerald-300">
+          <img src={pelashanLogo} alt="giahLogo" />
+        </div>
+      ),
+    },
+
+    // 12. pelashan
+    {
+      id: 'logixtrade-image',
+      projectId: 'chimodeh',
+      type: 'image',
+      imageSrc: pelashanBanner0,
+      imageAlt: 'پلاشان',
+    },
+
+    // 13. seo (Text Card)
+    {
+      id: 'sapinoshop-text',
+      projectId: 'sapinoshop',
+      type: 'text',
+      title: 'سئو سلیمانی',
+      category: 'خدمات تخصصی سئو',
+      metricsBadge: 'وب‌سایت خدماتی',
+      description:
+        'طراحی فروشگاه اینترنتی ساپینو شاپ با تمرکز بر معرفی محصولات سبک زندگی، دسته‌بندی کاربردی کالاها و ایجاد تجربه خرید آنلاین ساده و منظم برای مشتریان',
+      bgColor: 'bg-[#e7efec]',
+      textColor: 'text-[#0a333b]',
+      logo: (
+        <div className="flex items-center gap-2 text-[#0a3d46]">
+          <span className="font-extrabold italic tracking-wider text-xl font-sans">
+            SEO-SOLEYMANI
+          </span>
+        </div>
+      ),
+    },
+
+        // 14. seo (Image Card)
+    {
+      id: 'sapinoshop-image',
+      projectId: 'sapinoshop',
+      type: 'image',
+      imageSrc: seoBanner0,
+      imageAlt: 'سئو سلیمانی',
+    },
+
+    // 15. giah gostar (Text Card)
+    {
+      id: 'roziro-academy-text',
+      projectId: 'roziroacademy',
+      type: 'text',
+      title: 'گیاه گستر',
+      category: 'شرکت گیاه گستر',
+      metricsBadge: 'وب‌سایت شرکتی',
+      description:
+        'طراحی وب‌سایت آکادمی روزیرو با تمرکز بر معرفی دوره‌ها و محتوای آموزشی در حوزه توسعه مهارت و سرمایه‌گذاری، سازمان‌دهی مطالب و فراهم‌کردن دسترسی آسان کاربران به اطلاعات آموزشی',
+      bgColor: 'bg-[#0b2b32]',
+      textColor: 'text-white',
+      logo: (
+        <div className="flex items-center gap-2 text-emerald-300">
+          <img src={giahLogo} alt="giahLogo" />
+        </div>
+      ),
+    },
+
+    // 16. giah gostar (Image Card)
+    {
+      id: 'roziro-academy-image',
+      projectId: 'roziroacademy',
+      type: 'image',
+      imageSrc: giahBanner0,
+      imageAlt: 'گیاه گستر',
     },
   ];
 
@@ -673,13 +851,13 @@ export const PortfolioCasesSection: React.FC<PortfolioCasesSectionProps> = ({ on
         {/* ======================================================== */}
         <div className="w-full mb-10 sm:mb-14 text-right">
           <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-[36px] font-bold text-[#0c2227] tracking-tight flex flex-wrap items-baseline gap-x-2.5 gap-y-1.5 leading-snug mt-2">
-            <span className="text-[#0c2227]">پورتفولیو پلانکس؛ از ایده تا اجرا:</span>
+            <span className="text-[#0c2227]">پورتفولیو پلانکست؛ از ایده تا اجرا:</span>
             <span className="text-[#439683] font-normal">
-              نگاهی به نمونه پروژه‌های طراحی و توسعه وب‌اپلیکیشن پلانکس
+              نگاهی به نمونه پروژه‌های طراحی و توسعه وب‌اپلیکیشن پلانکست
             </span>
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-600 font-normal leading-relaxed w-full max-w-none text-justify">
-            در پلانکس، وب‌سایت‌هایی متناسب با نیاز کسب‌وکارها طراحی و توسعه می‌دهیم؛ از فروشگاه‌های اینترنتی و وب‌سایت‌های شرکتی تا پلتفرم‌های آموزشی و پروژه‌های اختصاصی. در این بخش، با نمونه‌کارها و حوزه‌های فعالیت برندهایی آشنا شوید که در مسیر حضور حرفه‌ای در فضای دیجیتال گام برداشته‌اند
+            در پلانکست، وب‌سایت‌هایی متناسب با نیاز کسب‌وکارها طراحی و توسعه می‌دهیم؛ از فروشگاه‌های اینترنتی و وب‌سایت‌های شرکتی تا پلتفرم‌های آموزشی و پروژه‌های اختصاصی. در این بخش، با نمونه‌کارها و حوزه‌های فعالیت برندهایی آشنا شوید که در مسیر حضور حرفه‌ای در فضای دیجیتال گام برداشته‌اند
           </p>
         </div>
 
@@ -953,11 +1131,10 @@ export const PortfolioCasesSection: React.FC<PortfolioCasesSectionProps> = ({ on
                           key={imgIdx}
                           type="button"
                           onClick={() => setActiveImageIndex(imgIdx)}
-                          className={`relative shrink-0 w-20 sm:w-24 h-14 sm:h-16 rounded-xl overflow-hidden border-2 transition-all cursor-pointer ${
-                            activeImageIndex === imgIdx
-                              ? 'border-emerald-400 ring-2 ring-emerald-400/40 scale-105'
-                              : 'border-white/20 opacity-60 hover:opacity-100'
-                          }`}
+                          className={`relative shrink-0 w-20 sm:w-24 h-14 sm:h-16 rounded-xl overflow-hidden border-2 transition-all cursor-pointer ${activeImageIndex === imgIdx
+                            ? 'border-emerald-400 ring-2 ring-emerald-400/40 scale-105'
+                            : 'border-white/20 opacity-60 hover:opacity-100'
+                            }`}
                         >
                           <img
                             src={img.url}

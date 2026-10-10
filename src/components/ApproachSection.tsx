@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, ArrowLeft, CheckCircle2, Sparkles, TrendingUp, ShieldCheck, Award, Users2, Layers, Eye } from 'lucide-react';
+import cartWeb from '../assets/imgs/Web Design Workspace.png';
+import cartWordpress from '../assets/imgs/Wordpress Design Workspace.png';
+import cartSeo from '../assets/imgs/SEO Analytics Workspace.png';
+import cartCybersecurity from '../assets/imgs/Cybersecurity Operations.png';
 
 interface ExpertiseRole {
   role: string;
@@ -48,7 +52,7 @@ export const ApproachSection: React.FC<ApproachSectionProps> = ({ onOpenOrder })
       title: 'طراحی سایت حرفه‌ای متناسب با نیاز کسب‌وکار',
       shortDesc: 'طراحی و توسعه وب‌سایت‌های فروشگاهی و شرکتی با وردپرس، React و برنامه‌نویسی اختصاصی، متناسب با اهداف و نیازهای کسب‌وکار شما',
       tag: 'طراحی سایت',
-      image: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80',
+      image: cartWeb,
       specialtyTitle: 'تیم معماری فرانت‌اند، مهندسان فول‌استک و طراحان تجربه کاربری (UI/UX)',
       specialtyDescription:
         'طراحی و پیاده‌سازی انواع وب‌سایت‌های شرکتی، پورتال‌های سازمانی و فروشگاه‌های اینترنتی بر پایه متدهای مدرن وب، طراحی واکنش‌گرا و عملکرد فوق‌سریع برای تبدیل حداکثری بازدیدکنندگان به مشتریان وفادار.',
@@ -78,13 +82,13 @@ export const ApproachSection: React.FC<ApproachSectionProps> = ({ onOpenOrder })
       teamExpertise: [
         {
           role: 'معمار ارشد فرانت‌اند و رابط کاربری (UI/UX)',
-          name: 'تیم طراحی و توسعه فرانت‌اند پلانکس',
+          name: 'تیم طراحی و توسعه فرانت‌اند پلانکست',
           experience: '+۸ سال تجربه',
           skills: ['طراحی اختصاصی در Figma', 'React & Next.js', 'سیستم‌های طراحی یکپارچه (Design System)'],
         },
         {
           role: 'توسعه‌دهنده ارشد سیستم‌های مدیریت محتوا و وب',
-          name: 'واحد مهندسی نرم‌افزار پلانکس',
+          name: 'واحد مهندسی نرم‌افزار پلانکست',
           experience: '+۱۰ سال تجربه',
           skills: ['توسعه پورتال‌های سازمانی', 'اتصال درگاه‌های بانکی و وب‌سرویس‌ها', 'بهینه‌سازی کارایی و امنیت'],
         },
@@ -112,7 +116,7 @@ export const ApproachSection: React.FC<ApproachSectionProps> = ({ onOpenOrder })
       title: 'قالب وردپرس؛ متناسب با برند و اهداف شما',
       shortDesc: 'طراحی و توسعه قالب‌های وردپرس متناسب با هویت برند و نیازهای کسب‌وکار، با تمرکز بر سرعت، تجربه کاربری و ساختار بهینه برای سئو',
       tag: 'طراحی قالب وردپرس',
-      image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80',
+      image: cartWordpress,
       specialtyTitle: 'متخصصان توسعه قالب اختصاصی و مهندسان هسته وردپرس',
       specialtyDescription:
         'توسعه قالب‌های سبک، ایمن و کدنویسی‌شده از صفر بر پایه اصول رسمی وردپرس، با هماهنگی کامل با ووکامرس، فرم‌سازها و کنترل پنل سفارشی بدون افت سرعت.',
@@ -142,13 +146,13 @@ export const ApproachSection: React.FC<ApproachSectionProps> = ({ onOpenOrder })
       teamExpertise: [
         {
           role: 'برنامه‌نویس ارشد قالب و هسته وردپرس',
-          name: 'تیم توسعه هسته وردپرس پلانکس',
+          name: 'تیم توسعه هسته وردپرس پلانکست',
           experience: '+۹ سال تجربه',
           skills: ['کدنویسی PHP 8 و هوک‌های وردپرس', 'توسعه فیلدهای سفارشی ACF Pro', 'بهینه‌سازی دیتابیس وردپرس'],
         },
         {
           role: 'طراح المان‌ها و انیمیشن‌های تعاملی وردپرس',
-          name: 'واحد طراحی بصری پلانکس',
+          name: 'واحد طراحی بصری پلانکست',
           experience: '+۷ سال تجربه',
           skills: ['انیمیشن‌های مدرن و سبک CSS/JS', 'چیدمان گوتنبرگ سفارشی', 'سازگاری با افزونه‌های چندزبانه'],
         },
@@ -161,7 +165,7 @@ export const ApproachSection: React.FC<ApproachSectionProps> = ({ onOpenOrder })
       ],
       details: {
         overview:
-          'یک قالب حرفه‌ای باید تعادلی دقیق میان سادگی در مدیریت محتوا و حداکثر سرعت بارگذاری برقرار کند. قالب‌های اختصاصی پلانکس بدون اتکا به صفحه‌سازهای کند، دسترسی آسان به ویرایش تمام بخش‌ها را فراهم می‌سازند.',
+          'یک قالب حرفه‌ای باید تعادلی دقیق میان سادگی در مدیریت محتوا و حداکثر سرعت بارگذاری برقرار کند. قالب‌های اختصاصی پلانکست بدون اتکا به صفحه‌سازهای کند، دسترسی آسان به ویرایش تمام بخش‌ها را فراهم می‌سازند.',
         keyPoints: [
           'کدنویسی استاندارد مطابق دستورالعمل‌های رسمی WordPress Coding Standards',
           'پرهیز کامل از کدهای آلوده و قالب‌های نال‌شده و آماده خارجی',
@@ -176,7 +180,7 @@ export const ApproachSection: React.FC<ApproachSectionProps> = ({ onOpenOrder })
       title: 'سئو و بهینه‌سازی سایت برای جذب مشتری',
       shortDesc: 'با بهینه‌سازی فنی سایت، بهبود ساختار محتوا و هدف‌گیری کلمات کلیدی مرتبط، به افزایش شانس دیده‌شدن وب‌سایت شما در نتایج گوگل کمک می‌کنیم',
       tag: 'سئو و بهینه‌سازی وب‌سایت',
-      image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80',
+      image: cartSeo,
       specialtyTitle: 'استراتژیست‌های رشد ارگانیک، کارشناسان سئو تکنیکال و تحلیلگران سرچ کنسول',
       specialtyDescription:
         'ارتقای پایدار رتبه کلمات کلیدی کلیدی پول‌ساز، ممیزی فنی ساختار سایت، استراتژی محتوای اصولی و سئو داخلی و خارجی برای جذب ترافیک پیوسته و هدفمند از موتورهای جستجو.',
@@ -206,13 +210,13 @@ export const ApproachSection: React.FC<ApproachSectionProps> = ({ onOpenOrder })
       teamExpertise: [
         {
           role: 'استراتژیست ارشد سئو و تحقیق کلمات کلیدی',
-          name: 'تیم کیورد ریسرچ و محتوای پلانکس',
+          name: 'تیم کیورد ریسرچ و محتوای پلانکست',
           experience: '+۸ سال تجربه',
           skills: ['استخراج کلمات با قصد خرید مخاطب', 'خوشه‌بندی موضوعی (Topic Clusters)', 'تحلیل رقبا و گپ‌های محتوایی'],
         },
         {
           role: 'متخصص سئو تکنیکال و Core Web Vitals',
-          name: 'واحد سئو فنی پلانکس',
+          name: 'واحد سئو فنی پلانکست',
           experience: '+۱۰ سال تجربه',
           skills: ['بهینه‌سازی بودجه خزش (Crawl Budget)', 'اسکیماهای پیشرفته JSON-LD', 'رفع خطاهای ایندکس و سرچ کنسول'],
         },
@@ -237,10 +241,10 @@ export const ApproachSection: React.FC<ApproachSectionProps> = ({ onOpenOrder })
     },
     {
       id: 'plugin-development',
-      title: 'توسعه افزونه وردپرس برای امکانات فراتر از قالب',
-      shortDesc: 'توسعه افزونه‌های اختصاصی وردپرس برای افزودن قابلیت‌های جدید، خودکارسازی فرایندها و یکپارچه‌سازی امکانات موردنیاز وب‌سایت شما',
-      tag: 'طراحی افزونه',
-      image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1200&q=80',
+      title: 'امنیت سایت؛ شناسایی آسیب‌پذیری پیش از حمله',
+      shortDesc: 'شناسایی آسیب‌پذیری‌ها، ارزیابی امنیت وردپرس و برنامه‌های تحت وب و ارائه راهکارهای کاهش ریسک برای حفاظت بهتر از وب‌سایت و اطلاعات کاربران',
+      tag: 'امنیت وب‌سایت',
+      image: cartCybersecurity,
       specialtyTitle: 'مهندسان افزونه‌نویسی وردپرس، معماران API و امنیت پایگاه داده',
       specialtyDescription:
         'طراحی و برنامه‌نویسی افزونه‌های سفارشی وردپرس برای اتصال به وب‌سرویس‌های سازمانی، سیستم‌های احراز هویت پیامکی، اتوماسیون فرآیندها، محاسبات مالی و قابلیت‌های فراتر از قالب.',
@@ -270,13 +274,13 @@ export const ApproachSection: React.FC<ApproachSectionProps> = ({ onOpenOrder })
       teamExpertise: [
         {
           role: 'معمار ارشد پلاگین‌نویسی وردپرس',
-          name: 'واحد توسعه افزونه‌های اختصاصی پلانکس',
+          name: 'واحد توسعه افزونه‌های اختصاصی پلانکست',
           experience: '+۹ سال تجربه',
           skills: ['معماری ماژولار شیءگرا در PHP', 'امنیت داده و جلوگیری از تزریق SQL / XSS', 'هوک‌ها و فیلترهای استاندارد وردپرس'],
         },
         {
           role: 'متخصص اتصال سامانه‌های جانبی و وب‌سرویس‌ها',
-          name: 'تیم یکپارچه‌سازی و اتوماسیون پلانکس',
+          name: 'تیم یکپارچه‌سازی و اتوماسیون پلانکست',
           experience: '+۸ سال تجربه',
           skills: ['اتصال به سیستم‌های حسابداری و CRM', 'پیاده‌سازی ورود پیامکی OTP', 'سیستم‌های نوبت‌دهی و محاسباتی'],
         },
@@ -325,7 +329,7 @@ export const ApproachSection: React.FC<ApproachSectionProps> = ({ onOpenOrder })
             transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-[36px] font-bold text-[#0c2227] tracking-tight flex flex-wrap items-baseline gap-x-2.5 gap-y-1.5 leading-snug"
           >
-            <span className="text-[#0c2227]">تخصص‌های پلانکس در طراحی و توسعه:</span>
+            <span className="text-[#0c2227]">تخصص‌های پلانکست در طراحی و توسعه:</span>
             <span className="text-[#439683] font-normal">
               راهکارهای تخصصی طراحی سایت برای رشد کسب‌وکار شما
             </span>
@@ -338,7 +342,7 @@ export const ApproachSection: React.FC<ApproachSectionProps> = ({ onOpenOrder })
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mt-3 text-sm sm:text-base text-slate-600 font-normal leading-relaxed w-full max-w-none text-justify"
           >
-            از طراحی سایت فروشگاهی و شرکتی تا توسعه قالب و افزونه‌های اختصاصی؛ پلانکس راهکارهای دیجیتال متناسب با نیاز کسب‌وکار شما را ارائه می‌دهد
+            از طراحی سایت فروشگاهی و شرکتی تا توسعه قالب و افزونه‌های اختصاصی؛ پلانکست راهکارهای دیجیتال متناسب با نیاز کسب‌وکار شما را ارائه می‌دهد
           </motion.p>
         </div>
 

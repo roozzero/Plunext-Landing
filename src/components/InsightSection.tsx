@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import partnersImg from '../assets/imgs/Partners.jpg';
 import { WORLD_DOTS_PATH } from './worldMapData';
+import logoImg from '../assets/imgs/Logo.png';
+
 
 interface MapPin {
   id: string;
@@ -76,7 +78,7 @@ export const InsightSection: React.FC = () => {
         <div className="w-full flex justify-center mb-3">
           <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 text-[#0a4852] border border-emerald-200/60 text-xs font-semibold tracking-wide shadow-xs">
             <span className="w-1.5 h-1.5 rounded-full bg-[#439683]" />
-            رویکرد و فلسفه پلانکس
+            رویکرد و فلسفه پلانکست
           </span>
         </div>
 
@@ -102,7 +104,7 @@ export const InsightSection: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
             className="mt-3 text-sm sm:text-base text-slate-600 font-normal leading-relaxed w-full max-w-none text-justify"
           >
-            ما در پلانکس فقط وب‌سایت طراحی نمی‌کنیم؛ تجربه‌های دیجیتالی می‌سازیم که با هدف، هویت و آینده‌ی برند شما شکل گرفته‌اند.
+            ما در پلانکست فقط وب‌سایت طراحی نمی‌کنیم؛ تجربه‌های دیجیتالی می‌سازیم که با هدف، هویت و آینده‌ی برند شما شکل گرفته‌اند.
           </motion.p>
         </div>
 
@@ -126,19 +128,28 @@ export const InsightSection: React.FC = () => {
             <div className="absolute inset-0 z-0 overflow-hidden">
               <img
                 src={partnersImg}
-                alt="تیم پلانکس"
+                alt="تیم پلانکست"
                 className="w-full h-full object-cover object-top sm:object-center group-hover:scale-[1.01] transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent pointer-events-none" />
             </div>
 
             {/* Floating Glassmorphism Card: Our Funds Over Time */}
-            <div className="relative z-10 bg-black/60 hover:bg-black/70 backdrop-blur-2xl border border-white/20 rounded-2xl p-4 sm:p-5 text-white max-w-[290px] shadow-[0_16px_40px_rgba(0,0,0,0.35)] transition-all duration-300 text-right">
-              <h4 className="text-xs sm:text-sm font-medium text-slate-100 mb-2.5 tracking-wide">
+            <div>
+              {/* <h4 className="text-xs sm:text-sm font-medium text-slate-100 mb-2.5 tracking-wide">
                 روند شکل‌گیری یک تجربه دیجیتال
-              </h4>
-
-              <div className="flex items-center gap-6 justify-between">
+              </h4> */}
+              <img
+                src={logoImg}
+                alt="لوگوی پلانکست"
+                className="h-7 sm:h-8 md:h-9 w-auto object-contain drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]"
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none';
+                  const fallback = document.getElementById('logo-text-fallback');
+                  if (fallback) fallback.style.display = 'flex';
+                }}
+              />
+              {/* <div className="flex items-center gap-6 justify-between">
                 <div className="text-right">
                   <div className="text-xl sm:text-2xl font-bold text-white tracking-tight leading-none">
                     ۰۱
@@ -158,7 +169,7 @@ export const InsightSection: React.FC = () => {
                     طراحی و توسعه
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </motion.div>
 
