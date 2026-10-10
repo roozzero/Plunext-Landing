@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import partnersImg from '../assets/imgs/Partners.jpg';
-import { WORLD_DOTS_PATH } from './worldMapData';
+import partnersImg from '../assets/imgs/Partners-1.jpg';
 import logoImg from '../assets/imgs/Logo.png';
-
+import { WORLD_DOTS_PATH } from './worldMapData';
 
 interface MapPin {
   id: string;
@@ -136,9 +135,6 @@ export const InsightSection: React.FC = () => {
 
             {/* Floating Glassmorphism Card: Our Funds Over Time */}
             <div>
-              {/* <h4 className="text-xs sm:text-sm font-medium text-slate-100 mb-2.5 tracking-wide">
-                روند شکل‌گیری یک تجربه دیجیتال
-              </h4> */}
               <img
                 src={logoImg}
                 alt="لوگوی پلانکست"
@@ -149,27 +145,6 @@ export const InsightSection: React.FC = () => {
                   if (fallback) fallback.style.display = 'flex';
                 }}
               />
-              {/* <div className="flex items-center gap-6 justify-between">
-                <div className="text-right">
-                  <div className="text-xl sm:text-2xl font-bold text-white tracking-tight leading-none">
-                    ۰۱
-                  </div>
-                  <div className="text-[10px] sm:text-[11px] text-slate-300 mt-1 font-normal">
-                    استراتژی و شناخت
-                  </div>
-                </div>
-
-                <div className="w-[1px] h-8 bg-white/20" />
-
-                <div className="text-right">
-                  <div className="text-xl sm:text-2xl font-bold text-white tracking-tight leading-none">
-                    ۰۲
-                  </div>
-                  <div className="text-[10px] sm:text-[11px] text-slate-300 mt-1 font-normal">
-                    طراحی و توسعه
-                  </div>
-                </div>
-              </div> */}
             </div>
           </motion.div>
 

@@ -52,6 +52,10 @@ export const FooterSection: React.FC<FooterSectionProps> = ({
           {/* Column 1: Mission Tagline & CTA Button (lg:col-span-4) */}
           <div className="lg:col-span-4 flex flex-col items-start text-right">
             <div className="mb-2.5">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 text-emerald-300 text-[11px] font-semibold border border-white/15 mb-2.5 shadow-xs">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                استودیو طراحی و فناوری وب
+              </span>
               
               {/* Prominently Styled Brand Tagline */}
               <div className="relative inline-block py-1">

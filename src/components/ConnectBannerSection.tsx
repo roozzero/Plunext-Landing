@@ -45,7 +45,7 @@ export const ConnectBannerSection: React.FC<ConnectBannerSectionProps> = ({ onOp
             </h2>
 
             {/* Subtitle Description */}
-            <p className="mt-4 text-xs sm:text-sm text-slate-200/90 font-normal leading-relaxed max-w-md mx-auto text-justify">
+            <p className="mt-4 text-xs sm:text-sm text-slate-200/90 font-normal leading-relaxed max-w-md mx-auto text-center">
               فرصت راهبردی بعدی شما از اینجا آغاز می‌شود. با تیم تخصصی ما گفتگو کنید و ظرفیت‌های رشد کسب‌وکار خود را کشف نمایید.
             </p>
 

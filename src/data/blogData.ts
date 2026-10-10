@@ -1,10 +1,10 @@
 import ipoImg from '../assets/imgs/why-every-business-needs-a-website.png';
 import skyscraperImg from '../assets/imgs/professional-web-design-growth-engine.png';
 import globeImg from '../assets/imgs/seo-principles-google-first-page.png';
-import ECommerceImg  from '../assets/imgs/E-Commerce Journey from Idea to Sales.png';
-import ReadyTemplatesImg  from '../assets/imgs/Ready Templates or Custom Design_.png';
-import AvatarRoozbeh from '../assets/imgs/AvatarRoozbeh.jpg';
-import AvatarHossein from '../assets/imgs/AvatarHossein.png';
+import eCommerceImg  from '../assets/imgs/E-Commerce Journey from Idea to Sales.png';
+import readyTemplatesImg  from '../assets/imgs/Ready Templates or Custom Design_.png';
+import avatarRoozbeh from '../assets/imgs/AvatarRoozbeh.png';
+import avatarHossein from '../assets/imgs/AvatarHossein.png';
 // import globeImg from '../assets/imgs/insight_globe.jpg';
 
 export interface BlogArticle {
@@ -46,7 +46,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     author: {
       name: 'مهندس روزبه توکلی',
       role: 'مدیر ارشد استراتژی دیجیتال پلانکست',
-      avatar: AvatarRoozbeh,
+      avatar: avatarRoozbeh,
     },
     tags: ['طراحی سایت', 'کسب‌وکار آنلاین', 'برندینگ دیجیتال', 'اعتماد مشتری'],
     content: {
@@ -102,7 +102,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     author: {
       name: 'مهندس حسین سلیمانی ابهری',
       role: 'مدیر ارشد توسعه‌دهنده بک‌اند تیم پلانکست',
-      avatar: AvatarHossein,
+      avatar: avatarHossein,
     },
     tags: ['طراحی UI/UX', 'بهینه‌سازی نرخ تبدیل', 'طراحی واکنش‌گرا', 'رشد فروش'],
     content: {
@@ -201,12 +201,12 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       'برای راه‌اندازی یک فروشگاه آنلاین موفق چه گام‌هایی باید برداریم؟ از انتخاب درگاه پرداخت و لجستیک تا چیدمان دسته‌بندی‌ها و مدیریت موجودی، نکات طلایی را در این راهنما بخوانید.',
     readTime: '۱۶ دقیقه مطالعه',
     date: '۵ اردیبهشت ۱۴۰۵',
-    image: ECommerceImg,
+    image: eCommerceImg,
     category: 'تجارت الکترونیک',
     author: {
       name: 'مهندس روزبه توکلی',
       role: 'مدیر ارشد استراتژی دیجیتال پلانکست',
-      avatar: AvatarRoozbeh,
+      avatar: avatarRoozbeh,
     },
     tags: ['فروشگاه اینترنتی', 'تجارت الکترونیک', 'درگاه پرداخت', 'لجستیک فروش'],
     content: {
@@ -239,12 +239,12 @@ export const BLOG_ARTICLES: BlogArticle[] = [
       'آیا برای شروع باید از قالب‌های آماده استفاده کنید یا سراغ کدنویسی و توسعه اختصاصی بروید؟ مقایسه جامع هزینه، مقیاس‌پذیری، امنیت و سرعت این دو رویکرد.',
     readTime: '۱۱ دقیقه مطالعه',
     date: '۲۰ فروردین ۱۴۰۵',
-    image: ReadyTemplatesImg,
+    image: readyTemplatesImg,
     category: 'توسعه وب‌سایت',
     author: {
       name: 'مهندس حسین سلیمانی ابهری',
       role: 'مدیر ارشد توسعه‌دهنده بک‌اند تیم پلانکست',
-      avatar: AvatarHossein,
+      avatar: avatarHossein,
     },
     tags: ['کدنویسی اختصاصی', 'قالب آماده', 'سرعت سایت', 'امنیت وب'],
     content: {

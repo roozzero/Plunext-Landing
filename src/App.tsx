@@ -88,9 +88,9 @@ export default function App() {
   const navItems = [
     { id: 'Home', label: 'صفحه اصلی' },
     { id: 'Approach', label: 'رویکرد ما', targetId: 'insight-section' },
-    { id: 'Expertise', label: 'تخصص ما', targetId: 'approach-section' },
+    { id: 'Expertise', label: 'تخصص ها', targetId: 'approach-section' },
     { id: 'Clients', label: 'مشتریان', targetId: 'clients-section' },
-    { id: 'Portfolio', label: 'نمونه‌کار ما', targetId: 'portfolio-section' },
+    { id: 'Portfolio', label: 'نمونه کار ها', targetId: 'portfolio-section' },
     { id: 'Testimonials', label: 'نظرات', targetId: 'testimonials-section' },
     { id: 'Blog', label: 'وبلاگ', targetId: 'blog' },
     { id: 'About Us', label: 'درباره ما', targetId: 'leadership-section' },
