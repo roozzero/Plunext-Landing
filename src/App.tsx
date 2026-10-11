@@ -370,30 +370,30 @@ export default function App() {
             {/* Main Content Grid positioned close to bottom */}
             <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mt-auto mb-1">
               {/* Right Column in RTL: Heading + Paragraph + Action Buttons */}
-              <div className="lg:col-span-8 space-y-4 sm:space-y-5 mb-1 text-right">
+              <div className="w-full lg:col-span-8 space-y-3.5 sm:space-y-5 mb-1 text-right">
                 {/* 4. Main Headline: Appears from bottom to top */}
                 <motion.h1
                   initial={{ y: 50, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.85, delay: 0.75, ease: [0.16, 1, 0.3, 1] }}
-                  className="text-[40px] sm:text-[48px] lg:text-[54px] font-bold text-white tracking-tight leading-[1.2] max-w-3xl drop-shadow-[0_4px_24px_rgba(0,0,0,0.65)]"
+                  className="text-[22px] xs:text-[25px] sm:text-[38px] md:text-[46px] lg:text-[54px] font-bold text-white tracking-tight leading-[1.3] sm:leading-[1.2] max-w-3xl drop-shadow-[0_4px_24px_rgba(0,0,0,0.65)] text-justify sm:text-right"
                 >
                   انتخابی حرفه‌ای<br />
                   برای ساختن برندی متمایز
                 </motion.h1>
 
-                {/* Subtitle / Paragraph */}
+                {/* Subtitle / Paragraph: Justified & smaller on mobile */}
                 <motion.p
                   initial={{ y: 40, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.8, delay: 0.95, ease: [0.16, 1, 0.3, 1] }}
-                  className="text-[14px] sm:text-[15px] text-slate-200/90 font-normal leading-relaxed max-w-2xl drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)] text-right"
+                  className="text-[11.5px] sm:text-[13.5px] md:text-[15px] text-slate-200/90 font-normal leading-relaxed max-w-2xl drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)] text-justify"
                 >
-                 در پلانکست، وب‌سایت‌هایی طراحی و توسعه می‌دهیم که ترکیبی از استراتژی، طراحی و تکنولوژی‌اند؛ از اولین ایده تا تجربه‌ای سریع، زیبا و هدفمند که برای رشد برند شما ساخته شده است.
+                  در پلانکست، وب‌سایت‌هایی طراحی و توسعه می‌دهیم که ترکیبی از استراتژی، طراحی و تکنولوژی‌اند؛ از اولین ایده تا تجربه‌ای سریع، زیبا و هدفمند که برای رشد برند شما ساخته شده است.
                 </motion.p>
 
                 {/* 5. Hero Buttons */}
-                <div className="flex flex-wrap items-center gap-4 pt-1 text-[15px]">
+                <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-1">
                   {/* White Pill Button: Start Project -> Opens Order Modal */}
                   <motion.button
                     type="button"
@@ -401,7 +401,7 @@ export default function App() {
                     initial={{ x: 60, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ duration: 0.75, delay: 1.1, ease: [0.16, 1, 0.3, 1] }}
-                    className="bg-white hover:bg-slate-100 text-slate-950 font-bold px-6 sm:px-7 py-2.5 sm:py-3 rounded-full flex items-center gap-2 shadow-[0_8px_20px_rgba(0,0,0,0.35)] transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer text-[14px] group overflow-hidden"
+                    className="bg-white hover:bg-slate-100 text-slate-950 font-bold px-5 sm:px-7 py-2.5 sm:py-3 rounded-full flex items-center gap-2 shadow-[0_8px_20px_rgba(0,0,0,0.35)] transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer text-xs sm:text-[14px] group overflow-hidden"
                   >
                     <motion.span
                       initial={{ x: 14, opacity: 0 }}
@@ -414,7 +414,7 @@ export default function App() {
                       initial={{ scale: 0, opacity: 0 }}
                       animate={{ scale: 1, opacity: 1 }}
                       transition={{ duration: 0.4, delay: 1.25, ease: [0.34, 1.56, 0.64, 1] }}
-                      className="text-base font-normal group-hover:-translate-x-0.5 transition-transform"
+                      className="text-sm sm:text-base font-normal group-hover:-translate-x-0.5 transition-transform"
                     >
                       ←
                     </motion.span>
@@ -432,7 +432,7 @@ export default function App() {
                     initial={{ x: 50, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ duration: 0.7, delay: 1.25, ease: [0.16, 1, 0.3, 1] }}
-                    className="bg-[#0b242a]/60 hover:bg-[#0b242a]/85 border border-white/20 text-white font-medium px-6 sm:px-7 py-2.5 sm:py-3 rounded-full backdrop-blur-md transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer text-[14px] shadow-[0_4px_16px_rgba(0,0,0,0.2)]"
+                    className="bg-[#0b242a]/60 hover:bg-[#0b242a]/85 border border-white/20 text-white font-medium px-5 sm:px-7 py-2.5 sm:py-3 rounded-full backdrop-blur-md transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer text-xs sm:text-[14px] shadow-[0_4px_16px_rgba(0,0,0,0.2)]"
                   >
                     <motion.span
                       initial={{ opacity: 0 }}
@@ -445,8 +445,8 @@ export default function App() {
                 </div>
               </div>
 
-              {/* 6. Left Column in RTL: Stat Card */}
-              <div className="lg:col-span-4 flex flex-col items-start lg:items-start justify-end">
+              {/* 6. Left Column in RTL: Stat Card (Hidden on mobile per request: باکس همکاری داشته اند را کامل حذف کن) */}
+              <div className="hidden lg:flex lg:col-span-4 flex-col items-start lg:items-start justify-end">
                 <motion.div
                   initial={{ y: -70, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}

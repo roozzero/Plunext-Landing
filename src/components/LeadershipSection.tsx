@@ -1,277 +1,48 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Users, X, Briefcase, GraduationCap, Award, CheckCircle2, Mail, ExternalLink, Sparkles, Building2 } from 'lucide-react';
-import rTavakoli from '../assets/imgs/R-Tavakoli.png';
-import hSoleimani from '../assets/imgs/H-Soleimani.png';
-import johnImg from '../assets/imgs/john_wilson.jpg';
-
-interface ExperienceItem {
-  period: string;
-  role: string;
-  company: string;
-  description: string;
-}
-
-interface ProjectItem {
-  title: string;
-  client: string;
-  year: string;
-  metric: string;
-  description: string;
-}
-
-interface EducationItem {
-  degree: string;
-  institution: string;
-  year: string;
-}
-
-interface Leader {
-  id: string;
-  name: string;
-  role: string;
-  image: string;
-  bio: string;
-  linkedinUrl: string;
-  email: string;
-  summary: string;
-  coreCompetencies: string[];
-  workExperience: ExperienceItem[];
-  projects: ProjectItem[];
-  education: EducationItem[];
-  honors: string[];
-}
+import { Users, X, Briefcase, GraduationCap, Award, CheckCircle2, Mail, ExternalLink, Sparkles, Building2, ChevronRight, ChevronLeft } from 'lucide-react';
+import { Leader, LEADERS_DATA } from '../data/leadershipData';
 
 export const LeadershipSection: React.FC = () => {
   const [selectedLeader, setSelectedLeader] = useState<Leader | null>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [activeSlide, setActiveSlide] = useState(0);
 
-  const leaders: Leader[] = [
-    {
-      id: 'christian-miller',
-      name: 'مهندس روزبه توکلی',
-      role: 'توسعه‌دهنده فرانت‌اند',
-      bio: 'متخصص توسعه فرانت‌اند در تیم پلانکست، با تمرکز بر پیاده‌سازی رابط‌های کاربری حرفه‌ای، واکنش‌گرا و کاربرپسند. هدف، تبدیل طرح‌های بصری به صفحات وب استاندارد، سریع و سازگار با دستگاه‌های مختلف است تا کاربران تجربه‌ای روان و مطلوب از کار با وب‌سایت داشته باشند.',
-      image: rTavakoli,
-      linkedinUrl: 'https://linkedin.com',
-      email: 'roozbehtavakoli55@gmail.com',
-      summary:
-        'روزبه توکلی در حوزه توسعه فرانت‌اند فعالیت می‌کند و بر ساخت رابط‌های کاربری مدرن، پیاده‌سازی دقیق اجزای سایت و بهبود تجربه کاربری تمرکز دارد. در پروژه‌های پلانکست، توسعه فرانت‌اند نقش مهمی در ایجاد وب‌سایت‌هایی زیبا، کاربردی و سازگار با نیاز کاربران ایفا می‌کند.',
-      coreCompetencies: [
-        'معماری استراتژیک ادغام و تملک (M&A)',
-        'بازسازی مدل‌های درآمدی و بهینه‌سازی ترازنامه',
-        'حاکمیت شرکتی و روابط نهادی بین‌المللی',
-        'توسعه پورتفولیو در بازارهای نوظهور',
-        'مذاکره قراردادهای تأمین مالی پیچیده',
-      ],
-      workExperience: [
-        {
-          period: '۲۰۱۸ - اکنون',
-          role: 'مدیرعامل و رئیس هیئت مدیره',
-          company: 'گروه سرمایه‌گذاری ورت (Vort Group)',
-          description:
-            'تأسیس و راهبری صندوق‌های ۱ و ۲ با مجموع ارزش ۹۰M$، هدایت تملک‌های کلیدی در صنعت هوانوردی و نرم‌افزارهای سازمانی.',
-        },
-        {
-          period: '۲۰۱۰ - ۲۰۱۸',
-          role: 'شریک ارشد سرمایه‌گذاری خصوصی',
-          company: 'کنسرسیوم مالی آلپاین پارتنرز (Alpine Partners)',
-          description:
-            'مدیریت پورتفولیوی ۱.۲ میلیارد دلاری در بخش خدمات مهندسی و نظارت بر تجدید ساختار ۸ شرکت متوسط صنعتی.',
-        },
-        {
-          period: '۲۰۰۴ - ۲۰۱۰',
-          role: 'مدیر بانکداری سرمایه‌گذاری',
-          company: 'مورگان استنلی (Morgan Stanley - لندن)',
-          description:
-            'مشاور ارشد معاملات تملک بین‌المللی در حوزه تجهیزات انرژی و زیرساخت‌های اروپای غربی.',
-        },
-      ],
-      projects: [
-        {
-          title: 'تملک و ادغام استراتژیک شرکت مهندسی هوانوردی اروپایی',
-          client: 'صندوق اول ورت و سرمایه‌گذاران همراه',
-          year: '۲۰۲۲',
-          metric: 'معامله ۱۲۰M$ با بازده IRR ۳۴٪',
-          description: 'مذاکره و تجدید ساختار بدهی‌های بانکی، ادغام زنجیره تأمین و اتصال فروش به ۶ بازار هدف جدید بین‌المللی.',
-        },
-        {
-          title: 'توسعه پلتفرم نرم‌افزاری مدیریت زنجیره ارزش صنعتی',
-          client: 'کنسرسیوم آلپاین پارتنرز',
-          year: '۲۰۱۷',
-          metric: '۴ برابر شدن ارزش ویژه شرکت در ۵ سال',
-          description: 'طراحی نقشه راه ورود به بازار، ادغام ۳ تیم مهندسی رقیب و عرضه موفق سهام در بورس فرانکفورت.',
-        },
-      ],
-      education: [
-        {
-          degree: 'کارشناسی ارشد مدیریت کسب‌وکار (MBA) با گرایش مالی',
-          institution: 'مدرسه بازرگانی لندن (London Business School)',
-          year: '۲۰۰۴',
-        },
-        {
-          degree: 'کارشناسی اقتصاد کاربردی',
-          institution: 'دانشگاه زوریخ (University of Zurich)',
-          year: '۲۰۰۱',
-        },
-      ],
-      honors: [
-        'انتخاب به عنوان مدیر برتر سرمایه‌گذاری خصوصی سال ۲۰۲۳',
-        'عضو ارشد انجمن بین‌المللی مدیران عامل (YPO)',
-        'سخنران کلیدی همایش جهانی Private Equity Summit ژنو',
-      ],
-    },
-    {
-      id: 'mark-davies',
-      name: 'مهندس حسین سلیمانی ابهری',
-      role: 'توسعه‌دهنده بک‌اند',
-      bio: 'متخصص توسعه بک‌اند در تیم پلانکست، مسئول پیاده‌سازی منطق سمت سرور، مدیریت داده‌ها و توسعه قابلیت‌های فنی وب‌سایت‌ها. تمرکز بر ایجاد زیرساختی امن، پایدار و قابل توسعه است تا وب‌سایت‌ها و سامانه‌های تحت وب بتوانند عملکردی قابل اتکا داشته باشند.',
-      image: hSoleimani,
-      linkedinUrl: 'https://linkedin.com',
-      email: 'm.davies@vort-group.com',
-      summary:
-        'حسین سلیمانی در زمینه توسعه بک‌اند و طراحی سایت‌های فروشگاهی و وردپرس فعالیت می‌کند و بر ساخت زیرساخت فنی وب‌سایت‌ها، پیاده‌سازی قابلیت‌های اختصاصی، ارتباط مؤثر پایگاه‌داده و امنیت سیستم‌ها تمرکز دارد.',
-      coreCompetencies: [
-        'زبان PHP',
-        'زبان JavaScript',
-        'فریمورک‌های تیل‌ویند (Tailwind) و بوت‌استرپ (Bootstrap)',
-        'فتوشاپ (Photoshop)',
-        'زبان انگلیسی B2',
-        'کار تیمی',
-      ],
-      workExperience: [
-        {
-          period: '۱۴۰۴ - تاکنون',
-          role: 'توسعه‌دهنده بک‌اند',
-          company: 'تیم پلانکست',
-          description:
-            'پیاده‌سازی منطق سمت سرور، ساخت وب‌سرویس‌ها، توسعه پلاگین‌های اختصاصی و ارتقای امنیت و کارایی زیرساخت وب‌سایت‌ها.',
-        },
-        {
-          period: '۱۴۰۱ - ۱۴۰۴',
-          role: 'توسعه‌دهنده بک‌اند',
-          company: 'تیم ویکی پلاس',
-          description:
-            'طراحی و توسعه ماژول‌های بک‌اند، مدیریت دیتابیس و اتصال سامانه‌های پرداخت و احراز هویت.',
-        },
-        {
-          period: '۱۴۰۲ - ۱۴۰۳',
-          role: 'توسعه‌دهنده بک‌اند وبلاگ',
-          company: 'فیت کلاب',
-          description:
-            'توسعه سیستم انتشار محتوا، بهینه‌سازی کوئری‌ها و ساخت ابزارهای اختصاصی وبلاگ فیت کلاب.',
-        },
-        {
-          period: '۱۴۰۰ - تاکنون',
-          role: 'طراح سایت‌های فروشگاهی و متخصص وردپرس',
-          company: 'پروژه‌های مستقل و سازمانی',
-          description:
-            'طراحی، راه‌اندازی و سفارشی‌سازی ده‌ها فروشگاه آنلاین با ووکامرس و توسعه قالب‌های حرفه‌ای وردپرس.',
-        },
-      ],
-      projects: [
-        {
-          title: 'توسعه سامانه‌ها و فروشگاه‌های آنلاین چندمنظوره',
-          client: 'مشتریان سازمانی و فروشگاهی پلانکست',
-          year: '۱۴۰۴',
-          metric: 'عملکرد پایدار و زمان پاسخگویی سریع سرور',
-          description: 'پیاده‌سازی منطق اختصاصی خرید آنلاین، سیستم‌های ثبت‌نام پیامکی و ادغام کامل درگاه‌های بانکی.',
-        },
-        {
-          title: 'بهینه‌سازی دیتابیس و توسعه ماژول‌های بک‌اند وبلاگ فیت کلاب',
-          client: 'فیت کلاب',
-          year: '۱۴۰۳',
-          metric: 'کاهش لود دیتابیس و رشد ترافیک کاربران',
-          description: 'ارتقای معماری داده‌ها، کش‌گذاری هوشمند سرور و افزایش چشمگیر سرعت لود مقالات.',
-        },
-      ],
-      education: [
-        {
-          degree: 'گواهی متخصص وردپرس',
-          institution: 'گروه آموزشی ویکیتیچ',
-          year: '۱۴۰۱',
-        },
-      ],
-      honors: [
-        'عضو تیم وردپرس فیت کلاب',
-        'عضو تیم برنامه‌نویسی ویکی پلاس',
-        'عضو تیم برنامه‌نویسی ویکیتیچ',
-      ],
-    },
-    {
-      id: 'john-wilson',
-      name: 'مهندس زینب سلیمانی',
-      role: 'متخصص سئو',
-      bio: 'متخصص سئو در تیم پلانکست، با تمرکز بر بهینه‌سازی ساختار فنی وب‌سایت، تحلیل کلمات کلیدی و بهبود محتوای صفحات برای موتورهای جست‌وجو. هدف، افزایش شانس دیده‌شدن وب‌سایت در نتایج جست‌وجوی مرتبط و کمک به جذب مخاطبان هدفمند از طریق جست‌وجوی ارگانیک است.',
-      image: johnImg,
-      linkedinUrl: 'https://linkedin.com',
-      email: 'j.wilson@vort-group.com',
-      summary:
-        'زینب سلیمانی در حوزه بهینه‌سازی موتورهای جست‌وجو فعالیت می‌کند و بر شناسایی فرصت‌های رشد ارگانیک، بهبود ساختار صفحات و تدوین راهکارهای سئو متناسب با اهداف کسب‌وکار تمرکز دارد. این رویکرد به آماده‌سازی وب‌سایت برای رقابت بهتر در نتایج جست‌وجو و جذب کاربران مرتبط کمک می‌کند.',
-      coreCompetencies: [
-        'تخصیص هوشمند سرمایه و پرتفولیو منیجمنت',
-        'مدل‌سازی ارزش‌گذاری چندفاکتوره (Valuation Modeling)',
-        'مدیریت ریسک‌های سیستماتیک و محافظت از سرمایه',
-        'ارزیابی و تحلیل نرم‌افزارهای عمودی و فین‌تک',
-        'طراحی سازوکارهای خروج موفق (Exit Strategies)',
-      ],
-      workExperience: [
-        {
-          period: '۲۰۲۰ - اکنون',
-          role: 'مدیر ارشد سرمایه‌گذاری (CIO)',
-          company: 'گروه سرمایه‌گذاری ورت (Vort Group)',
-          description:
-            'طراحی استراتژی تخصیص سرمایه در صندوق‌های ورت، نظارت بر انطباق ریسک و غربالگری بیش از ۲۵۰ پرونده سرمایه‌گذاری.',
-        },
-        {
-          period: '۲۰۱۴ - ۲۰۲۰',
-          role: 'مدیر پورتفولیوی دارایی‌های فناورانه',
-          company: 'صندوق بازنشستگی معلمان اونتاریو (OTPP - تورنتو)',
-          description:
-            'مدیریت دارایی‌های سهام خصوصی به ارزش ۸۵۰M$ با تحقق میانگین بازده سالانه ۲۴٪.',
-        },
-        {
-          period: '۲۰۰۸ - ۲۰۱۴',
-          role: 'تحلیلگر ارشد ریسک اعتباری و بازار',
-          company: 'گلدمن ساکس (Goldman Sachs - نیویورک)',
-          description:
-            'طراحی ماتریس‌های استرس‌تست برای سبدهای بدهی سازمانی و ابزارهای مشتقه مالی.',
-        },
-      ],
-      projects: [
-        {
-          title: 'طراحی و تأمین مالی صندوق تخصصی فین‌تک و نرم‌افزارهای عمودی',
-          client: 'گروه سرمایه‌گذاری ورت',
-          year: '۲۰۲۱',
-          metric: 'جذب ۹۰M$ سرمایه متعهد نهادی',
-          description: 'تدوین مدل ارزیابی ریسک سناریویی، ارزش‌گذاری چندفاکتوره و غربالگری بیش از ۲۵۰ استارتاپ پیشرو در ۲ سال.',
-        },
-        {
-          title: 'خروج سودآور از پورتفولیوی پلتفرم پرداخت دیجیتال',
-          client: 'صندوق بازنشستگی معلمان اونتاریو (OTPP)',
-          year: '۲۰۱۹',
-          metric: 'بازدهی ۳.۲ برابری سرمایه (MOIC)',
-          description: 'ساختاربندی معامله فروش به یک غول پرداخت بین‌المللی با تحقق حداکثر سود و حفظ منافع سهامداران.',
-        },
-      ],
-      education: [
-        {
-          degree: 'دارنده مدرک معتبر تحلیلگری مالی (CFA Charterholder)',
-          institution: 'موسسه CFA آمریکا',
-          year: '۲۰۱۱',
-        },
-        {
-          degree: 'کارشناسی ارشد اقتصادسنجی و ریاضیات مالی',
-          institution: 'دانشگاه شیکاگو (University of Chicago)',
-          year: '۲۰۰۸',
-        },
-      ],
-      honors: [
-        'تحلیلگر برتر بازارهای خصوصی در گزارش سالانه Institutional Investor',
-        'عضو هیئت امنای انجمن تحلیلگران مالی فرانکفورت',
-        'مؤلف مقالات پژوهشی متعدد پیرامون انضباط سرمایه در چرخه‌های رکود',
-      ],
-    },
-  ];
+  const leaders = LEADERS_DATA;
+
+  const scrollToIndex = (index: number) => {
+    setActiveSlide(index);
+    if (scrollRef.current) {
+      const cards = scrollRef.current.children;
+      if (cards[index]) {
+        (cards[index] as HTMLElement).scrollIntoView({
+          behavior: 'smooth',
+          block: 'nearest',
+          inline: 'center',
+        });
+      }
+    }
+  };
+
+  const handleScroll = () => {
+    if (!scrollRef.current) return;
+    const children = Array.from(scrollRef.current.children) as HTMLElement[];
+    const containerRect = scrollRef.current.getBoundingClientRect();
+    const containerCenter = containerRect.left + containerRect.width / 2;
+
+    let closestIndex = 0;
+    let minDistance = Infinity;
+    children.forEach((child, idx) => {
+      const rect = child.getBoundingClientRect();
+      const childCenter = rect.left + rect.width / 2;
+      const dist = Math.abs(containerCenter - childCenter);
+      if (dist < minDistance) {
+        minDistance = dist;
+        closestIndex = idx;
+      }
+    });
+    setActiveSlide(closestIndex);
+  };
 
   return (
     <section id="leadership-section" className="relative w-full bg-white text-[#0a181c] py-16 sm:py-24 px-6 sm:px-10 md:px-14 lg:px-16 overflow-hidden select-text" dir="rtl">
@@ -313,128 +84,169 @@ export const LeadershipSection: React.FC = () => {
         </div>
 
         {/* ======================================================== */}
-        {/* 3 LEADERSHIP CARDS GRID (CLICKABLE TO OPEN RESUME MODAL)  */}
-        {/* Uniform style, 2-line justified text, aligned resume bar  */}
-        {/* and social buttons: LinkedIn, Instagram, Telegram, X     */}
+        {/* LEADERSHIP CARDS: MOBILE HORIZONTAL SLIDER / DESKTOP 3-COL */}
         {/* ======================================================== */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-7 lg:gap-8 items-stretch">
-          {leaders.map((leader, idx) => (
-            <motion.div
-              key={leader.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-40px' }}
-              transition={{ duration: 0.6, delay: idx * 0.15, ease: [0.16, 1, 0.3, 1] }}
-              onClick={() => setSelectedLeader(leader)}
-              className="flex flex-col justify-between h-full group cursor-pointer text-right bg-slate-50/70 hover:bg-white rounded-[30px] p-5 sm:p-6 border border-slate-200/80 hover:border-slate-300 shadow-sm hover:shadow-[0_16px_36px_rgba(10,30,35,0.08)] transition-all duration-300"
-            >
-              {/* Top Section */}
-              <div>
-                {/* Leader Photo */}
-                <div className="relative w-full aspect-[4/4.5] rounded-[24px] overflow-hidden bg-slate-100 shadow-[0_6px_20px_rgba(0,0,0,0.03)]">
-                  <img
-                    src={leader.image}
-                    alt={leader.name}
-                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none flex items-end p-4">
-                    <span className="text-white text-xs font-bold bg-black/50 backdrop-blur-md px-3 py-1 rounded-full border border-white/20">
-                      مشاهده رزومه کامل 📄
+        <div className="relative">
+          <div
+            ref={scrollRef}
+            onScroll={handleScroll}
+            className="flex md:grid md:grid-cols-3 gap-5 md:gap-7 lg:gap-8 items-stretch overflow-x-auto md:overflow-visible snap-x snap-mandatory scrollbar-none pb-4 md:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0 touch-pan-x scroll-smooth"
+          >
+            {leaders.map((leader, idx) => (
+              <motion.div
+                key={leader.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-40px' }}
+                transition={{ duration: 0.6, delay: idx * 0.15, ease: [0.16, 1, 0.3, 1] }}
+                onClick={() => setSelectedLeader(leader)}
+                className="w-[84vw] max-w-[340px] shrink-0 snap-center md:w-auto md:shrink flex flex-col justify-between h-full group cursor-pointer text-right bg-slate-50/70 hover:bg-white rounded-[30px] p-5 sm:p-6 border border-slate-200/80 hover:border-slate-300 shadow-sm hover:shadow-[0_16px_36px_rgba(10,30,35,0.08)] transition-all duration-300"
+              >
+                {/* Top Section */}
+                <div>
+                  {/* Leader Photo */}
+                  <div className="relative w-full aspect-[4/4.5] rounded-[24px] overflow-hidden bg-slate-100 shadow-[0_6px_20px_rgba(0,0,0,0.03)]">
+                    <img
+                      src={leader.image}
+                      alt={leader.name}
+                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none flex items-end p-4">
+                      <span className="text-white text-xs font-bold bg-black/50 backdrop-blur-md px-3 py-1 rounded-full border border-white/20">
+                        مشاهده رزومه کامل 📄
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Leader Details */}
+                  <div className="mt-5 text-right px-1">
+                    <h3 className="text-lg sm:text-xl font-bold text-[#0b242a] tracking-tight leading-snug group-hover:text-[#094751] transition-colors">
+                      {leader.name}
+                    </h3>
+                    <p className="text-xs sm:text-[13px] text-emerald-700 font-medium mt-1">
+                      {leader.role}
+                    </p>
+                  </div>
+
+                  {/* Bio summary: Strictly justified & max 2 lines with '...' */}
+                  <p className="mt-3 text-xs sm:text-[13px] text-slate-500 font-normal leading-relaxed px-1 text-justify line-clamp-2">
+                    {leader.bio}
+                  </p>
+
+                  {/* Social media buttons right under the description (LinkedIn, Instagram, Telegram, X) */}
+                  <div
+                    className="mt-4 px-1 flex items-center gap-2 select-none"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <span className="text-[11px] font-medium text-slate-400 shrink-0 ml-1">
+                      ارتباط:
                     </span>
+
+                    {/* LinkedIn */}
+                    <a
+                      href={leader.linkedinUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title={`لینکدین ${leader.name}`}
+                      aria-label={`لینکدین ${leader.name}`}
+                      className="w-8 h-8 rounded-full bg-slate-100/90 text-[#094751] hover:bg-emerald-600 hover:text-white border border-slate-200/80 hover:border-emerald-600 flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-[0_4px_14px_rgba(16,185,129,0.35)] cursor-pointer"
+                    >
+                      <svg viewBox="0 0 24 24" fill="currentColor" className="w-3.5 h-3.5">
+                        <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9h2.79v8.37H6.46v-8.37M7.86 6.5a1.63 1.63 0 1 0 1.63 1.63A1.63 1.63 0 0 0 7.86 6.5z" />
+                      </svg>
+                    </a>
+
+                    {/* Instagram */}
+                    <a
+                      href="https://instagram.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title={`اینستاگرام ${leader.name}`}
+                      aria-label={`اینستاگرام ${leader.name}`}
+                      className="w-8 h-8 rounded-full bg-slate-100/90 text-[#094751] hover:bg-emerald-600 hover:text-white border border-slate-200/80 hover:border-emerald-600 flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-[0_4px_14px_rgba(16,185,129,0.35)] cursor-pointer"
+                    >
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5">
+                        <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                        <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+                      </svg>
+                    </a>
+
+                    {/* Telegram */}
+                    <a
+                      href="https://t.me/vort_support"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title={`تلگرام ${leader.name}`}
+                      aria-label={`تلگرام ${leader.name}`}
+                      className="w-8 h-8 rounded-full bg-slate-100/90 text-[#094751] hover:bg-emerald-600 hover:text-white border border-slate-200/80 hover:border-emerald-600 flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-[0_4px_14px_rgba(16,185,129,0.35)] cursor-pointer"
+                    >
+                      <svg viewBox="0 0 24 24" fill="currentColor" className="w-3.5 h-3.5">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.52 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06-.01.19-.02.32z"/>
+                      </svg>
+                    </a>
+
+                    {/* X (Twitter) */}
+                    <a
+                      href="https://x.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title={`ایکس ${leader.name}`}
+                      aria-label={`ایکس ${leader.name}`}
+                      className="w-8 h-8 rounded-full bg-slate-100/90 text-[#094751] hover:bg-emerald-600 hover:text-white border border-slate-200/80 hover:border-emerald-600 flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-[0_4px_14px_rgba(16,185,129,0.35)] cursor-pointer"
+                    >
+                      <svg viewBox="0 0 24 24" fill="currentColor" className="w-3.5 h-3.5">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                      </svg>
+                    </a>
                   </div>
                 </div>
 
-                {/* Leader Details */}
-                <div className="mt-5 text-right px-1">
-                  <h3 className="text-lg sm:text-xl font-bold text-[#0b242a] tracking-tight leading-snug group-hover:text-[#094751] transition-colors">
-                    {leader.name}
-                  </h3>
-                  <p className="text-xs sm:text-[13px] text-emerald-700 font-medium mt-1">
-                    {leader.role}
-                  </p>
+                {/* View Resume Action Hint: Perfectly aligned in the same row across all cards */}
+                <div className="mt-5 pt-3.5 border-t border-slate-200/80 flex items-center justify-between text-xs font-semibold text-[#094751] px-1">
+                  <span>مشاهده رزومه و سوابق حرفه‌ای</span>
+                  <span className="group-hover:-translate-x-1 transition-transform">←</span>
                 </div>
+              </motion.div>
+            ))}
+          </div>
 
-                {/* Bio summary: Strictly justified & max 2 lines with '...' */}
-                <p className="mt-3 text-xs sm:text-[13px] text-slate-500 font-normal leading-relaxed px-1 text-justify line-clamp-2">
-                  {leader.bio}
-                </p>
+          {/* Mobile Slider Controls (Arrows & Pagination Dots) */}
+          <div className="flex md:hidden items-center justify-center gap-3 mt-4">
+            <button
+              type="button"
+              onClick={() => scrollToIndex(Math.max(0, activeSlide - 1))}
+              disabled={activeSlide === 0}
+              className="p-2 rounded-full bg-slate-100 text-slate-700 disabled:opacity-30 disabled:pointer-events-none hover:bg-emerald-50 hover:text-emerald-700 transition-colors shadow-2xs cursor-pointer"
+              aria-label="اسلاید قبلی"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
 
-                {/* Social media buttons right under the description (LinkedIn, Instagram, Telegram, X) */}
-                <div
-                  className="mt-4 px-1 flex items-center gap-2 select-none"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <span className="text-[11px] font-medium text-slate-400 shrink-0 ml-1">
-                    ارتباط:
-                  </span>
+            <div className="flex items-center gap-1.5">
+              {leaders.map((_, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  onClick={() => scrollToIndex(i)}
+                  className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                    activeSlide === i ? 'w-6 bg-emerald-600' : 'w-2 bg-slate-300 hover:bg-slate-400'
+                  }`}
+                  aria-label={`رفتن به اسلاید ${i + 1}`}
+                />
+              ))}
+            </div>
 
-                  {/* LinkedIn */}
-                  <a
-                    href={leader.linkedinUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    title={`لینکدین ${leader.name}`}
-                    aria-label={`لینکدین ${leader.name}`}
-                    className="w-8 h-8 rounded-full bg-slate-100/90 text-[#094751] hover:bg-emerald-600 hover:text-white border border-slate-200/80 hover:border-emerald-600 flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-[0_4px_14px_rgba(16,185,129,0.35)] cursor-pointer"
-                  >
-                    <svg viewBox="0 0 24 24" fill="currentColor" className="w-3.5 h-3.5">
-                      <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9h2.79v8.37H6.46v-8.37M7.86 6.5a1.63 1.63 0 1 0 1.63 1.63A1.63 1.63 0 0 0 7.86 6.5z" />
-                    </svg>
-                  </a>
-
-                  {/* Instagram */}
-                  <a
-                    href="https://instagram.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    title={`اینستاگرام ${leader.name}`}
-                    aria-label={`اینستاگرام ${leader.name}`}
-                    className="w-8 h-8 rounded-full bg-slate-100/90 text-[#094751] hover:bg-emerald-600 hover:text-white border border-slate-200/80 hover:border-emerald-600 flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-[0_4px_14px_rgba(16,185,129,0.35)] cursor-pointer"
-                  >
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5">
-                      <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
-                      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
-                    </svg>
-                  </a>
-
-                  {/* Telegram */}
-                  <a
-                    href="https://t.me/vort_support"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    title={`تلگرام ${leader.name}`}
-                    aria-label={`تلگرام ${leader.name}`}
-                    className="w-8 h-8 rounded-full bg-slate-100/90 text-[#094751] hover:bg-emerald-600 hover:text-white border border-slate-200/80 hover:border-emerald-600 flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-[0_4px_14px_rgba(16,185,129,0.35)] cursor-pointer"
-                  >
-                    <svg viewBox="0 0 24 24" fill="currentColor" className="w-3.5 h-3.5">
-                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.52 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06-.01.19-.02.32z"/>
-                    </svg>
-                  </a>
-
-                  {/* X (Twitter) */}
-                  <a
-                    href="https://x.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    title={`ایکس ${leader.name}`}
-                    aria-label={`ایکس ${leader.name}`}
-                    className="w-8 h-8 rounded-full bg-slate-100/90 text-[#094751] hover:bg-emerald-600 hover:text-white border border-slate-200/80 hover:border-emerald-600 flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-[0_4px_14px_rgba(16,185,129,0.35)] cursor-pointer"
-                  >
-                    <svg viewBox="0 0 24 24" fill="currentColor" className="w-3.5 h-3.5">
-                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                    </svg>
-                  </a>
-                </div>
-              </div>
-
-              {/* View Resume Action Hint: Perfectly aligned in the same row across all cards */}
-              <div className="mt-5 pt-3.5 border-t border-slate-200/80 flex items-center justify-between text-xs font-semibold text-[#094751] px-1">
-                <span>مشاهده رزومه و سوابق حرفه‌ای</span>
-                <span className="group-hover:-translate-x-1 transition-transform">←</span>
-              </div>
-            </motion.div>
-          ))}
+            <button
+              type="button"
+              onClick={() => scrollToIndex(Math.min(leaders.length - 1, activeSlide + 1))}
+              disabled={activeSlide === leaders.length - 1}
+              className="p-2 rounded-full bg-slate-100 text-slate-700 disabled:opacity-30 disabled:pointer-events-none hover:bg-emerald-50 hover:text-emerald-700 transition-colors shadow-2xs cursor-pointer"
+              aria-label="اسلاید بعدی"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </button>
+          </div>
         </div>
       </div>
 
@@ -597,8 +409,8 @@ export const LeadershipSection: React.FC = () => {
                             <span className="absolute -right-[7px] top-1.5 w-3 h-3 rounded-full bg-emerald-600 ring-4 ring-emerald-100" />
                             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-1">
                               <h5 className="text-sm font-bold text-slate-900">{exp.role}</h5>
-                              {/* Bold Year Badge */}
-                              <span className="text-[11px] font-bold font-mono px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-800 border border-slate-300 w-fit shadow-2xs">
+                              {/* Bold Year Badge with Vazir font */}
+                              <span className="text-[11px] font-bold font-['Vazir',sans-serif] px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-800 border border-slate-300 w-fit shadow-2xs">
                                 {exp.period}
                               </span>
                             </div>
@@ -629,8 +441,8 @@ export const LeadershipSection: React.FC = () => {
                           >
                             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-1.5">
                               <h5 className="text-sm font-bold text-slate-900">{proj.title}</h5>
-                              {/* Bold Year Badge */}
-                              <span className="text-[11px] font-bold font-mono px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-900 border border-emerald-300 w-fit">
+                              {/* Bold Year Badge with Vazir font */}
+                              <span className="text-[11px] font-bold font-['Vazir',sans-serif] px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-900 border border-emerald-300 w-fit">
                                 {proj.year}
                               </span>
                             </div>
@@ -690,8 +502,8 @@ export const LeadershipSection: React.FC = () => {
                             <span className="font-bold text-slate-900 block">{edu.degree}</span>
                             <div className="text-slate-500 mt-1 flex items-center gap-1.5">
                               <span>{edu.institution}</span>
-                              {/* Bold Year Badge */}
-                              <span className="font-bold font-mono text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200">
+                              {/* Bold Year Badge with Vazir font */}
+                              <span className="text-xs font-bold font-['Vazir',sans-serif] text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-md border border-emerald-200">
                                 {edu.year}
                               </span>
                             </div>

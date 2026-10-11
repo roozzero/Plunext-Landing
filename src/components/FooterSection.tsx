@@ -46,9 +46,9 @@ export const FooterSection: React.FC<FooterSectionProps> = ({
 
       <div className="max-w-7xl mx-auto relative z-10 flex flex-col justify-between">
         {/* ======================================================== */}
-        {/* TOP ROW: 4 COLUMNS (COMPACT & BALANCED)                  */}
+        {/* TOP ROW: BRAND COLUMN + 2-COLUMN GRID ON MOBILE          */}
         {/* ======================================================== */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-7 lg:gap-8 pb-7 sm:pb-8 text-right">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-7 lg:gap-8 pb-7 sm:pb-8 text-right">
           {/* Column 1: Mission Tagline & CTA Button (lg:col-span-4) */}
           <div className="lg:col-span-4 flex flex-col items-start text-right">
             <div className="mb-2.5">
@@ -83,103 +83,121 @@ export const FooterSection: React.FC<FooterSectionProps> = ({
             </button>
           </div>
 
-          {/* Column 2: Navigation Links (lg:col-span-3) */}
-          <div className="lg:col-span-3 flex flex-col space-y-2 text-xs sm:text-[13px] text-right">
-            <a
-              href="#home"
-              onClick={(e) => {
-                e.preventDefault();
-                if (onNavigate) onNavigate('Home');
-                scrollToTop();
-              }}
-              className="inline-flex items-center gap-2 text-white hover:text-emerald-300 transition-colors cursor-pointer w-fit group"
-            >
-              <span className="w-1.5 h-3 bg-emerald-400 rounded-sm inline-block group-hover:scale-110 transition-transform" />
-              <span>صفحه اصلی</span>
-            </a>
+          {/* Mobile 2-Column Grid: Menus on one side, Legal + Email + Address on opposite side */}
+          <div className="grid grid-cols-2 gap-6 sm:gap-8 lg:contents">
+            {/* Column 2: Navigation Links (منوها) (lg:col-span-3) */}
+            <div className="lg:col-span-3 flex flex-col space-y-2.5 text-xs sm:text-[13px] text-right">
+              <span className="text-[11px] font-bold text-emerald-300/90 mb-0.5 block lg:hidden">
+                منوهای اصلی
+              </span>
 
-            <a
-              href="#portfolio"
-              onClick={(e) => {
-                e.preventDefault();
-                if (onNavigate) onNavigate('Portfolio');
-              }}
-              className="text-slate-300 hover:text-white transition-colors cursor-pointer w-fit"
-            >
-              نمونه کارها
-            </a>
+              <a
+                href="#home"
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (onNavigate) onNavigate('Home');
+                  scrollToTop();
+                }}
+                className="inline-flex items-center gap-2 text-white hover:text-emerald-300 transition-colors cursor-pointer w-fit group"
+              >
+                <span className="w-1.5 h-3 bg-emerald-400 rounded-sm inline-block group-hover:scale-110 transition-transform" />
+                <span>صفحه اصلی</span>
+              </a>
 
-            <a
-              href="#blog"
-              onClick={(e) => {
-                e.preventDefault();
-                if (onNavigate) onNavigate('Blog');
-              }}
-              className="text-slate-300 hover:text-white transition-colors cursor-pointer w-fit"
-            >
-              وبلاگ
-            </a>
+              <a
+                href="#portfolio"
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (onNavigate) onNavigate('Portfolio');
+                }}
+                className="text-slate-300 hover:text-white transition-colors cursor-pointer w-fit"
+              >
+                نمونه کارها
+              </a>
 
-            <a
-              href="#about"
-              onClick={(e) => {
-                e.preventDefault();
-                if (onNavigate) onNavigate('About Us');
-              }}
-              className="text-slate-300 hover:text-white transition-colors cursor-pointer w-fit"
-            >
-              درباره ما
-            </a>
+              <a
+                href="#blog"
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (onNavigate) onNavigate('Blog');
+                }}
+                className="text-slate-300 hover:text-white transition-colors cursor-pointer w-fit"
+              >
+                وبلاگ
+              </a>
 
-            <a
-              href="#contact"
-              onClick={(e) => {
-                e.preventDefault();
-                if (onNavigate) onNavigate('Contact');
-              }}
-              className="text-slate-300 hover:text-white transition-colors cursor-pointer w-fit"
-            >
-              ارتباط با ما
-            </a>
-          </div>
+              <a
+                href="#about"
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (onNavigate) onNavigate('About Us');
+                }}
+                className="text-slate-300 hover:text-white transition-colors cursor-pointer w-fit"
+              >
+                درباره ما
+              </a>
 
-          {/* Column 3: Legal & Social Links (lg:col-span-3) */}
-          <div className="lg:col-span-3 flex flex-col space-y-2 text-xs sm:text-[13px] text-right">
-            <a
-              href="#terms"
-              onClick={(e) => {
-                e.preventDefault();
-                if (onOpenTerms) onOpenTerms();
-              }}
-              className="text-slate-300 hover:text-emerald-300 transition-colors cursor-pointer w-fit"
-            >
-              شرایط و قوانین استفاده
-            </a>
+              <a
+                href="#contact"
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (onNavigate) onNavigate('Contact');
+                }}
+                className="text-slate-300 hover:text-white transition-colors cursor-pointer w-fit"
+              >
+                ارتباط با ما
+              </a>
+            </div>
 
-            <a
-              href="#privacy"
-              onClick={(e) => {
-                e.preventDefault();
-                if (onOpenPrivacy) onOpenPrivacy();
-              }}
-              className="text-slate-300 hover:text-emerald-300 transition-colors cursor-pointer w-fit"
-            >
-              سیاست حفظ حریم خصوصی
-            </a>
-          </div>
+            {/* Column 3 & 4: Opposite column on mobile for "شرایط، سیاست، ایمیل و آدرس" */}
+            <div className="lg:col-span-5 flex flex-col space-y-4 lg:space-y-0 lg:flex-row lg:justify-between lg:gap-6 text-xs sm:text-[13px] text-right">
+              {/* بخش شرایط و سیاست */}
+              <div className="flex flex-col space-y-2 text-right">
+                <span className="text-[11px] font-bold text-emerald-300/90 mb-0.5 block lg:hidden">
+                  شرایط و سیاست
+                </span>
 
-          {/* Column 4: Contact Details (lg:col-span-2) */}
-          <div className="lg:col-span-2 flex flex-col space-y-2 text-xs sm:text-[13px] text-right">
-            <a
-              href="mailto:info@vort.com"
-              className="text-slate-300 hover:text-white transition-colors cursor-pointer w-fit dir-ltr"
-            >
-              info@plunex.ir
-            </a>
+                <a
+                  href="#terms"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (onOpenTerms) onOpenTerms();
+                  }}
+                  className="text-slate-300 hover:text-emerald-300 transition-colors cursor-pointer w-fit leading-relaxed"
+                >
+                  شرایط و قوانین استفاده
+                </a>
 
-            <span className="text-slate-300">
-              زنجان، ابهر 
-            </span>
+                <a
+                  href="#privacy"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (onOpenPrivacy) onOpenPrivacy();
+                  }}
+                  className="text-slate-300 hover:text-emerald-300 transition-colors cursor-pointer w-fit leading-relaxed"
+                >
+                  سیاست حفظ حریم خصوصی
+                </a>
+              </div>
+
+              {/* بخش ایمیل و آدرس */}
+              <div className="flex flex-col space-y-1.5 text-right pt-2.5 lg:pt-0 border-t border-white/10 lg:border-t-0">
+                <span className="text-[11px] font-bold text-emerald-300/90 mb-0.5 block lg:hidden">
+                  ایمیل و آدرس
+                </span>
+
+                <a
+                  href="mailto:info@plunex.ir"
+                  className="text-slate-300 hover:text-white transition-colors cursor-pointer w-fit dir-ltr font-sans"
+                >
+                  info@plunex.ir
+                </a>
+
+                <span className="text-slate-300 leading-relaxed">
+                  زنجان، ابهر
+                </span>
+              </div>
+            </div>
           </div>
         </div>
 

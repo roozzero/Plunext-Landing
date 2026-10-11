@@ -1,6 +1,14 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { Star, Quote } from 'lucide-react';
+import teachershowLogo from '../assets/imgs/portfolio/teachershow/teachershowLogo.png';
+import digiLogo from '../assets/imgs/portfolio/digikolah/digiLogo.png';
+import fitLogo from '../assets/imgs/portfolio/fitclub/fitLogo.svg';
+import charmLogo from '../assets/imgs/portfolio/Chardoozak/charmLogo.webp';
+import cheemodeLogo from '../assets/imgs/portfolio/cheemode/CheemodeLogo.png';
+import roozzeroLogo from '../assets/imgs/portfolio/roozzero/RoozzeroLogo.png';
+import learnoLogo from '../assets/imgs/portfolio/learnobit/learnoLogo.png';
+import pelashanLogo from '../assets/imgs/portfolio/pelashan/pelashanLogo.webp';
 
 interface Testimonial {
   id: string;
@@ -11,8 +19,7 @@ interface Testimonial {
   duration: string;
   quote: string;
   rating: number;
-  avatarBg: string;
-  initials: string;
+  logo: string;
 }
 
 interface WhyPartnerSectionProps {
@@ -32,8 +39,7 @@ export const WhyPartnerSection: React.FC<WhyPartnerSectionProps> = ({ onOpenCont
       duration: 'همکاری ۱ ساله',
       quote: 'همکاری با تیم پلانکست تجربه خوبی برای ما بود. از ابتدا به نیازهای پروژه توجه کردند و با طراحی یک وب‌سایت متناسب با اهداف ما، کمک کردند خدمات آموزشی‌مان را حرفه‌ای‌تر در فضای آنلاین معرفی کنیم.',
       rating: 5,
-      avatarBg: 'from-amber-500 to-orange-600',
-      initials: 'ع.ص',
+      logo: teachershowLogo,
     },
     {
       id: 'digi-kolah',
@@ -44,8 +50,7 @@ export const WhyPartnerSection: React.FC<WhyPartnerSectionProps> = ({ onOpenCont
       duration: 'همکاری ۳ ساله',
       quote: 'تیم پلانکست با درک خوبی که از نیازهای یک فروشگاه اینترنتی داشت، توانست تجربه‌ای حرفه‌ای برای معرفی محصولات ما ایجاد کند. نظم صفحات و توجه به تجربه خرید کاربران از نکات مثبت این همکاری بود.',
       rating: 5,
-      avatarBg: 'from-emerald-500 to-teal-600',
-      initials: 'م.ک',
+      logo: digiLogo,
     },
     {
       id: 'fit-club',
@@ -56,8 +61,7 @@ export const WhyPartnerSection: React.FC<WhyPartnerSectionProps> = ({ onOpenCont
       duration: 'همکاری ۱۸ ماهه',
       quote: 'از همکاری با پلانکست رضایت داشتیم. تیم پروژه با دقت به نیازهای ما گوش داد و تلاش کرد وب‌سایتی متناسب با خدمات مجموعه طراحی کند. ارتباط مناسب و توجه به جزئیات، تجربه همکاری خوبی برای ما رقم زد.',
       rating: 5,
-      avatarBg: 'from-cyan-500 to-blue-600',
-      initials: 'س.ر',
+      logo: fitLogo,
     },
     {
       id: 'charm-doozak',
@@ -68,20 +72,18 @@ export const WhyPartnerSection: React.FC<WhyPartnerSectionProps> = ({ onOpenCont
       duration: 'همکاری ۲ ساله',
       quote: 'همکاری با پلانکست به ما کمک کرد محصولاتمان را در بستری منظم‌تر و حرفه‌ای‌تر معرفی کنیم. توجه به نحوه نمایش محصولات و تجربه کاربری، از نکاتی بود که در فرایند طراحی برای ما اهمیت داشت.',
       rating: 5,
-      avatarBg: 'from-rose-500 to-pink-600',
-      initials: 'ز.ی',
+      logo: charmLogo,
     },
     {
-      id: 'wiki-teach',
-      name: 'دکتر حسین پناهی',
-      role: 'مدیر آکادمی و دپارتمان آموزش',
-      company: 'آکادمی آنلاین ویکی تیچ',
-      category: 'آموزش و دوره‌های آنلاین',
-      duration: 'همکاری ۴ ساله',
-      quote: 'یکی از نقاط قوت همکاری با پلانکست، درک عمیق از زیرساخت‌های پلتفرم آموزش آنلاین و استریم روان ویدیوها بود. وب‌سایت ویکی تیچ بستری امن، بدون قطعی و بسیار کارآمد برای دوره‌ها و اساتید ما فراهم کرده است.',
+      id: 'learnobit',
+      name: 'مهندس آرین بهرامی',
+      role: 'هم‌بنیان‌گذار و مدیر آکادمی',
+      company: 'آکادمی لرنوبیت',
+      category: 'آموزش برنامه‌نویسی و مهارت‌های دیجیتال',
+      duration: 'همکاری ۲ ساله',
+      quote: 'یکی از نقاط قوت همکاری با پلانکست، درک عمیق از زیرساخت‌های پلتفرم آموزش آنلاین و استریم روان دوره‌ها بود. وب‌سایت لرنوبیت بستری امن، پرسرعت و بسیار کارآمد برای آموزش و تعامل دانشجویان با منتورها فراهم کرده است.',
       rating: 5,
-      avatarBg: 'from-indigo-500 to-purple-600',
-      initials: 'ح.پ',
+      logo: learnoLogo,
     },
     {
       id: 'chi-mode',
@@ -92,20 +94,18 @@ export const WhyPartnerSection: React.FC<WhyPartnerSectionProps> = ({ onOpenCont
       duration: 'همکاری ۱ ساله',
       quote: 'تیم پلانکست به اهمیت ساختار محتوا و تجربه کاربری در یک وب‌سایت محتوایی توجه داشت. همکاری با این تیم برای ما فرصتی بود تا مطالب و موضوعات مرتبط با حوزه فعالیت‌مان را در بستری منظم‌تر و حرفه‌ای‌تر ارائه کنیم.',
       rating: 5,
-      avatarBg: 'from-fuchsia-500 to-rose-600',
-      initials: 'ف.ا',
+      logo: cheemodeLogo,
     },
     {
-      id: 'sapino-shop',
-      name: 'آقای نیما مهرابی',
-      role: 'مدیر فروش',
-      company: 'فروشگاه ساپینو شاپ',
-      category: 'خرده‌فروشی آنلاین مدرن',
+      id: 'pelashan',
+      name: 'آقای مجید پلاشان',
+      role: 'مدیرعامل و بنیان‌گذار',
+      company: 'مجموعه بازرگانی پلاشان',
+      category: 'صادرات و تجارت الکترونیک خشکبار',
       duration: 'همکاری ۲ ساله',
-      quote: 'از اینکه در فرایند طراحی، نیازهای فروشگاه و کاربران مورد توجه قرار گرفت، رضایت داشتیم. پلانکست تلاش کرد ساختار مناسبی برای معرفی محصولات ایجاد کند تا مشتریان بتوانند راحت‌تر با فروشگاه ارتباط برقرار کنند.',
+      quote: 'از اینکه در فرایند طراحی، استانداردهای بین‌المللی و نیازهای صادراتی برند ما مورد توجه قرار گرفت، رضایت کامل داریم. پلانکست ساختاری مدرن و چندزبانه ایجاد کرد تا مشتریان بین‌المللی با سهولت سفارش‌گذاری کنند.',
       rating: 5,
-      avatarBg: 'from-teal-500 to-emerald-700',
-      initials: 'ن.م',
+      logo: pelashanLogo,
     },
     {
       id: 'rooziro-academy',
@@ -116,8 +116,7 @@ export const WhyPartnerSection: React.FC<WhyPartnerSectionProps> = ({ onOpenCont
       duration: 'همکاری ۲ ساله',
       quote: 'در یک وب‌سایت آموزشی، ارائه منظم اطلاعات و دسترسی آسان کاربران اهمیت زیادی دارد. پلانکست در طراحی ساختار سایت به این نیازها توجه کرد و برای ایجاد بستری حرفه‌ای‌تر جهت معرفی خدمات آموزشی ما تلاش کرد.',
       rating: 5,
-      avatarBg: 'from-violet-500 to-sky-600',
-      initials: 'پ.ش',
+      logo: roozzeroLogo,
     },
   ];
 
@@ -161,9 +160,13 @@ export const WhyPartnerSection: React.FC<WhyPartnerSectionProps> = ({ onOpenCont
           {/* Customer Info Card Footer */}
           <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between gap-3">
             <div className="flex items-center gap-3">
-              {/* Initials / Avatar circle */}
-              <div className={`w-11 h-11 rounded-full bg-gradient-to-tr ${item.avatarBg} flex items-center justify-center text-white text-xs font-bold shadow-md ring-2 ring-white/20`}>
-                {item.initials}
+              {/* Logo container instead of personal avatar */}
+              <div className="w-11 h-11 rounded-2xl bg-white/15 backdrop-blur-md border border-white/25 flex items-center justify-center p-1.5 shadow-md group-hover:border-emerald-400/50 group-hover:bg-white/20 transition-all shrink-0 overflow-hidden">
+                <img
+                  src={item.logo}
+                  alt={item.company}
+                  className="w-full h-full object-contain filter drop-shadow-xs"
+                />
               </div>
               <div>
                 <h4 className="text-sm font-semibold text-white group-hover:text-emerald-300 transition-colors">

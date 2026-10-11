@@ -535,7 +535,7 @@ export const ApproachSection: React.FC<ApproachSectionProps> = ({ onOpenOrder })
                             <div key={idx} className="p-4 rounded-xl bg-white border border-slate-200/90 shadow-2xs">
                               <div className="flex items-center justify-between mb-1.5">
                                 <span className="text-sm font-bold text-[#0c2e36]">{exp.role}</span>
-                                <span className="text-[11px] font-mono px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold">
+                                <span className="text-[11px] font-['Vazir',sans-serif] font-bold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">
                                   {exp.experience}
                                 </span>
                               </div>

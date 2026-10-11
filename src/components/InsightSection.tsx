@@ -403,7 +403,7 @@ export const InsightSection: React.FC = () => {
                             viewport={{ once: false, amount: 0.35 }}
                             transition={{ duration: 0.5, delay: 0.35 + index * 0.18 }}
                             style={{ color: item.textColor }}
-                            className="text-[10px] sm:text-[11px] font-mono font-bold tracking-tight select-text"
+                            className="text-[10px] sm:text-[11px] font-bold tracking-tight select-text font-['Vazir',sans-serif]"
                           >
                             {item.value}
                           </motion.span>
@@ -411,7 +411,7 @@ export const InsightSection: React.FC = () => {
                       </div>
 
                       <span
-                        className={`text-[10px] sm:text-[12px] font-mono transition-colors select-text ${isHovered || item.year === '۱۴۰۴'
+                        className={`text-[10px] sm:text-[12px] font-medium transition-colors select-text font-['Vazir',sans-serif] ${isHovered || item.year === '۱۴۰۴'
                           ? 'text-[#0a4852] font-bold scale-105'
                           : 'text-slate-500'
                           }`}
